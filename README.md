@@ -57,11 +57,11 @@ Active
 
 - download project files
 - setup project with React/Vite/SWC/TypeScript/Jest
+- recreate index.html
 - create repository
 - check ux design
-- recreate index.html
-- create scss styles
 - identify components
+- create scss styles
 - create atom and container components
 - create components s/css classes
 - create components constants
