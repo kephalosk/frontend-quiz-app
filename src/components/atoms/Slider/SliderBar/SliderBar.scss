@@ -1,0 +1,11 @@
+@use '../../../../styles/colors';
+@use '../../../../styles/functions';
+
+$slider-bar-height: functions.to-rem(8px);
+
+.sliderBar {
+  background-color: colors.$grey-850;
+  height: $slider-bar-height;
+  width: 100%;
+  position: relative;
+}

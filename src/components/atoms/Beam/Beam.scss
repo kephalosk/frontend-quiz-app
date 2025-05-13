@@ -1,0 +1,31 @@
+@use '../../../styles/colors';
+@use '../../../styles/functions';
+
+$beam-height: functions.to-rem(28px);
+$beam-width: functions.to-rem(10px);
+$border-thickness: functions.to-rem(2px);
+
+.beam {
+  border: $border-thickness solid colors.$white;
+  height: $beam-height;
+  width: $beam-width;
+}
+.beam.green {
+  border: $border-thickness solid colors.$green-200;
+  background-color: colors.$green-200;
+}
+.beam.yellow {
+  border: $border-thickness solid colors.$yellow-300;
+  background-color: colors.$yellow-300;
+}
+.beam.orange {
+  border: $border-thickness solid colors.$orange-400;
+  background-color: colors.$orange-400;
+}
+.beam.red {
+  border: $border-thickness solid colors.$red-500;
+  background-color: colors.$red-500;
+}
+.beam.transparent {
+  background-color: transparent;
+}

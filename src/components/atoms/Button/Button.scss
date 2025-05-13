@@ -1,0 +1,74 @@
+@use '../../../styles/colors';
+@use '../../../styles/fonts';
+@use '../../../styles/functions';
+@use '../../../styles/spaces';
+
+$border-thickness: functions.to-rem(1px);
+$transition-duration: 0.2s;
+$arrow-icon-height: functions.to-rem(12px);
+$arrow-icon-width: functions.to-rem(12px);
+
+.button {
+  border: $border-thickness solid colors.$green-200;
+  padding: spaces.$space-8px spaces.$space-16px ;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: spaces.$space-24px;
+  width: 100%;
+  background-color: colors.$green-200;
+  text-transform: uppercase;
+  color: colors.$grey-800;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  transition:
+          border $transition-duration ease,
+          background-color $transition-duration ease;
+
+  @include fonts.text-preset-4;
+}
+.button:hover {
+  border: $border-thickness solid colors.$green-200;
+  background-color: colors.$grey-800;
+  color: colors.$green-200;
+  outline: none;
+  box-shadow: none;
+}
+.button:focus {
+  border: $border-thickness solid colors.$green-200;
+  background-color: colors.$grey-800;
+  color: colors.$green-200;
+  outline: none;
+  box-shadow: none;
+}
+.button:focus-visible {
+  border: $border-thickness solid colors.$green-200;
+  background-color: colors.$grey-800;
+  color: colors.$green-200;
+  outline: none;
+  box-shadow: none;
+}
+
+.button.disabled {
+  border: $border-thickness solid colors.$grey-600;
+  background-color: colors.$grey-600;
+  cursor: not-allowed;
+}
+
+.buttonIcon {
+  height: $arrow-icon-height;
+  width: $arrow-icon-width;
+  fill: colors.$grey-800;
+  transition: fill $transition-duration ease;
+}
+.button:hover .buttonIcon {
+  fill: colors.$green-200;
+}
+.button:focus .buttonIcon {
+  fill: colors.$green-200;
+}
+.button:focus-visible .buttonIcon {
+  fill: colors.$green-200;
+}

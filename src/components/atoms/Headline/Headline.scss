@@ -1,0 +1,10 @@
+@use '../../../styles/colors';
+@use '../../../styles/fonts';
+
+.headline {
+  width: 100%;
+  text-align: center;
+  color: colors.$grey-600;
+
+  @include fonts.text-preset-4;
+}

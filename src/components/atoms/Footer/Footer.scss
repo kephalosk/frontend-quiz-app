@@ -1,0 +1,15 @@
+@use '../../../styles/colors';
+@use '../../../styles/fonts';
+@use '../../../styles/spaces';
+
+.attribution {
+  padding-top: spaces.$space-24px;
+  text-align: center;
+  color: colors.$white;
+
+  @include fonts.text-preset-5;
+}
+
+.attribution a {
+  color: colors.$attribution;
+}

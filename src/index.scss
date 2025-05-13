@@ -1,0 +1,41 @@
+@use './styles/colors';
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('assets/fonts/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('assets/fonts/JetBrainsMono-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(to right,colors.$gradient1,colors.$gradient2);
+  display: flex;
+  place-items: center;
+  min-height: 100vh;
+}
+
+#root {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}

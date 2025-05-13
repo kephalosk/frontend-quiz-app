@@ -1,0 +1,34 @@
+@use '../../../styles/colors';
+@use '../../../styles/functions';
+
+$border-thickness: functions.to-rem(2px);
+$checkbox-height: functions.to-rem(20px);
+$checkbox-width: functions.to-rem(20px);
+$checkbox-icon-height: functions.to-rem(12px);
+$checkbox-icon-width: functions.to-rem(14px);
+
+.checkbox {
+  border: $border-thickness solid colors.$white;
+  background-color: transparent;
+  height: $checkbox-height;
+  width: $checkbox-width;
+  min-width: $checkbox-width;
+  position: relative;
+}
+.checkbox.isChecked {
+  border: $border-thickness solid colors.$green-200;
+  background-color: colors.$green-200;
+}
+
+.checkboxIcon {
+  display: none;
+  height: $checkbox-icon-height;
+  width: $checkbox-icon-width;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.checkboxIcon.isChecked {
+  display: block;
+}

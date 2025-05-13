@@ -1,0 +1,16 @@
+@use 'functions';
+
+$phone-width: functions.to-rem(580px);
+$tablet-width: functions.to-rem(960px);
+
+@mixin tablet-and-up {
+  @media (min-width: $phone-width) {
+    @content
+  }
+}
+
+@mixin desktop-and-up {
+  @media (min-width: $tablet-width) {
+    @content
+  }
+}
