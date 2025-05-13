@@ -1,6 +1,6 @@
 @use 'functions';
 
-$phone-width: functions.to-rem(580px);
+$phone-width: functions.to-rem(600px);
 $tablet-width: functions.to-rem(960px);
 
 @mixin tablet-and-up {
