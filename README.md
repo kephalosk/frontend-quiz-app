@@ -62,6 +62,8 @@ Active
 - check ux design
 - identify components
 - create scss styles
+- install dependencies
+- enable formatting/linting
 - create atom and container components
 - create components s/css classes
 - create components constants
