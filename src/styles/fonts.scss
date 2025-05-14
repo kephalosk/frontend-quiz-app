@@ -125,7 +125,7 @@ $text-preset-6-font-size-tablet-and-up-max: $text-preset-6-font-size-tablet-and-
 @mixin text-preset-6 {
   font-family: "Rubik", sans-serif;
   font-style: italic;
-  font-size: clamp($text-preset-6-font-size-min, $text-preset-6-font-size-partial + $text-scale-factor-viewport, $text-preset-6font-size-max);
+  font-size: clamp($text-preset-6-font-size-min, $text-preset-6-font-size-partial + $text-scale-factor-viewport, $text-preset-6-font-size-max);
   line-height: 150%;
   letter-spacing: 0;
 
