@@ -1,8 +1,8 @@
 import React, { ReactElement } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { setCharacterLengthValue } from "@/redux/slices/characterLengthSlice.ts";
-import useUpdateCharacterLength from "@/hooks/redux/characterLength/useUpdateCharacterLength.ts";
 import { useDispatch } from "react-redux";
+import useUpdateDarkMode from "@/hooks/redux/darkMode/useUpdateDarkMode.ts";
+import { setDarkModeValue } from "@/redux/slices/darkModeSlice.ts";
 
 jest.mock(
   "react-redux",
@@ -14,18 +14,18 @@ jest.mock(
 );
 
 jest.mock(
-  "@/redux/slices/characterLengthSlice.ts",
+  "@/redux/slices/darkModeSlice.ts",
   (): {
-    setCharacterLengthValue: jest.Mock;
+    setDarkModeValue: jest.Mock;
   } => ({
-    setCharacterLengthValue: jest.fn(),
+    setDarkModeValue: jest.fn(),
   }),
 );
 
-const newValue: number = 21;
+const newValue: boolean = true;
 const testComponentDataTestId: string = "test-component";
 const TestComponent: React.FC = (): ReactElement => {
-  const handleValueChange = useUpdateCharacterLength();
+  const handleValueChange = useUpdateDarkMode();
   return (
     <div
       data-testid={testComponentDataTestId}
@@ -34,7 +34,7 @@ const TestComponent: React.FC = (): ReactElement => {
   );
 };
 
-describe("useCharacterLength hook", (): void => {
+describe("useDarkMode hook", (): void => {
   const setup = (): { container: HTMLElement } => {
     return render(<TestComponent />);
   };
@@ -45,7 +45,7 @@ describe("useCharacterLength hook", (): void => {
     (useDispatch as unknown as jest.Mock).mockReturnValue(dispatchMock);
   });
 
-  it("calls setCharacterLengthValue with expected value", (): void => {
+  it("calls setDarkModeValue with expected value", (): void => {
     setup();
 
     const element: HTMLElement = screen.getByTestId(testComponentDataTestId);
@@ -53,8 +53,6 @@ describe("useCharacterLength hook", (): void => {
 
     expect(element).toBeInTheDocument();
     expect(dispatchMock).toHaveBeenCalledTimes(1);
-    expect(dispatchMock).toHaveBeenCalledWith(
-      setCharacterLengthValue(newValue),
-    );
+    expect(dispatchMock).toHaveBeenCalledWith(setDarkModeValue(newValue));
   });
 });
