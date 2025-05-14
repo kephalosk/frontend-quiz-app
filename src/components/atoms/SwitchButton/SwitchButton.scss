@@ -1,0 +1,38 @@
+@use '../../../styles/colors';
+@use '../../../styles/fonts';
+@use '../../../styles/functions';
+@use '../../../styles/spaces';
+
+$border-thickness: functions.to-rem(1px);
+$transition-duration: 0.2s;
+
+$switch-button-height: functions.to-rem(28px);
+$switch-button-width: functions.to-rem(48px);
+
+$adjuster-height: functions.to-rem(20px);
+$adjuster-width: functions.to-rem(20px);
+$adjuster-offset-inactive: functions.to-rem(4px);
+$adjuster-offset-active: functions.to-rem(24px);
+
+.switchButton {
+  border-radius: 100%;
+  border: $border-thickness solid colors.$purple-600;
+  background-color: colors.$purple-600;
+  height: $switch-button-height;
+  width: $switch-button-width;
+  position: relative;
+}
+
+.switchButtonAdjuster {
+  background-color: colors.$white;
+  height: $adjuster-height;
+  width: $adjuster-width;
+  position: absolute;
+  transform: translateY(-50%);
+  left: $adjuster-offset-inactive;
+  transition: left $transition-duration ease;
+
+  &--active {
+    left: $adjuster-offset-active;
+  }
+}

@@ -13,6 +13,9 @@ export const EMPTY_SUBMIT_BUTTON_LABEL_TEXT: string =
   "Empty Submit Button Label";
 export const EMPTY_TOPIC_LABEL_TEXT: string = "Empty Topic Label";
 
+export const SWITCH_BUTTON_ARIA_LABEL_PREFIX: string =
+  "Switch Button with status ";
+
 //######Old constants
 
 export const PASSWORD_PLACEHOLDER_LABEL_TEXT: string = "P4$5W0rD!";
@@ -29,7 +32,6 @@ export const STRENGTH_LABEL: string = "strength";
 export const COPY_ICON_ALT_TEXT: string = "image of Copy Icon";
 export const ARROW_RIGHT_ICON_ALT_TEXT: string = "image of Arrow Right Icon";
 
-export const BUTTON_ARIA_LABEL_PREFIX: string = "button for: ";
 export const BUTTON_TEXT: string = "generate";
 
 export const EMPTY_STRING: string = "";
