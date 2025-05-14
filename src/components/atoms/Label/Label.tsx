@@ -22,7 +22,7 @@ const Label: React.FC<LabelProps> = React.memo(
 
     return (
       <label
-        className={`label ${type} ${isDarkModeOn ? "darkMode" : ""}`}
+        className={`label label__${type} ${isDarkModeOn ? `label__${type}--darkMode` : ""}`}
         aria-label={ariaLabel}
       >
         {renderedText}

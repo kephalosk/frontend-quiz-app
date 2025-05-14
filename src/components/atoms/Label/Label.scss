@@ -1,27 +1,6 @@
 @use '../../../styles/colors';
 @use '../../../styles/fonts';
 
-.errorLabel {
-  text-align: left;
-  color: colors.$red-500;
-
-  @include fonts.text-preset-5;
-}
-
-.headlineLabel {
-  text-align: left;
-  color: colors.$blue-900;
-
-  @include fonts.text-preset-2-light;
-}
-
-.headlineLabelBold {
-  text-align: left;
-  color: colors.$blue-900;
-
-  @include fonts.text-preset-2;
-}
-
 .label {
   display: inline-block;
   max-width: fit-content;
@@ -30,53 +9,114 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: inherit;
-}
 
-.questionLabel {
-  text-align: left;
-  color: colors.$blue-900;
+  &__errorLabel {
+    text-align: left;
+    color: colors.$red-500;
 
-  @include fonts.text-preset-3;
-}
+    @include fonts.text-preset-5;
 
-.quizButtonLabel {
-  text-align: left;
-  color: colors.$blue-900;
+    &--darkMode {
+      color: colors.$white;
+    }
+  }
 
-  @include fonts.text-preset-4;
-}
+  &__headlineLabel {
+    text-align: left;
+    color: colors.$blue-900;
 
-.scoreLabel {
-  text-align: center;
-  color: colors.$blue-900;
+    @include fonts.text-preset-2-light;
 
-  @include fonts.text-preset-1;
-}
+    &--darkMode {
+      color: colors.$white;
+    }
+  }
 
-.scoreSubLineLabel {
-  text-align: center;
-  color: colors.$grey-500;
+  &__headlineLabelBold {
+    text-align: left;
+    color: colors.$blue-900;
 
-  @include fonts.text-preset-5-bold;
-}
+    @include fonts.text-preset-2;
 
-.subLineLabel {
-  text-align: left;
-  color: colors.$grey-500;
+    &--darkMode {
+      color: colors.$white;
+    }
+  }
 
-  @include fonts.text-preset-6;
-}
+  &__questionLabel {
+    text-align: left;
+    color: colors.$blue-900;
 
-.submitButtonLabel {
-  text-align: left;
-  color: colors.$white;
+    @include fonts.text-preset-3;
 
-  @include fonts.text-preset-4;
-}
+    &--darkMode {
+      color: colors.$white;
+    }
+  }
 
-.topicLabel {
-  text-align: left;
-  color: colors.$blue-900;
+  &__quizButtonLabel {
+    text-align: left;
+    color: colors.$blue-900;
 
-  @include fonts.text-preset-4;
+    @include fonts.text-preset-4;
+
+    &--darkMode {
+      color: colors.$white;
+    }
+  }
+
+  &__scoreLabel {
+    text-align: center;
+    color: colors.$blue-900;
+
+    @include fonts.text-preset-1;
+
+    &--darkMode {
+      color: colors.$white;
+    }
+  }
+
+  &__scoreSubLineLabel {
+    text-align: center;
+    color: colors.$grey-500;
+
+    @include fonts.text-preset-5-bold;
+
+    &--darkMode {
+      color: colors.$blue-300;
+    }
+  }
+
+  &__subLineLabel {
+    text-align: left;
+    color: colors.$grey-500;
+
+    @include fonts.text-preset-6;
+
+    &--darkMode {
+      color: colors.$blue-300;
+    }
+  }
+
+  &__submitButtonLabel {
+    text-align: left;
+    color: colors.$white;
+
+    @include fonts.text-preset-4;
+
+    &--darkMode {
+      color: colors.$white;
+    }
+  }
+
+  &__topicLabel {
+    text-align: left;
+    color: colors.$blue-900;
+
+    @include fonts.text-preset-4;
+
+    &--darkMode {
+      color: colors.$white;
+    }
+  }
 }

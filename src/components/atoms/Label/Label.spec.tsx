@@ -4,9 +4,21 @@ import useWarnIfEmptyText from "@/hooks/label/useWarnIfEmptyText.ts";
 import useLabelType from "@/hooks/label/useLabelType.ts";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
 import { EMPTY_STRING } from "@/globals/constants/Constants.ts";
+import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
 
 jest.mock(
   "@/hooks/label/useLabelType.ts",
+  (): {
+    __esModule: boolean;
+    default: jest.Mock;
+  } => ({
+    __esModule: true,
+    default: jest.fn(),
+  }),
+);
+
+jest.mock(
+  "@/hooks/redux/darkMode/useDarkMode.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;
@@ -51,8 +63,11 @@ describe("Label Component", (): void => {
     renderedText,
   };
 
+  const useDarkModeMock: boolean = false;
+
   beforeEach((): void => {
     (useLabelType as jest.Mock).mockReturnValue(useLabelTypeMock);
+    (useDarkMode as jest.Mock).mockReturnValue(useDarkModeMock);
     (useWarnIfEmptyText as jest.Mock).mockReturnValue(undefined);
   });
 
@@ -62,9 +77,19 @@ describe("Label Component", (): void => {
     const element: HTMLElement | null = container.querySelector(".label");
 
     expect(element).toBeInTheDocument();
-    expect(element).toHaveClass(type);
+    expect(element).toHaveClass(`label__${type}`);
+    expect(element).not.toHaveClass(`label__${type}--darkMode`);
     expect(element).toHaveTextContent(renderedText);
     expect(element).toHaveAttribute("aria-label", ariaLabel);
+  });
+
+  it("renders the label with darkMode state", (): void => {
+    (useDarkMode as jest.Mock).mockReturnValue(true);
+    const { container } = setup({ text });
+
+    const element: HTMLElement | null = container.querySelector(".label");
+
+    expect(element).toHaveClass(`label__${type}--darkMode`);
   });
 
   it("sets the default text if prop text is undefined", (): void => {
@@ -86,6 +111,13 @@ describe("Label Component", (): void => {
 
     expect(useLabelType).toHaveBeenCalledTimes(1);
     expect(useLabelType).toHaveBeenCalledWith(type, text);
+  });
+
+  it("calls hook useDarkMode", (): void => {
+    setup();
+
+    expect(useDarkMode).toHaveBeenCalledTimes(1);
+    expect(useDarkMode).toHaveBeenCalledWith();
   });
 
   it("calls hook useWarnIfEmptyText", (): void => {
