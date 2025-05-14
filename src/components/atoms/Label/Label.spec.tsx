@@ -99,13 +99,6 @@ describe("Label Component", (): void => {
     expect(useWarnIfEmptyText).toHaveBeenCalledWith(EMPTY_STRING);
   });
 
-  it("sets the default type if prop type is undefined", (): void => {
-    setup({ type: undefined });
-
-    expect(useLabelType).toHaveBeenCalledWith(LabelTypeEnum.LABEL, text);
-    expect(useWarnIfEmptyText).toHaveBeenCalledWith(text);
-  });
-
   it("calls hook useLabelType", (): void => {
     setup();
 

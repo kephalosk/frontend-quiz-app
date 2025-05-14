@@ -7,15 +7,12 @@ import useWarnIfEmptyText from "@/hooks/label/useWarnIfEmptyText.ts";
 import { EMPTY_STRING } from "@/globals/constants/Constants.ts";
 
 export interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
-  type?: LabelTypeEnum;
+  type: LabelTypeEnum;
   text?: string;
 }
 
 const Label: React.FC<LabelProps> = React.memo(
-  ({
-    type = LabelTypeEnum.LABEL,
-    text = EMPTY_STRING,
-  }: LabelProps): ReactElement => {
+  ({ type, text = EMPTY_STRING }: LabelProps): ReactElement => {
     const { ariaLabel, renderedText } = useLabelType(type, text);
     const isDarkModeOn: boolean = useDarkMode();
     useWarnIfEmptyText(text);
