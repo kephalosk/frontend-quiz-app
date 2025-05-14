@@ -1,10 +1,10 @@
 import "./Label.scss";
 import React, { ReactElement } from "react";
-import useWarnIfEmptyText from "@/hooks/label/useWarnIfEmptyText.ts";
-import { EMPTY_STRING } from "@/globals/constants/Constants.ts";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
 import useLabelType from "@/hooks/label/useLabelType.ts";
 import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useWarnIfEmptyText from "@/hooks/label/useWarnIfEmptyText.ts";
+import { EMPTY_STRING } from "@/globals/constants/Constants.ts";
 
 export interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
   type?: LabelTypeEnum;
@@ -22,7 +22,7 @@ const Label: React.FC<LabelProps> = React.memo(
 
     return (
       <label
-        className={`label label__${type} ${isDarkModeOn ? `label__${type}--darkMode` : ""}`}
+        className={`label label__${type} ${isDarkModeOn && `label__${type}--darkMode`}`}
         aria-label={ariaLabel}
       >
         {renderedText}

@@ -1,10 +1,10 @@
-import Label, { LabelProps } from "./Label";
 import { render } from "@testing-library/react";
-import useWarnIfEmptyText from "@/hooks/label/useWarnIfEmptyText.ts";
-import useLabelType from "@/hooks/label/useLabelType.ts";
+import Label, { LabelProps } from "./Label";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
-import { EMPTY_STRING } from "@/globals/constants/Constants.ts";
+import useLabelType from "@/hooks/label/useLabelType.ts";
 import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useWarnIfEmptyText from "@/hooks/label/useWarnIfEmptyText.ts";
+import { EMPTY_STRING } from "@/globals/constants/Constants.ts";
 
 jest.mock(
   "@/hooks/label/useLabelType.ts",

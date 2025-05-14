@@ -1,9 +1,9 @@
 import React, { ReactElement } from "react";
-import { useSelector } from "react-redux";
 import { render, screen } from "@testing-library/react";
+import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store.ts";
 import { stateMock } from "@/redux/fixtures/stateMock.ts";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
 
 jest.mock(
   "react-redux",
