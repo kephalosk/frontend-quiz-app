@@ -1,13 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import characterLengthReducer from "./slices/characterLengthSlice.ts";
-import securityLevelReducer from "./slices/securityLevelSlice.ts";
-import optionReducer from "./slices/optionSlice.ts";
+import darkModeReducer from "./slices/darkModeSlice.ts";
 
 export const store = configureStore({
   reducer: {
-    characterLength: characterLengthReducer,
-    securityLevel: securityLevelReducer,
-    options: optionReducer,
+    darkMode: darkModeReducer,
   },
 });
 
