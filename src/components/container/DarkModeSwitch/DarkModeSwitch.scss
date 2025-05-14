@@ -1,0 +1,29 @@
+@use '../../../styles/colors';
+@use '../../../styles/functions';
+@use '../../../styles/spaces';
+
+$transition-duration: 0.2s;
+
+$icon-height: functions.to-rem(24px);
+$icon-width: functions.to-rem(24px);
+
+.darkModeSwitch {
+  display: flex;
+  flex-direction: row;
+  column-gap: spaces.$space-16px;
+}
+
+.darkModeSwitchIcon {
+  height: $icon-height;
+  width: $icon-width;
+  fill: none;
+}
+
+.darkModeSwitchIconPath {
+  fill: colors.$grey-500;
+  transition: fill $transition-duration ease;
+
+  &--active {
+    fill: colors.$white;
+  }
+}

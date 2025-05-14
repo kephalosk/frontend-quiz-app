@@ -1,6 +1,8 @@
 @use '../../../styles/colors';
 @use '../../../styles/fonts';
 
+$transition-duration: 0.2s;
+
 .label {
   display: inline-block;
   max-width: fit-content;
@@ -9,6 +11,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: inherit;
+  transition: color $transition-duration ease;
 
   &__errorLabel {
     text-align: left;

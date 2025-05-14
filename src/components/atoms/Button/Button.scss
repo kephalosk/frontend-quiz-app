@@ -10,7 +10,7 @@ $arrow-icon-width: functions.to-rem(12px);
 
 .button {
   border: $border-thickness solid colors.$green-200;
-  padding: spaces.$space-8px spaces.$space-16px ;
+  padding: spaces.$space-8px spaces.$space-16px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -23,12 +23,12 @@ $arrow-icon-width: functions.to-rem(12px);
   outline: none;
   box-shadow: none;
   cursor: pointer;
-  transition:
-          border $transition-duration ease,
-          background-color $transition-duration ease;
+  transition: border $transition-duration ease,
+  background-color $transition-duration ease;
 
   @include fonts.text-preset-4;
 }
+
 .button:hover {
   border: $border-thickness solid colors.$green-200;
   background-color: colors.$grey-800;
@@ -36,6 +36,7 @@ $arrow-icon-width: functions.to-rem(12px);
   outline: none;
   box-shadow: none;
 }
+
 .button:focus {
   border: $border-thickness solid colors.$green-200;
   background-color: colors.$grey-800;
@@ -43,6 +44,7 @@ $arrow-icon-width: functions.to-rem(12px);
   outline: none;
   box-shadow: none;
 }
+
 .button:focus-visible {
   border: $border-thickness solid colors.$green-200;
   background-color: colors.$grey-800;
@@ -63,12 +65,15 @@ $arrow-icon-width: functions.to-rem(12px);
   fill: colors.$grey-800;
   transition: fill $transition-duration ease;
 }
+
 .button:hover .buttonIcon {
   fill: colors.$green-200;
 }
+
 .button:focus .buttonIcon {
   fill: colors.$green-200;
 }
+
 .button:focus-visible .buttonIcon {
   fill: colors.$green-200;
 }
