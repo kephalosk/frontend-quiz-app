@@ -28,7 +28,7 @@ jest.mock(
 );
 
 describe("Label Component", (): void => {
-  const type: LabelTypeEnum = LabelTypeEnum.PASSWORD_LABEL;
+  const type: LabelTypeEnum = LabelTypeEnum.HEADLINE_LABEL;
   const text: string = "test";
 
   const setup = (propsOverride?: Partial<LabelProps>) => {

@@ -1,17 +1,18 @@
 import { useMemo } from "react";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
 import {
-  EMPTY_CHECKBOX_LABEL_TEXT,
-  EMPTY_HEADER_LABEL_TEXT,
-  EMPTY_UPPERCASE_LABEL_TEXT,
+  EMPTY_ERROR_LABEL_TEXT,
+  EMPTY_HEADLINE_LABEL_BOLD_TEXT,
+  EMPTY_HEADLINE_LABEL_TEXT,
   EMPTY_LABEL_TEXT,
-  EMPTY_PASSWORD_LABEL_TEXT,
-  EMPTY_NUMBER_LABEL_TEXT,
+  EMPTY_QUESTION_LABEL_TEXT,
+  EMPTY_QUIZ_BUTTON_LABEL_TEXT,
+  EMPTY_SCORE_LABEL_TEXT,
+  EMPTY_SCORE_SUB_LINE_LABEL_TEXT,
   EMPTY_STRING,
-  PASSWORD_PLACEHOLDER_LABEL_TEXT,
-  ZERO_LABEL_TEXT,
-  EMPTY_STRENGTH_BEAM_LABEL_TEXT,
-  EMPTY_COPY_LABEL_TEXT,
+  EMPTY_SUB_LINE_LABEL_TEXT,
+  EMPTY_SUBMIT_BUTTON_LABEL_TEXT,
+  EMPTY_TOPIC_LABEL_TEXT,
 } from "@/globals/constants/Constants.ts";
 
 const useLabelType = (
@@ -22,47 +23,34 @@ const useLabelType = (
     switch (type) {
       case LabelTypeEnum.LABEL:
         return text === EMPTY_STRING ? EMPTY_LABEL_TEXT : text;
-      case LabelTypeEnum.PASSWORD_LABEL:
-        return text === EMPTY_STRING ? EMPTY_PASSWORD_LABEL_TEXT : text;
-      case LabelTypeEnum.HEADER_LABEL:
-        return text === EMPTY_STRING ? EMPTY_HEADER_LABEL_TEXT : text;
-      case LabelTypeEnum.NUMBER_LABEL:
-        return text === EMPTY_STRING ? EMPTY_NUMBER_LABEL_TEXT : text;
-      case LabelTypeEnum.CHECKBOX_LABEL:
-        return text === EMPTY_STRING ? EMPTY_CHECKBOX_LABEL_TEXT : text;
-      case LabelTypeEnum.UPPERCASE_LABEL:
-        return text === EMPTY_STRING ? EMPTY_UPPERCASE_LABEL_TEXT : text;
-      case LabelTypeEnum.BEAM_LABEL:
-        return text === EMPTY_STRING ? EMPTY_STRENGTH_BEAM_LABEL_TEXT : text;
-      case LabelTypeEnum.COPY_LABEL:
-        return text === EMPTY_STRING ? EMPTY_COPY_LABEL_TEXT : text;
+      case LabelTypeEnum.HEADLINE_LABEL:
+        return text === EMPTY_STRING ? EMPTY_HEADLINE_LABEL_TEXT : text;
+      case LabelTypeEnum.HEADLINE_LABEL_BOLD:
+        return text === EMPTY_STRING ? EMPTY_HEADLINE_LABEL_BOLD_TEXT : text;
+      case LabelTypeEnum.SUB_LINE_LABEL:
+        return text === EMPTY_STRING ? EMPTY_SUB_LINE_LABEL_TEXT : text;
+      case LabelTypeEnum.QUIZ_BUTTON_LABEL:
+        return text === EMPTY_STRING ? EMPTY_QUIZ_BUTTON_LABEL_TEXT : text;
+      case LabelTypeEnum.SUBMIT_BUTTON_LABEL:
+        return text === EMPTY_STRING ? EMPTY_SUBMIT_BUTTON_LABEL_TEXT : text;
+      case LabelTypeEnum.TOPIC_LABEL:
+        return text === EMPTY_STRING ? EMPTY_TOPIC_LABEL_TEXT : text;
+      case LabelTypeEnum.QUESTION_LABEL:
+        return text === EMPTY_STRING ? EMPTY_QUESTION_LABEL_TEXT : text;
+      case LabelTypeEnum.ERROR_LABEL:
+        return text === EMPTY_STRING ? EMPTY_ERROR_LABEL_TEXT : text;
+      case LabelTypeEnum.SCORE_LABEL:
+        return text === EMPTY_STRING ? EMPTY_SCORE_LABEL_TEXT : text;
+      case LabelTypeEnum.SCORE_SUB_LINE_LABEL:
+        return text === EMPTY_STRING ? EMPTY_SCORE_SUB_LINE_LABEL_TEXT : text;
       default:
         return text === EMPTY_STRING ? EMPTY_LABEL_TEXT : text;
     }
   }, [text, type]);
 
   const renderedText: string = useMemo((): string => {
-    switch (type) {
-      case LabelTypeEnum.LABEL:
-        return text;
-      case LabelTypeEnum.PASSWORD_LABEL:
-        return text === EMPTY_STRING ? PASSWORD_PLACEHOLDER_LABEL_TEXT : text;
-      case LabelTypeEnum.HEADER_LABEL:
-        return text;
-      case LabelTypeEnum.NUMBER_LABEL:
-        return text === EMPTY_STRING ? ZERO_LABEL_TEXT : text;
-      case LabelTypeEnum.CHECKBOX_LABEL:
-        return text;
-      case LabelTypeEnum.UPPERCASE_LABEL:
-        return text;
-      case LabelTypeEnum.BEAM_LABEL:
-        return text;
-      case LabelTypeEnum.COPY_LABEL:
-        return text;
-      default:
-        return text;
-    }
-  }, [text, type]);
+    return text;
+  }, [text]);
 
   return { ariaLabel, renderedText };
 };
