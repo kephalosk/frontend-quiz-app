@@ -5,9 +5,9 @@
 .attribution {
   padding-top: spaces.$space-24px;
   text-align: center;
-  color: colors.$white;
+  color: colors.$blue-900;
 
-  @include fonts.text-preset-5;
+  @include fonts.text-preset-6;
 }
 
 .attribution a {
