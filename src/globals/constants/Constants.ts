@@ -18,9 +18,16 @@ export const SWITCH_BUTTON_ARIA_LABEL_PREFIX: string =
   "Switch SubmitButton with status ";
 export const QUIZ_BUTTON_ARIA_LABEL_PREFIX: string = "Quiz SubmitButton";
 export const SUBMIT_BUTTON_ARIA_LABEL_PREFIX: string = "SubmitButton";
+export const TOPIC_BUTTON_ARIA_LABEL_PREFIX: string = "Topic SubmitButton";
 
 export const CORRECT_ICON_ALT_TEXT: string = "image of Correct Icon";
 export const ERROR_ICON_ALT_TEXT: string = "image of Error Icon";
+
+export const HTML_ICON_ALT_TEXT: string = "image of HTML Icon";
+export const CSS_ICON_ALT_TEXT: string = "image of CSS Icon";
+export const JAVASCRIPT_ICON_ALT_TEXT: string = "image of Javascript Icon";
+export const ACCESSIBILITY_ICON_ALT_TEXT: string =
+  "image of Accessibility Icon";
 
 //######Old constants
 

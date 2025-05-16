@@ -8,6 +8,11 @@ export const MOON_ICON_D: string =
 export const CORRECT_ICON_SRC: string = "./images/icon-correct.svg";
 export const ERROR_ICON_SRC: string = "./images/icon-error.svg";
 
+export const HTML_ICON_SRC: string = "./images/icon-html.svg";
+export const CSS_ICON_SRC: string = "./images/icon-css.svg";
+export const JAVASCRIPT_ICON_SRC: string = "./images/icon-js.svg";
+export const ACCESSIBILITY_ICON_SRC: string = "./images/icon-accessibility.svg";
+
 //############ old
 
 export const ARROW_RIGHT_ICON_SRC: string = "http://www.w3.org/2000/svg";
