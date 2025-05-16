@@ -16,17 +16,37 @@ $adjuster-offset-active: functions.to-rem(22px);
 
 .switchButton {
   border-radius: spaces.$radius-24px;
-  border: $border-thickness solid colors.$purple-600;
-  background-color: colors.$purple-600;
   height: $switch-button-height;
   width: $switch-button-width;
   position: relative;
   cursor: pointer;
   outline: none;
   box-shadow: none;
+  transition: border $transition-duration ease,
+  background-color $transition-duration ease;
+
+  &--active {
+    border: $border-thickness solid colors.$purple-600;
+    background-color: colors.$purple-600;
+
+    &:hover {
+      border: $border-thickness solid colors.$purple-500;
+      background-color: colors.$purple-500;
+    }
+  }
+
+  &--inActive {
+    border: $border-thickness solid colors.$purple-200;
+    background-color: colors.$purple-200;
+
+    &:hover {
+      border: $border-thickness solid colors.$purple-300;
+      background-color: colors.$purple-300;
+    }
+  }
 }
 .switchButton:focus-visible {
-  border: $border-thickness solid colors.$blue-500;
+  border: $border-thickness solid colors.$blue-300;
 }
 
 .switchButtonAdjuster {

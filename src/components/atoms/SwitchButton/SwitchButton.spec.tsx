@@ -67,18 +67,25 @@ describe("SwitchButton component", (): void => {
     jest.useRealTimers();
   });
 
-  it("renders button switchButton", (): void => {
-    const { container } = setup();
+  it.each([
+    ["switchButton--active", true],
+    ["switchButton--inActive", false],
+  ])(
+    "renders button switchButton with class %s if isActive === %s",
+    (expectedClass: string, isActive: boolean): void => {
+      const { container } = setup({ isActive: isActive });
 
-    const element: HTMLElement | null =
-      container.querySelector(".switchButton");
+      const element: HTMLElement | null =
+        container.querySelector(".switchButton");
 
-    expect(element).toBeInTheDocument();
-    expect(element).toHaveAttribute(
-      "aria-label",
-      `${SWITCH_BUTTON_ARIA_LABEL_PREFIX}${isActive}`,
-    );
-  });
+      expect(element).toBeInTheDocument();
+      expect(element).toHaveAttribute(
+        "aria-label",
+        `${SWITCH_BUTTON_ARIA_LABEL_PREFIX}${isActive}`,
+      );
+      expect(element).toHaveClass(expectedClass);
+    },
+  );
 
   it("renders div switchButtonAdjuster", (): void => {
     const { container } = setup();
