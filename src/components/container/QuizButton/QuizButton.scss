@@ -1,0 +1,204 @@
+@use '../../../styles/colors';
+@use '../../../styles/fonts';
+@use '../../../styles/functions';
+@use '../../../styles/screens';
+@use '../../../styles/spaces';
+
+$border-thickness: functions.to-rem(3px);
+$transition-duration: 0.2s;
+
+$icon-height: functions.to-rem(30px);
+$icon-width: functions.to-rem(30px);
+$icon-height-tablet: functions.to-rem(40px);
+$icon-width-tablet: functions.to-rem(40px);
+
+.quizButton {
+  box-shadow: 0 0 30px -20px colors.$grey-500;
+  border-radius: spaces.$radius-24px;
+  border: $border-thickness solid colors.$white;
+  background-color: colors.$white;
+  padding: spaces.$space-16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+  transition: border $transition-duration ease,
+  background-color $transition-duration ease;
+  outline: none;
+
+  @include screens.desktop-and-up {
+    padding: spaces.$space-24px;
+  }
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &__default {
+    &--darkMode {
+      border: $border-thickness solid colors.$blue-850;
+      background-color: colors.$blue-850;
+
+      &:hover {
+        border: $border-thickness solid colors.$blue-900;
+        background-color: colors.$blue-900;
+        cursor: pointer;
+
+        .quizButtonPosition {
+          background-color: colors.$grey-100;
+        }
+      }
+
+      &:focus-visible {
+        border: $border-thickness solid colors.$blue-300;
+        background-color: colors.$blue-900;
+        cursor: pointer;
+
+        .quizButtonPosition {
+          background-color: colors.$grey-100;
+        }
+      }
+    }
+
+    &--lightMode {
+      border: $border-thickness solid colors.$white;
+      background-color: colors.$white;
+
+      &:hover {
+        border: $border-thickness solid colors.$grey-50;
+        background-color: colors.$grey-50;
+        cursor: pointer;
+
+        .quizButtonPosition {
+          background-color: colors.$white;
+        }
+      }
+
+      &:focus-visible {
+        border: $border-thickness solid colors.$blue-300;
+        background-color: colors.$grey-50;
+        cursor: pointer;
+
+        .quizButtonPosition {
+          background-color: colors.$white;
+        }
+      }
+    }
+  }
+
+  &__selected {
+    &--darkMode {
+      border: $border-thickness solid colors.$purple-600;
+      background-color: colors.$blue-850;
+    }
+
+    &--lightMode {
+      border: $border-thickness solid colors.$purple-600;
+      background-color: colors.$white;
+    }
+  }
+
+  &__right {
+    &--darkMode {
+      border: $border-thickness solid colors.$green-500;
+      background-color: colors.$blue-850;
+    }
+
+    &--lightMode {
+      border: $border-thickness solid colors.$green-500;
+      background-color: colors.$white;
+    }
+  }
+
+  &__wrong {
+    &--darkMode {
+      border: $border-thickness solid colors.$red-500;
+      background-color: colors.$blue-850;
+    }
+
+    &--lightMode {
+      border: $border-thickness solid colors.$red-500;
+      background-color: colors.$white;
+    }
+  }
+
+  &__corrected {
+    &--darkMode {
+      border: $border-thickness solid colors.$blue-850;
+      background-color: colors.$blue-850;
+    }
+
+    &--lightMode {
+      border: $border-thickness solid colors.$white;
+      background-color: colors.$white;
+    }
+  }
+}
+
+.quizButtonIcon {
+  height: $icon-height;
+  width: $icon-width;
+
+  @include screens.tablet-and-up {
+    height: $icon-height-tablet;
+    width: $icon-width-tablet;
+  }
+}
+
+.quizButtonPosition {
+  border-radius: spaces.$radius-6px;
+  background-color: colors.$grey-50;
+  padding: spaces.$space-12px;
+  color: colors.$grey-500;
+  transition: background-color $transition-duration ease;
+
+  @include fonts.text-preset-4;
+
+  @include screens.tablet-and-up {
+    padding: spaces.$space-16px;
+  }
+
+  &--selected {
+    background-color: colors.$purple-600;
+    color: colors.$white;
+  }
+
+  &--right {
+    background-color: colors.$green-500;
+    color: colors.$white;
+  }
+
+  &--wrong {
+    background-color: colors.$red-500;
+    color: colors.$white;
+  }
+}
+
+.quizButtonWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: spaces.$space-16px;
+  flex-grow: 1;
+
+  @include screens.tablet-and-up {
+    column-gap: spaces.$space-32px;
+  }
+}
+
+
+//.button.disabled {
+//  border: $border-thickness solid colors.$grey-600;
+//  background-color: colors.$grey-600;
+//  cursor: not-allowed;
+//}
+//
+//.button:focus .buttonIcon {
+//  fill: colors.$green-200;
+//}
+//
+//.button:focus-visible .buttonIcon {
+//  fill: colors.$green-200;
+//}
