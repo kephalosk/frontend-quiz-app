@@ -10,6 +10,7 @@ $icon-width: functions.to-rem(24px);
 .darkModeSwitch {
   display: flex;
   flex-direction: row;
+  align-items: center;
   column-gap: spaces.$space-16px;
 }
 
