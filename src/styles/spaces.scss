@@ -1,6 +1,7 @@
 @use 'functions';
 
 $space-8px: functions.to-rem(8px);
+$space-12px: functions.to-rem(12px);
 $space-16px: functions.to-rem(16px);
 $space-24px: functions.to-rem(24px);
 $space-32px: functions.to-rem(32px);
@@ -11,6 +12,7 @@ $space-128px: functions.to-rem(128px);
 $space-144px: functions.to-rem(144px);
 $space-184px: functions.to-rem(184px);
 
+$radius-6px: functions.to-rem(6px);
 $radius-8px: functions.to-rem(8px);
 $radius-24px: functions.to-rem(24px);
 
