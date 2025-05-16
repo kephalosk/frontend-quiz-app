@@ -15,6 +15,12 @@ export const EMPTY_TOPIC_LABEL_TEXT: string = "Empty Topic Label";
 
 export const SWITCH_BUTTON_ARIA_LABEL_PREFIX: string =
   "Switch Button with status ";
+export const QUIZ_BUTTON_ARIA_LABEL_PREFIX: string =
+    "Quiz Button";
+
+export const CORRECT_ICON_ALT_TEXT: string = "image of Correct Icon";
+export const ERROR_ICON_ALT_TEXT: string = "image of Error Icon";
+
 
 //######Old constants
 
