@@ -1,7 +1,7 @@
 import SliderContainer from "@/components/container/SliderContainer/SliderContainer.tsx";
 import OptionContainer from "@/components/container/OptionContainer/OptionContainer.tsx";
 import StrengthContainer from "@/components/container/StrengthContainer/StrengthContainer.tsx";
-import Button from "@/components/atoms/Button/Button.tsx";
+import SubmitButton from "@/components/atoms/SubmitButton/SubmitButton.tsx";
 import { ReactElement } from "react";
 import { render, screen } from "@testing-library/react";
 import ContentContainer, {
@@ -40,7 +40,7 @@ jest.mock(
 
 const buttonDataTestId: string = "button";
 jest.mock(
-  "@/components/atoms/Button/Button.tsx",
+  "@/components/atoms/SubmitButton/SubmitButton.tsx",
   (): jest.Mock =>
     jest.fn((props): ReactElement => {
       return (
@@ -129,14 +129,14 @@ describe("ContentContainer Component", (): void => {
     expect(StrengthContainer).toHaveBeenCalledWith({}, undefined);
   });
 
-  it("renders component Button", (): void => {
+  it("renders component SubmitButton", (): void => {
     setup();
 
     const element: HTMLElement = screen.getByTestId(buttonDataTestId);
 
     expect(element).toBeInTheDocument();
-    expect(Button).toHaveBeenCalledTimes(1);
-    expect(Button).toHaveBeenCalledWith(
+    expect(SubmitButton).toHaveBeenCalledTimes(1);
+    expect(SubmitButton).toHaveBeenCalledWith(
       {
         handleButtonClick: expect.any(Function),
         text: BUTTON_TEXT,

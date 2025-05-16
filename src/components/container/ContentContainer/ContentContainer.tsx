@@ -2,7 +2,7 @@ import "./ContentContainer.scss";
 import SliderContainer from "@/components/container/SliderContainer/SliderContainer.tsx";
 import OptionContainer from "@/components/container/OptionContainer/OptionContainer.tsx";
 import StrengthContainer from "@/components/container/StrengthContainer/StrengthContainer.tsx";
-import Button from "@/components/atoms/Button/Button.tsx";
+import SubmitButton from "@/components/atoms/SubmitButton/SubmitButton.tsx";
 import { BUTTON_TEXT } from "@/globals/constants/Constants.ts";
 import React from "react";
 import { PasswordProcessingHook } from "@/globals/models/types/PasswordProcessingTypes.ts";
@@ -23,7 +23,10 @@ const ContentContainer: React.FC<ContentContainerProps> = ({
       <SliderContainer />
       <OptionContainer />
       <StrengthContainer />
-      <Button text={BUTTON_TEXT} handleButtonClick={handlePasswordGeneration} />
+      <SubmitButton
+        text={BUTTON_TEXT}
+        handleButtonClick={handlePasswordGeneration}
+      />
     </div>
   );
 };

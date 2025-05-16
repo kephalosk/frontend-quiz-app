@@ -1,15 +1,8 @@
 import { fireEvent, render } from "@testing-library/react";
-import Button, { ButtonProps } from "./Button.tsx";
-import {
-  ARROW_RIGHT_ICON_ALT_TEXT,
-  BUTTON_ARIA_LABEL_PREFIX,
-} from "@/globals/constants/Constants.ts";
+import SubmitButton, { ButtonProps } from "./SubmitButton.tsx";
+import { SUBMIT_BUTTON_ARIA_LABEL_PREFIX } from "@/globals/constants/Constants.ts";
 import useKeyClickBypass from "@/hooks/button/useKeyClickBypass.ts";
 import useBlurOnPointerUp from "@/hooks/button/useBlurOnPointerUp.ts";
-import {
-  ARROW_RIGHT_ICON_D,
-  ARROW_RIGHT_ICON_SRC,
-} from "@/globals/constants/Ressources.ts";
 
 jest.mock(
   "@/hooks/button/useKeyClickBypass.ts",
@@ -33,8 +26,8 @@ jest.mock(
   }),
 );
 
-describe("Button", (): void => {
-  const text: string = "reset";
+describe("SubmitButton component", (): void => {
+  const text: string = "submit";
   const handleButtonClickMock: jest.Mock = jest.fn();
   const isDisabled: boolean = false;
 
@@ -51,7 +44,7 @@ describe("Button", (): void => {
 
     const props: ButtonProps = { ...defaultProps, ...propsOverride };
 
-    return render(<Button {...props} />);
+    return render(<SubmitButton {...props} />);
   };
 
   const handleClickMock: jest.Mock = jest.fn();
@@ -81,52 +74,25 @@ describe("Button", (): void => {
   it("renders the button with the passed text", (): void => {
     const { container } = setup();
 
-    const element: HTMLElement | null = container.querySelector(".button");
+    const element: HTMLElement | null =
+      container.querySelector(".submitButton");
 
     expect(element).toBeInTheDocument();
     expect(element).toHaveAttribute("aria-disabled", `${isDisabled}`);
     expect(element).toHaveAttribute(
       "aria-label",
-      `${BUTTON_ARIA_LABEL_PREFIX}${text}`,
+      `${SUBMIT_BUTTON_ARIA_LABEL_PREFIX}${text}`,
     );
     expect(element).toHaveAttribute("tabindex", "0");
     expect(element).toHaveAttribute("type", "button");
-  });
-
-  it("renders span buttonText", (): void => {
-    const { container } = setup();
-
-    const element: HTMLElement | null = container.querySelector(".buttonText");
-
     expect(element).toHaveTextContent(text);
-  });
-
-  it("renders svg buttonIcon", (): void => {
-    const { container } = setup();
-
-    const element: HTMLElement | null = container.querySelector(".buttonIcon");
-
-    expect(element).toHaveAttribute(
-      "aria-label",
-      `${ARROW_RIGHT_ICON_ALT_TEXT}`,
-    );
-    expect(element).toHaveAttribute("aria-hidden", "true");
-    expect(element).toHaveAttribute("xmlns", `${ARROW_RIGHT_ICON_SRC}`);
-  });
-
-  it("renders path buttonIconPath", (): void => {
-    const { container } = setup();
-
-    const element: HTMLElement | null =
-      container.querySelector(".buttonIconPath");
-
-    expect(element).toHaveAttribute("d", `${ARROW_RIGHT_ICON_D}`);
   });
 
   it("calls handleClick on click", (): void => {
     const { container } = setup();
 
-    const element: HTMLElement | null = container.querySelector(".button");
+    const element: HTMLElement | null =
+      container.querySelector(".submitButton");
     fireEvent.click(element!);
 
     expect(handleClickMock).toHaveBeenCalledTimes(1);
@@ -136,7 +102,8 @@ describe("Button", (): void => {
   it("does not call handleClick on click if prop isDisabled is true", (): void => {
     const { container } = setup({ isDisabled: true });
 
-    const element: HTMLElement | null = container.querySelector(".button");
+    const element: HTMLElement | null =
+      container.querySelector(".submitButton");
     fireEvent.click(element!);
 
     expect(handleClickMock).toHaveBeenCalledTimes(0);
@@ -145,7 +112,8 @@ describe("Button", (): void => {
   it("sets class disabled if prop isDisabled is true", (): void => {
     const { container } = setup({ isDisabled: true });
 
-    const element: HTMLElement | null = container.querySelector(".button");
+    const element: HTMLElement | null =
+      container.querySelector(".submitButton");
 
     expect(element).toHaveClass("disabled");
   });
@@ -153,7 +121,8 @@ describe("Button", (): void => {
   it("calls handleKeyDown on key down", (): void => {
     const { container } = setup();
 
-    const element: HTMLElement | null = container.querySelector(".button");
+    const element: HTMLElement | null =
+      container.querySelector(".submitButton");
     fireEvent.keyDown(element!);
 
     expect(handleKeyDownMock).toHaveBeenCalledTimes(1);
@@ -163,7 +132,8 @@ describe("Button", (): void => {
   it("does not call handleKeyDown on click if prop isDisabled is true", (): void => {
     const { container } = setup({ isDisabled: true });
 
-    const element: HTMLElement | null = container.querySelector(".button");
+    const element: HTMLElement | null =
+      container.querySelector(".submitButton");
     fireEvent.click(element!);
 
     expect(handleKeyDownMock).toHaveBeenCalledTimes(0);
@@ -172,7 +142,8 @@ describe("Button", (): void => {
   it("calls handlePointerUp on mouse down", (): void => {
     const { container } = setup();
 
-    const element: HTMLElement | null = container.querySelector(".button");
+    const element: HTMLElement | null =
+      container.querySelector(".submitButton");
     fireEvent.mouseDown(element!);
 
     expect(handlePointerUpMock).toHaveBeenCalledTimes(1);
@@ -182,7 +153,8 @@ describe("Button", (): void => {
   it("does not call handlePointerUp on click if prop isDisabled is true", (): void => {
     const { container } = setup({ isDisabled: true });
 
-    const element: HTMLElement | null = container.querySelector(".button");
+    const element: HTMLElement | null =
+      container.querySelector(".submitButton");
     fireEvent.click(element!);
 
     expect(handlePointerUpMock).toHaveBeenCalledTimes(0);
@@ -191,14 +163,16 @@ describe("Button", (): void => {
   it("sets tabIndex to -1 if prop isDisabled is true", (): void => {
     const { container } = setup({ isDisabled: true });
 
-    const element: HTMLElement | null = container.querySelector(".button");
+    const element: HTMLElement | null =
+      container.querySelector(".submitButton");
 
     expect(element).toHaveAttribute("tabindex", "-1");
   });
 
   it("sets default value for prop isDisabled if it is undefined", (): void => {
     const { container } = setup({ isDisabled: undefined });
-    const element: HTMLElement | null = container.querySelector(".button");
+    const element: HTMLElement | null =
+      container.querySelector(".submitButton");
 
     expect(element).toBeInTheDocument();
     expect(element).toHaveAttribute("aria-disabled", `${isDisabledDefault}`);
@@ -212,9 +186,12 @@ describe("Button", (): void => {
   });
 
   it("calls hook useBlurOnPointerUp", (): void => {
-    setup();
+    const { container } = setup();
+
+    const element: HTMLElement | null =
+      container.querySelector(".submitButton");
 
     expect(useBlurOnPointerUp).toHaveBeenCalledTimes(1);
-    expect(useBlurOnPointerUp).toHaveBeenCalledWith(expect.any(Object));
+    expect(useBlurOnPointerUp).toHaveBeenCalledWith({ current: element });
   });
 });

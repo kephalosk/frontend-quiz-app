@@ -3,24 +3,24 @@ export const EMPTY_HEADLINE_LABEL_TEXT: string = "Empty Headline Label";
 export const EMPTY_HEADLINE_LABEL_BOLD_TEXT: string =
   "Empty Headline Label Bold";
 export const EMPTY_QUESTION_LABEL_TEXT: string = "Empty Question Label";
-export const EMPTY_QUIZ_BUTTON_LABEL_TEXT: string = "Empty Quiz Button Label";
+export const EMPTY_QUIZ_BUTTON_LABEL_TEXT: string =
+  "Empty Quiz SubmitButton Label";
 export const EMPTY_LABEL_TEXT: string = "Empty Label";
 export const EMPTY_SCORE_LABEL_TEXT: string = "Empty Score Label";
 export const EMPTY_SCORE_SUB_LINE_LABEL_TEXT: string =
   "Empty Score Sub Line Label";
 export const EMPTY_SUB_LINE_LABEL_TEXT: string = "Empty Sub Line Label";
 export const EMPTY_SUBMIT_BUTTON_LABEL_TEXT: string =
-  "Empty Submit Button Label";
+  "Empty Submit SubmitButton Label";
 export const EMPTY_TOPIC_LABEL_TEXT: string = "Empty Topic Label";
 
 export const SWITCH_BUTTON_ARIA_LABEL_PREFIX: string =
-  "Switch Button with status ";
-export const QUIZ_BUTTON_ARIA_LABEL_PREFIX: string =
-    "Quiz Button";
+  "Switch SubmitButton with status ";
+export const QUIZ_BUTTON_ARIA_LABEL_PREFIX: string = "Quiz SubmitButton";
+export const SUBMIT_BUTTON_ARIA_LABEL_PREFIX: string = "SubmitButton";
 
 export const CORRECT_ICON_ALT_TEXT: string = "image of Correct Icon";
 export const ERROR_ICON_ALT_TEXT: string = "image of Error Icon";
-
 
 //######Old constants
 
