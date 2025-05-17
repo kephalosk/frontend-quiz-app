@@ -25,6 +25,10 @@ $icon-width-tablet: functions.to-rem(56px);
   @include screens.tablet-and-up {
     column-gap: spaces.$space-32px;
   }
+
+  &--hidden {
+    display: none;
+  }
 }
 
 .topicContainerIcon {

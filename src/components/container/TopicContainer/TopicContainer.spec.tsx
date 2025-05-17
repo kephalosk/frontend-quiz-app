@@ -1,16 +1,32 @@
 import { render, screen } from "@testing-library/react";
-import { CORRECT_ICON_ALT_TEXT } from "@/globals/constants/Constants.ts";
+import {
+  CORRECT_ICON_ALT_TEXT,
+  EMPTY_STRING,
+} from "@/globals/constants/Constants.ts";
 import { CORRECT_ICON_SRC } from "@/globals/constants/Ressources.ts";
 import { ReactElement } from "react";
 import Label from "@/components/atoms/Label/Label.tsx";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import useTopicButtonIcon from "@/hooks/topicButton/useTopicButtonIcon.ts";
-import { TopicButtonIconHook } from "@/globals/models/types/TopicButtonTypes.ts";
+import {
+  TopicButtonIconHook,
+  TopicTextAndTypeHook,
+} from "@/globals/models/types/TopicTypes.ts";
 import { TopicEnumColor } from "@/globals/models/enums/TopicEnumColor.ts";
-import TopicContainer, {
-  TopicContainerProps,
-} from "@/components/container/TopicContainer/TopicContainer.tsx";
+import TopicContainer from "@/components/container/TopicContainer/TopicContainer.tsx";
+import useTopicTextAndType from "@/hooks/topic/useTopicTextAndType.ts";
+
+jest.mock(
+  "@/hooks/topic/useTopicTextAndType.ts",
+  (): {
+    __esModule: boolean;
+    default: jest.Mock;
+  } => ({
+    __esModule: true,
+    default: jest.fn(),
+  }),
+);
 
 jest.mock(
   "@/hooks/topicButton/useTopicButtonIcon.ts",
@@ -33,20 +49,15 @@ jest.mock(
 );
 
 describe("TopicContainer component", (): void => {
-  const text: string = "reset";
-  const type: TopicEnum = TopicEnum.HTML;
+  const setup = (): { container: HTMLElement } => {
+    return render(<TopicContainer />);
+  };
 
-  const setup = (
-    propsOverride?: Partial<TopicContainerProps>,
-  ): { container: HTMLElement } => {
-    const defaultProps: TopicContainerProps = {
-      text,
-      type,
-    };
-
-    const props: TopicContainerProps = { ...defaultProps, ...propsOverride };
-
-    return render(<TopicContainer {...props} />);
+  const textMock: string = "reset";
+  const typeMock: TopicEnum = TopicEnum.HTML;
+  const useTopicTextAndTypeMock: TopicTextAndTypeHook = {
+    text: textMock,
+    type: typeMock,
   };
 
   const srcMock: string = CORRECT_ICON_SRC;
@@ -62,6 +73,7 @@ describe("TopicContainer component", (): void => {
   });
 
   beforeEach((): void => {
+    (useTopicTextAndType as jest.Mock).mockReturnValue(useTopicTextAndTypeMock);
     (useTopicButtonIcon as jest.Mock).mockReturnValue(useTopicButtonIconMock);
   });
 
@@ -69,13 +81,28 @@ describe("TopicContainer component", (): void => {
     jest.useRealTimers();
   });
 
-  it("renders div topicContainer", (): void => {
+  it("renders div topicContainer with !text.length === true", (): void => {
+    (useTopicTextAndType as jest.Mock).mockReturnValue({
+      ...useTopicTextAndTypeMock,
+      text: EMPTY_STRING,
+    });
     const { container } = setup();
 
     const element: HTMLElement | null =
       container.querySelector(".topicContainer");
 
     expect(element).toBeInTheDocument();
+    expect(element).toHaveClass("topicContainer--hidden");
+  });
+
+  it("does not render hidden class with !text.length === false", (): void => {
+    const { container } = setup();
+
+    const element: HTMLElement | null =
+      container.querySelector(".topicContainer");
+
+    expect(element).toBeInTheDocument();
+    expect(element).not.toHaveClass("topicContainer--hidden");
   });
 
   it("renders img topicContainerIcon", (): void => {
@@ -103,16 +130,23 @@ describe("TopicContainer component", (): void => {
       {
         className: "topicContainerText",
         type: LabelTypeEnum.QUIZ_BUTTON_LABEL,
-        text,
+        text: textMock,
       },
       undefined,
     );
+  });
+
+  it("calls hook useTopicTextAndType", (): void => {
+    setup();
+
+    expect(useTopicTextAndType).toHaveBeenCalledTimes(1);
+    expect(useTopicTextAndType).toHaveBeenCalledWith();
   });
 
   it("calls hook useTopicButtonIcon", (): void => {
     setup();
 
     expect(useTopicButtonIcon).toHaveBeenCalledTimes(1);
-    expect(useTopicButtonIcon).toHaveBeenCalledWith(type);
+    expect(useTopicButtonIcon).toHaveBeenCalledWith(typeMock);
   });
 });
