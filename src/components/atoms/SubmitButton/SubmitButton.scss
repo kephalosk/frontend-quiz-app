@@ -1,6 +1,8 @@
 @use '../../../styles/colors';
 @use '../../../styles/fonts';
 @use '../../../styles/functions';
+@use '../../../styles/mixins';
+@use '../../../styles/screens';
 @use '../../../styles/spaces';
 
 $border-thickness: functions.to-rem(1px);
@@ -9,7 +11,7 @@ $arrow-icon-height: functions.to-rem(12px);
 $arrow-icon-width: functions.to-rem(12px);
 
 .button {
-  border: $border-thickness solid colors.$green-200;
+  border-radius: spaces.$radius-12px;
   padding: spaces.$space-8px spaces.$space-16px;
   display: flex;
   flex-direction: row;
@@ -25,6 +27,12 @@ $arrow-icon-width: functions.to-rem(12px);
   cursor: pointer;
   transition: border $transition-duration ease,
   background-color $transition-duration ease;
+
+  @include mixins.box-shadow;
+
+  @include screens.tablet-and-up {
+    border-radius: spaces.$radius-24px;
+  }
 
   @include fonts.text-preset-4;
 }

@@ -5,6 +5,9 @@ import { QuestionPositionEnum } from "@/globals/models/enums/QuestionPositionEnu
 import { QuestionStatusEnum } from "@/globals/models/enums/QuestionStatusEnum.ts";
 import Footer from "@/components/atoms/Footer/Footer.tsx";
 import DarkModeSwitch from "@/components/container/DarkModeSwitch/DarkModeSwitch.tsx";
+import TopicButton from "@/components/container/TopicButton/TopicButton.tsx";
+import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
+import { HTML_TEXT } from "@/globals/constants/Constants.ts";
 
 const App: React.FC = (): ReactElement => {
   return (
@@ -54,6 +57,13 @@ const App: React.FC = (): ReactElement => {
           throw new Error("Function not implemented.");
         }}
         isDisabled={false}
+      />
+      <TopicButton
+        text={HTML_TEXT}
+        type={TopicEnum.HTML}
+        handleButtonClick={function (): void {
+          throw new Error("Function not implemented.");
+        }}
       />
       <Footer />
     </div>

@@ -1,6 +1,7 @@
 @use '../../../styles/colors';
 @use '../../../styles/fonts';
 @use '../../../styles/functions';
+@use '../../../styles/mixins';
 @use '../../../styles/screens';
 @use '../../../styles/spaces';
 
@@ -13,8 +14,7 @@ $icon-height-tablet: functions.to-rem(40px);
 $icon-width-tablet: functions.to-rem(40px);
 
 .quizButton {
-  box-shadow: 0 0 30px -20px colors.$grey-500;
-  border-radius: spaces.$radius-24px;
+  border-radius: spaces.$radius-12px;
   border: $border-thickness solid colors.$white;
   background-color: colors.$white;
   padding: spaces.$space-16px;
@@ -26,6 +26,12 @@ $icon-width-tablet: functions.to-rem(40px);
   transition: border $transition-duration ease,
   background-color $transition-duration ease;
   outline: none;
+
+  @include mixins.box-shadow;
+
+  @include screens.tablet-and-up {
+    border-radius: spaces.$radius-24px;
+  }
 
   @include screens.desktop-and-up {
     padding: spaces.$space-24px;

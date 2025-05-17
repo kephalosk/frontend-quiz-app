@@ -29,6 +29,11 @@ export const JAVASCRIPT_ICON_ALT_TEXT: string = "image of Javascript Icon";
 export const ACCESSIBILITY_ICON_ALT_TEXT: string =
   "image of Accessibility Icon";
 
+export const HTML_TEXT: string = "HTML";
+export const CSS_TEXT: string = "CSS";
+export const JAVASCRIPT_TEXT: string = "Javascript";
+export const ACCESSIBILITY_TEXT: string = "Accessibility";
+
 //######Old constants
 
 export const PASSWORD_PLACEHOLDER_LABEL_TEXT: string = "P4$5W0rD!";
