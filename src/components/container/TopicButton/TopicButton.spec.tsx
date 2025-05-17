@@ -16,7 +16,7 @@ import useKeyClickBypass from "@/hooks/button/useKeyClickBypass.ts";
 import useBlurOnPointerUp from "@/hooks/button/useBlurOnPointerUp.ts";
 import useTopicButtonIcon from "@/hooks/topicButton/useTopicButtonIcon.ts";
 import { KeyClickBypassHook } from "@/globals/models/types/KeyClickBypassTypes.ts";
-import { TopicButtonIconHook } from "@/globals/models/types/TopicButtonTypes.ts";
+import { TopicButtonIconHook } from "@/globals/models/types/TopicTypes.ts";
 import { TopicEnumColor } from "@/globals/models/enums/TopicEnumColor.ts";
 
 jest.mock(

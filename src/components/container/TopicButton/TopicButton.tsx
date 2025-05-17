@@ -5,7 +5,7 @@ import Label from "@/components/atoms/Label/Label.tsx";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
 import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
-import { TopicButtonIconHook } from "@/globals/models/types/TopicButtonTypes.ts";
+import { TopicButtonIconHook } from "@/globals/models/types/TopicTypes.ts";
 import useTopicButtonIcon from "@/hooks/topicButton/useTopicButtonIcon.ts";
 import useKeyClickBypass from "@/hooks/button/useKeyClickBypass.ts";
 import useBlurOnPointerUp from "@/hooks/button/useBlurOnPointerUp.ts";
