@@ -8,6 +8,7 @@ import DarkModeSwitch from "@/components/container/DarkModeSwitch/DarkModeSwitch
 import TopicButton from "@/components/container/TopicButton/TopicButton.tsx";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import { HTML_TEXT } from "@/globals/constants/Constants.ts";
+import ProgressBar from "@/components/atoms/ProgressBar/ProgressBar.tsx";
 
 const App: React.FC = (): ReactElement => {
   return (
@@ -65,6 +66,7 @@ const App: React.FC = (): ReactElement => {
           throw new Error("Function not implemented.");
         }}
       />
+      <ProgressBar progressPerCent={30} />
       <Footer />
     </div>
   );

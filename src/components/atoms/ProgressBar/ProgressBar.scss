@@ -1,0 +1,29 @@
+@use '../../../styles/colors';
+@use '../../../styles/fonts';
+@use '../../../styles/functions';
+@use '../../../styles/mixins';
+@use '../../../styles/screens';
+@use '../../../styles/spaces';
+
+$progress-bar-border-radius: 50px;
+$progress-bar-height: functions.to-rem(16px);
+$progress-bar-value-height: functions.to-rem(8px);
+$transition-duration: 0.4s;
+
+.progressBar {
+  border-radius: $progress-bar-border-radius;
+  background-color: colors.$white;
+  height: $progress-bar-height;
+  width: 500px;
+  position: relative;
+}
+
+.progressBarValue {
+  border-radius: $progress-bar-border-radius;
+  background-color: colors.$purple-600;
+  height: $progress-bar-value-height;
+  left: spaces.$space-4px;
+  transform: translateY(50%);
+  position: absolute;
+  transition: width $transition-duration ease;
+}
