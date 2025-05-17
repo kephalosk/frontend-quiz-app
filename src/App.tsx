@@ -9,10 +9,13 @@ import TopicButton from "@/components/container/TopicButton/TopicButton.tsx";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import { HTML_TEXT } from "@/globals/constants/Constants.ts";
 import ProgressBar from "@/components/atoms/ProgressBar/ProgressBar.tsx";
+import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
 
 const App: React.FC = (): ReactElement => {
+  const isDarkModeOn: boolean = useDarkMode();
+
   return (
-    <div className="app">
+    <div className={`app app--${isDarkModeOn ? "darkMode" : "lightMode"}`}>
       <DarkModeSwitch />
       <QuizButton
         text={"4.5 : 1"}

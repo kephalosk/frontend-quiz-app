@@ -3,7 +3,12 @@
 @use './styles/screens';
 @use './styles/spaces';
 
+$transition-duration: 0.2s;
+
 .app {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,8 +17,36 @@
   min-height: 100vh;
   width: 100%;
   max-width: 100%;
+  transition: background-image $transition-duration ease,
+  background-color $transition-duration ease;
 
-  @include screens.tablet-and-up{
+  @include screens.tablet-and-up {
     row-gap: spaces.$space-24px;
+  }
+
+  &--darkMode {
+    background-image: url('./assets/images/pattern-background-mobile-dark.svg');
+    background-color: colors.$blue-900;
+
+    @include screens.tablet-and-up {
+      background-image: url('./assets/images/pattern-background-tablet-dark.svg');
+    }
+
+    @include screens.desktop-and-up {
+      background-image: url('./assets/images/pattern-background-desktop-dark.svg');
+    }
+  }
+
+  &--lightMode {
+    background-image: url('./assets/images/pattern-background-mobile-light.svg');
+    background-color: colors.$grey-50;
+
+    @include screens.tablet-and-up {
+      background-image: url('./assets/images/pattern-background-tablet-light.svg');
+    }
+
+    @include screens.desktop-and-up {
+      background-image: url('./assets/images/pattern-background-desktop-light.svg');
+    }
   }
 }
