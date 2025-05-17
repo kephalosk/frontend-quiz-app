@@ -1,7 +1,5 @@
 import { ReactElement } from "react";
 import { render, screen } from "@testing-library/react";
-import { ACCESSIBILITY_TEXT } from "@/globals/constants/Constants.ts";
-import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import HeaderContainer from "@/components/container/HeaderContainer/HeaderContainer.tsx";
 import DarkModeSwitch from "@/components/container/DarkModeSwitch/DarkModeSwitch.tsx";
 import TopicContainer from "@/components/container/TopicContainer/TopicContainer.tsx";
@@ -45,10 +43,7 @@ describe("HeaderContainer Component", (): void => {
 
     expect(element).toBeInTheDocument();
     expect(TopicContainer).toHaveBeenCalledTimes(1);
-    expect(TopicContainer).toHaveBeenCalledWith(
-      { text: ACCESSIBILITY_TEXT, type: TopicEnum.ACCESSIBILITY },
-      undefined,
-    );
+    expect(TopicContainer).toHaveBeenCalledWith({}, undefined);
   });
 
   it("renders component DarkModeSwitch", (): void => {
