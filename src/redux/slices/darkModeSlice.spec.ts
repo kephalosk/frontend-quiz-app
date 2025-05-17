@@ -3,7 +3,7 @@ import darkModeReducer, {
   setDarkModeValue,
 } from "@/redux/slices/darkModeSlice.ts";
 
-describe("characterLengthSlice", (): void => {
+describe("darkModeSlice", (): void => {
   const initialState: { value: boolean } = {
     value: false,
   };
