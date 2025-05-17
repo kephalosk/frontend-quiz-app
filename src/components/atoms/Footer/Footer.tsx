@@ -10,10 +10,15 @@ import {
   FRONTEND_MENTOR_SUFFIX,
   GITHUB_PROFILE_NAME,
 } from "@/globals/constants/Constants.ts";
+import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
 
 const Footer: React.FC = (): ReactElement => {
+  const isDarkModeOn: boolean = useDarkMode();
+
   return (
-    <footer className="attribution">
+    <footer
+      className={`attribution attribution--${isDarkModeOn ? "darkMode" : "lightMode"}`}
+    >
       <span className="attributionPrefix">{FRONTEND_MENTOR_PREFIX}</span>
       <a
         className="attributionFrontendMentor"

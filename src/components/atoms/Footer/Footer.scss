@@ -2,14 +2,30 @@
 @use '../../../styles/fonts';
 @use '../../../styles/spaces';
 
+$transition-duration: 0.2s;
+
 .attribution {
   padding-top: spaces.$space-24px;
   text-align: center;
-  color: colors.$blue-900;
+  transition: color $transition-duration ease;
 
   @include fonts.text-preset-6;
-}
 
-.attribution a {
-  color: colors.$attribution;
+  &--darkMode{
+    color: colors.$white;
+
+    a {
+      color: colors.$attribution-light;
+      transition: color $transition-duration ease;
+    }
+  }
+
+  &--lightMode{
+    color: colors.$blue-900;
+
+    a {
+      color: colors.$attribution;
+      transition: color $transition-duration ease;
+    }
+  }
 }
