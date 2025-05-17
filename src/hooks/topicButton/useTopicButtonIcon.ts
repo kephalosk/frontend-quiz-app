@@ -1,4 +1,4 @@
-import { TopicButtonIconHook } from "@/globals/models/types/TopicButtonTypes.ts";
+import { TopicButtonIconHook } from "@/globals/models/types/TopicTypes.ts";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import {
   ACCESSIBILITY_ICON_SRC,

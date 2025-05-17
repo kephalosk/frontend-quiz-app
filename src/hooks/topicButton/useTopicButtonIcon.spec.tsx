@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { render, screen } from "@testing-library/react";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import useTopicButtonIcon from "@/hooks/topicButton/useTopicButtonIcon.ts";
-import { TopicButtonIconHook } from "@/globals/models/types/TopicButtonTypes.ts";
+import { TopicButtonIconHook } from "@/globals/models/types/TopicTypes.ts";
 import {
   ACCESSIBILITY_ICON_SRC,
   CSS_ICON_SRC,
