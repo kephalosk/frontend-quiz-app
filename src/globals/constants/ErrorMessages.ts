@@ -55,3 +55,5 @@ export const ERROR_MESSAGE_PASSWORD_GENERATION_PREFIX: string =
 
 export const ERROR_MESSAGE_PASSWORD_COPY_PREFIX: string =
   "Failed to copy text: ";
+
+export const ERROR_MESSAGE_UNKNOWN_TOPIC_PREFIX: string = "Unknown topic: ";

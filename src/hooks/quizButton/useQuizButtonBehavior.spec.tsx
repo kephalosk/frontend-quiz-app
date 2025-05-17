@@ -4,8 +4,8 @@ import { QuestionStatusEnum } from "@/globals/models/enums/QuestionStatusEnum.ts
 import useKeyClickBypass from "@/hooks/button/useKeyClickBypass.ts";
 import { KeyClickBypassHook } from "@/globals/models/types/KeyClickBypassTypes.ts";
 import useQuizButtonBehavior from "@/hooks/quizButton/useQuizButtonBehavior.ts";
-import { QuizButtonBehaviorHook } from "@/globals/models/types/QuizButtonBehaviorTypes.ts";
 import useBlurOnPointerUp from "@/hooks/button/useBlurOnPointerUp.ts";
+import { QuizButtonBehaviorHook } from "@/globals/models/types/QuizButtonTypes.ts";
 
 const handleClickMock: jest.Mock = jest.fn();
 const handleKeyDownMock: jest.Mock = jest.fn();
