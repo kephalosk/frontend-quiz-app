@@ -2,7 +2,6 @@ import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
 import {
   EMPTY_ERROR_LABEL_TEXT,
   EMPTY_HEADLINE_LABEL_TEXT,
-  EMPTY_HEADLINE_LABEL_BOLD_TEXT,
   EMPTY_LABEL_TEXT,
   EMPTY_QUESTION_LABEL_TEXT,
   EMPTY_QUIZ_BUTTON_LABEL_TEXT,
@@ -56,7 +55,6 @@ describe("useLabelType hook", (): void => {
 
   it.each([
     [LabelTypeEnum.HEADLINE_LABEL, textDefined],
-    [LabelTypeEnum.HEADLINE_LABEL_BOLD, textDefined],
     [LabelTypeEnum.SUB_LINE_LABEL, textDefined],
     [LabelTypeEnum.QUIZ_BUTTON_LABEL, textDefined],
     [LabelTypeEnum.SUBMIT_BUTTON_LABEL, textDefined],
@@ -80,11 +78,6 @@ describe("useLabelType hook", (): void => {
 
   it.each([
     [LabelTypeEnum.HEADLINE_LABEL, EMPTY_STRING, EMPTY_HEADLINE_LABEL_TEXT],
-    [
-      LabelTypeEnum.HEADLINE_LABEL_BOLD,
-      EMPTY_STRING,
-      EMPTY_HEADLINE_LABEL_BOLD_TEXT,
-    ],
     [LabelTypeEnum.SUB_LINE_LABEL, EMPTY_STRING, EMPTY_SUB_LINE_LABEL_TEXT],
     [
       LabelTypeEnum.QUIZ_BUTTON_LABEL,

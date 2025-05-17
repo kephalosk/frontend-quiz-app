@@ -1,0 +1,23 @@
+@use '../../../styles/colors';
+@use '../../../styles/fonts';
+
+$transition-duration: 0.2s;
+
+.headline {
+  display: inline-block;
+  max-width: fit-content;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  white-space: nowrap;
+  cursor: inherit;
+  transition: color $transition-duration ease;
+  color: colors.$blue-900;
+
+  @include fonts.text-preset-2;
+
+  &--darkMode {
+    color: colors.$white;
+  }
+}

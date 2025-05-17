@@ -3,7 +3,6 @@ import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
 import {
   EMPTY_ERROR_LABEL_TEXT,
   EMPTY_HEADLINE_LABEL_TEXT,
-  EMPTY_HEADLINE_LABEL_BOLD_TEXT,
   EMPTY_LABEL_TEXT,
   EMPTY_QUESTION_LABEL_TEXT,
   EMPTY_QUIZ_BUTTON_LABEL_TEXT,
@@ -25,8 +24,6 @@ const useLabelType = (
         return text === EMPTY_STRING ? EMPTY_ERROR_LABEL_TEXT : text;
       case LabelTypeEnum.HEADLINE_LABEL:
         return text === EMPTY_STRING ? EMPTY_HEADLINE_LABEL_TEXT : text;
-      case LabelTypeEnum.HEADLINE_LABEL_BOLD:
-        return text === EMPTY_STRING ? EMPTY_HEADLINE_LABEL_BOLD_TEXT : text;
       case LabelTypeEnum.QUESTION_LABEL:
         return text === EMPTY_STRING ? EMPTY_QUESTION_LABEL_TEXT : text;
       case LabelTypeEnum.QUIZ_BUTTON_LABEL:
