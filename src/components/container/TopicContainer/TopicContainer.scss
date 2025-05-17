@@ -1,0 +1,55 @@
+@use '../../../styles/colors';
+@use '../../../styles/fonts';
+@use '../../../styles/functions';
+@use '../../../styles/mixins';
+@use '../../../styles/screens';
+@use '../../../styles/spaces';
+
+$transition-duration: 0.2s;
+
+$icon-height: functions.to-rem(40px);
+$icon-width: functions.to-rem(40px);
+$icon-height-tablet: functions.to-rem(56px);
+$icon-width-tablet: functions.to-rem(56px);
+
+.topicContainer {
+  padding: spaces.$space-16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: spaces.$space-16px;
+  transition: border $transition-duration ease,
+  background-color $transition-duration ease;
+
+  @include screens.tablet-and-up {
+    column-gap: spaces.$space-32px;
+  }
+}
+
+.topicContainerIcon {
+  border-radius: spaces.$radius-6px;
+  height: $icon-height;
+  width: $icon-width;
+
+  @include screens.tablet-and-up {
+    height: $icon-height-tablet;
+    width: $icon-width-tablet;
+  }
+
+  &--orange {
+    background-color: colors.$orange-50;
+  }
+
+  &--green {
+    background-color: colors.$green-100;
+  }
+
+  &--blue {
+    background-color: colors.$blue-50;
+  }
+
+  &--purple {
+    background-color: colors.$purple-100;
+  }
+}

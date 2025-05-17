@@ -10,6 +10,7 @@ import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import { HTML_TEXT } from "@/globals/constants/Constants.ts";
 import ProgressBar from "@/components/atoms/ProgressBar/ProgressBar.tsx";
 import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import TopicContainer from "@/components/container/TopicContainer/TopicContainer.tsx";
 
 const App: React.FC = (): ReactElement => {
   const isDarkModeOn: boolean = useDarkMode();
@@ -70,6 +71,7 @@ const App: React.FC = (): ReactElement => {
         }}
       />
       <ProgressBar progressPerCent={30} />
+      <TopicContainer text={HTML_TEXT} type={TopicEnum.HTML} />
       <Footer />
     </div>
   );
