@@ -1,0 +1,21 @@
+@use '../../../styles/screens';
+@use '../../../styles/spaces';
+
+.headerContainer {
+  padding: spaces.$space-16px spaces.$space-24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  row-gap: spaces.$space-16px;
+
+  @include screens.tablet-and-up{
+    padding: spaces.$space-40px spaces.$space-64px;
+  }
+
+  @include screens.desktop-and-up{
+    padding: spaces.$space-84px spaces.$space-144px;
+  }
+}

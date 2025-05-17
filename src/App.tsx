@@ -4,20 +4,20 @@ import QuizButton from "@/components/container/QuizButton/QuizButton.tsx";
 import { QuestionPositionEnum } from "@/globals/models/enums/QuestionPositionEnum.ts";
 import { QuestionStatusEnum } from "@/globals/models/enums/QuestionStatusEnum.ts";
 import Footer from "@/components/atoms/Footer/Footer.tsx";
-import DarkModeSwitch from "@/components/container/DarkModeSwitch/DarkModeSwitch.tsx";
 import TopicButton from "@/components/container/TopicButton/TopicButton.tsx";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import { HTML_TEXT } from "@/globals/constants/Constants.ts";
 import ProgressBar from "@/components/atoms/ProgressBar/ProgressBar.tsx";
 import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
 import TopicContainer from "@/components/container/TopicContainer/TopicContainer.tsx";
+import HeaderContainer from "@/components/container/HeaderContainer/HeaderContainer.tsx";
 
 const App: React.FC = (): ReactElement => {
   const isDarkModeOn: boolean = useDarkMode();
 
   return (
     <div className={`app app--${isDarkModeOn ? "darkMode" : "lightMode"}`}>
-      <DarkModeSwitch />
+      <HeaderContainer />
       <QuizButton
         text={"4.5 : 1"}
         position={QuestionPositionEnum.A}

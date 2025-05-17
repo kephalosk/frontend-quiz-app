@@ -8,6 +8,7 @@ $icon-height: functions.to-rem(24px);
 $icon-width: functions.to-rem(24px);
 
 .darkModeSwitch {
+  margin-left: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
