@@ -10,7 +10,7 @@ $transition-duration: 0.2s;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
-  white-space: nowrap;
+  white-space: wrap;
   cursor: inherit;
   transition: color $transition-duration ease;
   color: colors.$blue-900;

@@ -11,6 +11,7 @@ import ProgressBar from "@/components/atoms/ProgressBar/ProgressBar.tsx";
 import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
 import TopicContainer from "@/components/container/TopicContainer/TopicContainer.tsx";
 import HeaderContainer from "@/components/container/HeaderContainer/HeaderContainer.tsx";
+import TitleContainer from "@/components/container/TitleContainer/TitleContainer.tsx";
 
 const App: React.FC = (): ReactElement => {
   const isDarkModeOn: boolean = useDarkMode();
@@ -18,6 +19,13 @@ const App: React.FC = (): ReactElement => {
   return (
     <div className={`app app--${isDarkModeOn ? "darkMode" : "lightMode"}`}>
       <HeaderContainer />
+      <div className="titleContainerWrapper">
+        <TitleContainer
+          firstLine={"Welcome to the"}
+          headline={"Frontend Quiz!"}
+          subLine={"Pick a subject to get started."}
+        />
+      </div>
       <QuizButton
         text={"4.5 : 1"}
         position={QuestionPositionEnum.A}
@@ -71,7 +79,7 @@ const App: React.FC = (): ReactElement => {
         }}
       />
       <ProgressBar progressPerCent={30} />
-      <TopicContainer text={HTML_TEXT} type={TopicEnum.HTML} />
+      <TopicContainer />
       <Footer />
     </div>
   );

@@ -1,4 +1,4 @@
-import "./HeaderContainer.scss";
+import "./TitleContainer.scss";
 import React from "react";
 import Label from "@/components/atoms/Label/Label.tsx";
 import Headline from "@/components/atoms/Headline/Headline.tsx";
@@ -17,8 +17,10 @@ const TitleContainer: React.FC<TitleContainerProps> = ({
 }: TitleContainerProps) => {
   return (
     <div className="titleContainer">
-      <Label type={LabelTypeEnum.HEADLINE_LABEL} text={firstLine} />
-      <Headline title={headline} />
+      <div className="titleContainerHeader">
+        <Label type={LabelTypeEnum.HEADLINE_LABEL} text={firstLine} />
+        <Headline title={headline} />
+      </div>
       <Label type={LabelTypeEnum.SUB_LINE_LABEL} text={subLine} />
     </div>
   );

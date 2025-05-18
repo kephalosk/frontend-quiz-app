@@ -1,0 +1,23 @@
+@use '../../../styles/colors';
+@use '../../../styles/functions';
+@use '../../../styles/mixins';
+@use '../../../styles/screens';
+@use '../../../styles/spaces';
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: spaces.$space-16px;
+
+  @include screens.desktop-and-up {
+    row-gap: spaces.$space-48px;
+  }
+}
+
+.titleContainerHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: spaces.$space-8px;
+}

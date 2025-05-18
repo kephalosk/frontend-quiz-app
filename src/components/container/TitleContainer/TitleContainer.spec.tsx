@@ -51,6 +51,16 @@ describe("TitleContainer Component", (): void => {
     expect(element).toBeInTheDocument();
   });
 
+  it(`renders div titleContainerHeader`, (): void => {
+    const { container } = setup();
+
+    const element: HTMLElement | null = container.querySelector(
+      ".titleContainerHeader",
+    );
+
+    expect(element).toBeInTheDocument();
+  });
+
   it("renders component Label for HEADLINE_LABEL", (): void => {
     setup();
 

@@ -25,6 +25,7 @@ $transition-duration: 0.2s;
   }
 
   &__headlineLabel {
+    white-space: wrap;
     text-align: left;
     color: colors.$blue-900;
 
@@ -91,6 +92,7 @@ $transition-duration: 0.2s;
   }
 
   &__subLineLabel {
+    white-space: wrap;
     text-align: left;
     color: colors.$grey-500;
 
