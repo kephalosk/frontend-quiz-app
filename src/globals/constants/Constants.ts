@@ -34,6 +34,10 @@ export const CSS_TEXT: string = "CSS";
 export const JAVASCRIPT_TEXT: string = "Javascript";
 export const ACCESSIBILITY_TEXT: string = "Accessibility";
 
+export const STARTPAGE_HEADLINE_TEXT: string = "Welcome to the";
+export const STARTPAGE_HEADLINE_BOLD_TEXT: string = "Frontend Quiz!";
+export const STARTPAGE_SUB_LINE_TEXT: string = "Pick a subject to get started.";
+
 //######Old constants
 
 export const PASSWORD_PLACEHOLDER_LABEL_TEXT: string = "P4$5W0rD!";
