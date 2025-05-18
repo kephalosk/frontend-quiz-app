@@ -14,7 +14,7 @@ $transition-duration: 0.4s;
 .progressBar {
   border-radius: $progress-bar-border-radius;
   height: $progress-bar-height;
-  width: 500px;
+  width: 100%;
   position: relative;
   transition: background-color $transition-duration-color-switch ease;
 

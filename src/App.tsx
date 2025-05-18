@@ -12,6 +12,7 @@ import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
 import TopicContainer from "@/components/container/TopicContainer/TopicContainer.tsx";
 import HeaderContainer from "@/components/container/HeaderContainer/HeaderContainer.tsx";
 import TitleContainer from "@/components/container/TitleContainer/TitleContainer.tsx";
+import QuestionContainer from "@/components/container/QuestionContainer/QuestionContainer.tsx";
 
 const App: React.FC = (): ReactElement => {
   const isDarkModeOn: boolean = useDarkMode();
@@ -24,6 +25,15 @@ const App: React.FC = (): ReactElement => {
           firstLine={"Welcome to the"}
           headline={"Frontend Quiz!"}
           subLine={"Pick a subject to get started."}
+        />
+      </div>
+      <div className="titleContainerWrapper">
+        <QuestionContainer
+          question={
+            "Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for normal text?"
+          }
+          progressInfo={"Question 6 of 10"}
+          progressPerCent={66}
         />
       </div>
       <QuizButton

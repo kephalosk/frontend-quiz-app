@@ -10,6 +10,9 @@ $transition-duration: 0.2s;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
   cursor: inherit;
   transition: color $transition-duration ease;
 
@@ -48,6 +51,7 @@ $transition-duration: 0.2s;
   }
 
   &__questionLabel {
+    white-space: wrap;
     text-align: left;
     color: colors.$blue-900;
 
