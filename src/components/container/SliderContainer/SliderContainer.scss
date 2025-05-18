@@ -1,8 +1,0 @@
-@use '../../../styles/spaces';
-
-.sliderContainer {
-  display: flex;
-  flex-direction: column;
-  row-gap: spaces.$space-16px;
-  width: 100%;
-}
