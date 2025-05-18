@@ -3,6 +3,18 @@ import { render, screen } from "@testing-library/react";
 import HeaderContainer from "@/components/container/HeaderContainer/HeaderContainer.tsx";
 import DarkModeSwitch from "@/components/container/DarkModeSwitch/DarkModeSwitch.tsx";
 import TopicContainer from "@/components/container/TopicContainer/TopicContainer.tsx";
+import useShowTopic from "@/hooks/topic/useShowTopic.ts";
+
+jest.mock(
+  "@/hooks/topic/useShowTopic.ts",
+  (): {
+    __esModule: boolean;
+    default: jest.Mock;
+  } => ({
+    __esModule: true,
+    default: jest.fn(),
+  }),
+);
 
 const topicContainerDataTestId: string = "topic-container";
 jest.mock(
@@ -27,6 +39,12 @@ describe("HeaderContainer Component", (): void => {
     return render(<HeaderContainer />);
   };
 
+  const showTopicMock: boolean = true;
+
+  beforeEach((): void => {
+    (useShowTopic as jest.Mock).mockReturnValue(showTopicMock);
+  });
+
   it(`renders div headerContainer`, (): void => {
     const { container } = setup();
 
@@ -46,6 +64,18 @@ describe("HeaderContainer Component", (): void => {
     expect(TopicContainer).toHaveBeenCalledWith({}, undefined);
   });
 
+  it("does not render component TopicContainer if showTopic is false", (): void => {
+    (useShowTopic as jest.Mock).mockReturnValue(false);
+    setup();
+
+    const element: HTMLElement | null = screen.queryByTestId(
+      topicContainerDataTestId,
+    );
+
+    expect(element).not.toBeInTheDocument();
+    expect(TopicContainer).not.toHaveBeenCalled();
+  });
+
   it("renders component DarkModeSwitch", (): void => {
     setup();
 
@@ -54,5 +84,13 @@ describe("HeaderContainer Component", (): void => {
     expect(element).toBeInTheDocument();
     expect(DarkModeSwitch).toHaveBeenCalledTimes(1);
     expect(DarkModeSwitch).toHaveBeenCalledWith({}, undefined);
+  });
+
+  it("calls hook useShowTopic", (): void => {
+    setup();
+
+    expect(useShowTopic).toHaveBeenCalledTimes(1);
+    expect(useShowTopic).toHaveBeenCalledWith();
+    expect(useShowTopic).toHaveReturnedWith(showTopicMock);
   });
 });

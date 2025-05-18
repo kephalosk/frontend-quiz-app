@@ -2,7 +2,7 @@
 @use '../../../styles/spaces';
 
 .headerContainer {
-  padding: spaces.$space-16px spaces.$space-24px;
+  padding: spaces.$space-16px spaces.$space-7vw;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,6 +16,6 @@
   }
 
   @include screens.desktop-and-up{
-    padding: spaces.$space-84px spaces.$space-144px;
+    padding: spaces.$space-84px 8vw;
   }
 }
