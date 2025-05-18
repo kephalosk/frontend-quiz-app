@@ -13,14 +13,27 @@ To run this project:
 ## Table of contents
 
 - [Overview](#overview)
-    - [Screenshots](#screenshots)
     - [Links](#links)
-- [Coverage](#coverage)
+    - [Coverage](#coverage)
+    - [Screenshots](#screenshots)
 - [My process](#my-process)
 - [Built with](#built-with)
 - [Author](#author)
 
 ## Overview
+
+### Links
+
+- Solution URL: [GitHub Repo](https://github.com/kephalosk/frontend-quiz-app )
+- Live Site URL: [GitHub Pages](https://kephalosk.github.io/frontend-quiz-app )
+
+## Coverage
+
+
+![Performance](ressources/screenshots/performance.png)
+
+
+![Coverage](ressources/screenshots/coverage.png)
 
 ### Screenshots
 
@@ -39,19 +52,6 @@ Mobile
 Active
 
 ![Active](ressources/screenshots/active.png)
-
-### Links
-
-- Solution URL: [GitHub Repo](https://github.com/kephalosk/frontend-quiz-app )
-- Live Site URL: [GitHub Pages](https://kephalosk.github.io/frontend-quiz-app )
-
-## Coverage
-
-
-![Performance](ressources/screenshots/performance.png)
-
-
-![Coverage](ressources/screenshots/coverage.png)
 
 ## My process
 
