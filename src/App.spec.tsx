@@ -1,40 +1,41 @@
-import Headline from "@/components/atoms/Headline/Headline.tsx";
-import { HEADLINE_TEXT } from "@/globals/constants/Constants.ts";
-import PasswordContainer from "@/components/container/PasswordContainer/PasswordContainer.tsx";
-import ContentContainer from "@/components/container/ContentContainer/ContentContainer.tsx";
 import Footer from "@/components/atoms/Footer/Footer.tsx";
 import { ReactElement } from "react";
 import { render, screen } from "@testing-library/react";
 import App from "@/App.tsx";
-import usePasswordChange from "@/hooks/password/usePasswordChange.ts";
-import { PasswordChangeHook } from "@/globals/models/types/PasswordChangeTypes.ts";
+import HeaderContainer from "@/components/container/HeaderContainer/HeaderContainer.tsx";
+import { Route, Routes } from "react-router-dom";
+import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import { STARTPAGE_PATH } from "@/globals/constants/Ressources.ts";
 
-const headlineDataTestId: string = "headline";
+const headerContainerDataTestId: string = "header-container";
 jest.mock(
-  "@/components/atoms/Headline/Headline.tsx",
+  "@/components/container/HeaderContainer/HeaderContainer.tsx",
   (): jest.Mock =>
     jest.fn((): ReactElement => {
-      return <div data-testid={headlineDataTestId}></div>;
+      return <div data-testid={headerContainerDataTestId}></div>;
     }),
 );
 
-const passwordContainerDataTestId: string = "password-container";
+const routesDataTestId: string = "Routes";
+const routeDataTestId: string = "Route";
 jest.mock(
-  "@/components/container/PasswordContainer/PasswordContainer.tsx",
-  (): jest.Mock =>
-    jest.fn((): ReactElement => {
-      return <div data-testid={passwordContainerDataTestId}></div>;
+  "react-router-dom",
+  (): {
+    __esModule: boolean;
+    Routes: jest.Mock;
+    Route: jest.Mock;
+  } => ({
+    __esModule: true,
+    Routes: jest.fn((props): ReactElement => {
+      return <div data-testid={routesDataTestId}>{props.children}</div>;
     }),
+    Route: jest.fn((): ReactElement => {
+      return <div data-testid={routeDataTestId}></div>;
+    }),
+  }),
 );
 
-const contentContainerDataTestId: string = "content-container";
-jest.mock(
-  "@/components/container/ContentContainer/ContentContainer.tsx",
-  (): jest.Mock =>
-    jest.fn((): ReactElement => {
-      return <div data-testid={contentContainerDataTestId}></div>;
-    }),
-);
+jest.mock("@/pages/StartPage/StartPage.tsx", (): jest.Mock => jest.fn());
 
 const footerDataTestId: string = "footer";
 jest.mock(
@@ -46,7 +47,7 @@ jest.mock(
 );
 
 jest.mock(
-  "@/hooks/password/usePasswordChange.ts",
+  "@/hooks/redux/darkMode/useDarkMode.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;
@@ -61,56 +62,69 @@ describe("App Component", (): void => {
     return render(<App />);
   };
 
-  const password: string = "password";
-  const handlePasswordChangeMock: jest.Mock = jest.fn();
-  const usePasswordChangeMock: PasswordChangeHook = {
-    password,
-    handlePasswordChange: handlePasswordChangeMock,
-  };
+  const useDarkModeMock: boolean = false;
 
   beforeEach((): void => {
-    (usePasswordChange as jest.Mock).mockReturnValue(usePasswordChangeMock);
+    (useDarkMode as jest.Mock).mockReturnValue(useDarkModeMock);
   });
 
-  it(`renders div app`, (): void => {
-    const { container } = setup();
+  it.each([
+    [true, "darkMode"],
+    [false, "lightMode"],
+  ])(
+    `renders div app with isDarkModeOn === %s`,
+    (isDarkModeOn: boolean, className: string): void => {
+      (useDarkMode as jest.Mock).mockReturnValue(isDarkModeOn);
+      const { container } = setup();
 
-    const element: HTMLElement | null = container.querySelector(".app");
+      const element: HTMLElement | null = container.querySelector(".app");
 
-    expect(element).toBeInTheDocument();
-  });
+      expect(element).toBeInTheDocument();
+      expect(element).toHaveClass(`app--${className}`);
+    },
+  );
 
-  it("renders component Headline", (): void => {
+  it("renders component HeaderContainer", (): void => {
     setup();
 
-    const element: HTMLElement = screen.getByTestId(headlineDataTestId);
+    const element: HTMLElement = screen.getByTestId(headerContainerDataTestId);
 
     expect(element).toBeInTheDocument();
-    expect(Headline).toHaveBeenCalledTimes(1);
-    expect(Headline).toHaveBeenCalledWith({ title: HEADLINE_TEXT }, undefined);
+    expect(HeaderContainer).toHaveBeenCalledTimes(1);
+    expect(HeaderContainer).toHaveBeenCalledWith({}, undefined);
   });
 
-  it("renders component PasswordContainer", (): void => {
+  it("renders component Routes", (): void => {
     setup();
 
-    const element: HTMLElement = screen.getByTestId(
-      passwordContainerDataTestId,
+    const element: HTMLElement = screen.getByTestId(routesDataTestId);
+
+    expect(element).toBeInTheDocument();
+    expect(Routes).toHaveBeenCalledTimes(1);
+    expect(Routes).toHaveBeenCalledWith(expect.any(Object), undefined);
+  });
+
+  it("renders components Route", (): void => {
+    setup();
+
+    const elements: HTMLElement[] = screen.getAllByTestId(routeDataTestId);
+
+    expect(elements).toHaveLength(2);
+    expect(Route).toHaveBeenCalledTimes(2);
+    expect(Route).toHaveBeenNthCalledWith(
+      1,
+      expect.objectContaining({
+        path: STARTPAGE_PATH,
+        element: expect.any(Object),
+      }),
+      undefined,
     );
-
-    expect(element).toBeInTheDocument();
-    expect(PasswordContainer).toHaveBeenCalledTimes(1);
-    expect(PasswordContainer).toHaveBeenCalledWith({ password }, undefined);
-  });
-
-  it("renders component ContentContainer", (): void => {
-    setup();
-
-    const element: HTMLElement = screen.getByTestId(contentContainerDataTestId);
-
-    expect(element).toBeInTheDocument();
-    expect(ContentContainer).toHaveBeenCalledTimes(1);
-    expect(ContentContainer).toHaveBeenCalledWith(
-      { propagateValue: handlePasswordChangeMock },
+    expect(Route).toHaveBeenNthCalledWith(
+      2,
+      expect.objectContaining({
+        path: "*",
+        element: expect.any(Object),
+      }),
       undefined,
     );
   });
@@ -125,10 +139,11 @@ describe("App Component", (): void => {
     expect(Footer).toHaveBeenCalledWith({}, undefined);
   });
 
-  it(`calls hook usePasswordChange`, (): void => {
+  it(`calls hook useDarkMode`, (): void => {
     setup();
 
-    expect(usePasswordChange).toHaveBeenCalledTimes(1);
-    expect(usePasswordChange).toHaveBeenCalledWith();
+    expect(useDarkMode).toHaveBeenCalledTimes(1);
+    expect(useDarkMode).toHaveBeenCalledWith();
+    expect(useDarkMode).toHaveReturnedWith(useDarkModeMock);
   });
 });

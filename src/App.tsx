@@ -1,18 +1,11 @@
 import "./App.scss";
 import React, { ReactElement } from "react";
-import QuizButton from "@/components/container/QuizButton/QuizButton.tsx";
-import { QuestionPositionEnum } from "@/globals/models/enums/QuestionPositionEnum.ts";
-import { QuestionStatusEnum } from "@/globals/models/enums/QuestionStatusEnum.ts";
 import Footer from "@/components/atoms/Footer/Footer.tsx";
-import TopicButton from "@/components/container/TopicButton/TopicButton.tsx";
-import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
-import { HTML_TEXT } from "@/globals/constants/Constants.ts";
-import ProgressBar from "@/components/atoms/ProgressBar/ProgressBar.tsx";
 import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
-import TopicContainer from "@/components/container/TopicContainer/TopicContainer.tsx";
 import HeaderContainer from "@/components/container/HeaderContainer/HeaderContainer.tsx";
-import TitleContainer from "@/components/container/TitleContainer/TitleContainer.tsx";
-import QuestionContainer from "@/components/container/QuestionContainer/QuestionContainer.tsx";
+import StartPage from "@/pages/StartPage/StartPage.tsx";
+import { Route, Routes } from "react-router-dom";
+import { STARTPAGE_PATH } from "@/globals/constants/Ressources.ts";
 
 const App: React.FC = (): ReactElement => {
   const isDarkModeOn: boolean = useDarkMode();
@@ -20,76 +13,14 @@ const App: React.FC = (): ReactElement => {
   return (
     <div className={`app app--${isDarkModeOn ? "darkMode" : "lightMode"}`}>
       <HeaderContainer />
-      <div className="titleContainerWrapper">
-        <TitleContainer
-          firstLine={"Welcome to the"}
-          headline={"Frontend Quiz!"}
-          subLine={"Pick a subject to get started."}
-        />
-      </div>
-      <div className="titleContainerWrapper">
-        <QuestionContainer
-          question={
-            "Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for normal text?"
-          }
-          progressInfo={"Question 6 of 10"}
-          progressPerCent={66}
-        />
-      </div>
-      <QuizButton
-        text={"4.5 : 1"}
-        position={QuestionPositionEnum.A}
-        status={QuestionStatusEnum.DEFAULT}
-        handleButtonClick={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        isDisabled={false}
-      />
-      <QuizButton
-        text={"4.5 : 1"}
-        position={QuestionPositionEnum.A}
-        status={QuestionStatusEnum.SELECTED}
-        handleButtonClick={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        isDisabled={false}
-      />
-      <QuizButton
-        text={"4.5 : 1"}
-        position={QuestionPositionEnum.A}
-        status={QuestionStatusEnum.WRONG}
-        handleButtonClick={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        isDisabled={false}
-      />
-      <QuizButton
-        text={"4.5 : 1"}
-        position={QuestionPositionEnum.A}
-        status={QuestionStatusEnum.CORRECTED}
-        handleButtonClick={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        isDisabled={false}
-      />
-      <QuizButton
-        text={"4.5 : 1"}
-        position={QuestionPositionEnum.A}
-        status={QuestionStatusEnum.RIGHT}
-        handleButtonClick={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-        isDisabled={false}
-      />
-      <TopicButton
-        text={HTML_TEXT}
-        type={TopicEnum.HTML}
-        handleButtonClick={function (): void {
-          throw new Error("Function not implemented.");
-        }}
-      />
-      <ProgressBar progressPerCent={30} />
-      <TopicContainer />
+      <Routes>
+        <Route path={STARTPAGE_PATH} element={<StartPage />} />
+        {/*TODO*/}
+        {/*<Route path="/quiz" element={<QuizPage />} />*/}
+        {/*<Route path="/result" element={<ResultPage />} />*/}
+        {/* Optional: für unbekannte Pfade */}
+        <Route path="*" element={<StartPage />} />
+      </Routes>
       <Footer />
     </div>
   );
