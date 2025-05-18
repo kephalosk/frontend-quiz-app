@@ -19,6 +19,7 @@ $icon-width-tablet: functions.to-rem(56px);
   align-items: center;
   justify-content: flex-start;
   column-gap: spaces.$space-16px;
+  max-width: 100%;
   transition: border $transition-duration ease,
   background-color $transition-duration ease;
 

@@ -12,6 +12,7 @@
 
   @include screens.desktop-and-up {
     row-gap: spaces.$space-48px;
+    min-width: spaces.$title-desktop-width;
   }
 }
 
