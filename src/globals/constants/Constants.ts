@@ -25,13 +25,13 @@ export const ERROR_ICON_ALT_TEXT: string = "image of Error Icon";
 
 export const HTML_ICON_ALT_TEXT: string = "image of HTML Icon";
 export const CSS_ICON_ALT_TEXT: string = "image of CSS Icon";
-export const JAVASCRIPT_ICON_ALT_TEXT: string = "image of Javascript Icon";
+export const JAVASCRIPT_ICON_ALT_TEXT: string = "image of JavaScript Icon";
 export const ACCESSIBILITY_ICON_ALT_TEXT: string =
   "image of Accessibility Icon";
 
 export const HTML_TEXT: string = "HTML";
 export const CSS_TEXT: string = "CSS";
-export const JAVASCRIPT_TEXT: string = "Javascript";
+export const JAVASCRIPT_TEXT: string = "JavaScript";
 export const ACCESSIBILITY_TEXT: string = "Accessibility";
 
 export const STARTPAGE_HEADLINE_TEXT: string = "Welcome to the";
