@@ -4,7 +4,7 @@ import darkModeReducer, {
 } from "@/redux/slices/darkModeSlice.ts";
 
 describe("darkModeSlice", (): void => {
-  const initialState: { value: boolean } = {
+  const initialState: DarkModeState = {
     value: false,
   };
 
