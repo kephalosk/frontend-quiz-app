@@ -4,7 +4,7 @@ import {
   TOPIC_BUTTON_ARIA_LABEL_PREFIX,
 } from "@/globals/constants/Constants.ts";
 import { CORRECT_ICON_SRC } from "@/globals/constants/Ressources.ts";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
 import { ReactElement } from "react";
 import Label from "@/components/atoms/Label/Label.tsx";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
@@ -53,7 +53,7 @@ jest.mock(
 );
 
 jest.mock(
-  "@/hooks/redux/darkMode/useDarkMode.ts",
+  "@/hooks/redux/darkMode/selector/useDarkMode.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;

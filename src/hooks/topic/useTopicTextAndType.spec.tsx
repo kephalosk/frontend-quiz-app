@@ -9,11 +9,11 @@ import {
   JAVASCRIPT_TEXT,
 } from "@/globals/constants/Constants.ts";
 import useTopicTextAndType from "@/hooks/topic/useTopicTextAndType.ts";
-import useTopic from "@/hooks/redux/topic/useTopic.ts";
+import useTopic from "@/hooks/redux/topic/selector/useTopic.ts";
 import { ERROR_MESSAGE_UNKNOWN_TOPIC_PREFIX } from "@/globals/constants/ErrorMessages.ts";
 
 jest.mock(
-  "@/hooks/redux/topic/useTopic.ts",
+  "@/hooks/redux/topic/selector/useTopic.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;

@@ -1,6 +1,6 @@
 import "./Headline.scss";
 import React, { ReactElement } from "react";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
 
 export interface HeadlineProps {
   title: string;

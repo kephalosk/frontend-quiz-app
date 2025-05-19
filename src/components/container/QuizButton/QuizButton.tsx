@@ -5,7 +5,7 @@ import { QuestionPositionEnum } from "@/globals/models/enums/QuestionPositionEnu
 import Label from "@/components/atoms/Label/Label.tsx";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
 import { QuestionStatusEnum } from "@/globals/models/enums/QuestionStatusEnum.ts";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
 import useQuizButtonIcon from "@/hooks/quizButton/useQuizButtonIcon.ts";
 import useQuizButtonBehavior from "@/hooks/quizButton/useQuizButtonBehavior.ts";
 import {

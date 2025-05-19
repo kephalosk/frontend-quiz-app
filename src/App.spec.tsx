@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 import App from "@/App.tsx";
 import HeaderContainer from "@/components/container/HeaderContainer/HeaderContainer.tsx";
 import { Route, Routes } from "react-router-dom";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
 import { STARTPAGE_PATH } from "@/globals/constants/Ressources.ts";
 
 const headerContainerDataTestId: string = "header-container";
@@ -47,7 +47,7 @@ jest.mock(
 );
 
 jest.mock(
-  "@/hooks/redux/darkMode/useDarkMode.ts",
+  "@/hooks/redux/darkMode/selector/useDarkMode.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;

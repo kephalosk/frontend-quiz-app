@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { render, screen } from "@testing-library/react";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store.ts";
 import { stateMock } from "@/redux/fixtures/stateMock.ts";

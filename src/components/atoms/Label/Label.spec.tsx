@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import Label, { LabelProps } from "./Label";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
 import useLabelType from "@/hooks/label/useLabelType.ts";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
 import useWarnIfEmptyText from "@/hooks/label/useWarnIfEmptyText.ts";
 import { EMPTY_STRING } from "@/globals/constants/Constants.ts";
 
@@ -18,7 +18,7 @@ jest.mock(
 );
 
 jest.mock(
-  "@/hooks/redux/darkMode/useDarkMode.ts",
+  "@/hooks/redux/darkMode/selector/useDarkMode.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;

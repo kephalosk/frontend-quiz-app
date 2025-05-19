@@ -3,7 +3,7 @@ import React, { ReactElement, useRef } from "react";
 import { TOPIC_BUTTON_ARIA_LABEL_PREFIX } from "@/globals/constants/Constants.ts";
 import Label from "@/components/atoms/Label/Label.tsx";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import { TopicButtonIconHook } from "@/globals/models/types/TopicTypes.ts";
 import useTopicButtonIcon from "@/hooks/topicButton/useTopicButtonIcon.ts";

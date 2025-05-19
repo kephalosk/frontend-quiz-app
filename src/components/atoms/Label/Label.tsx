@@ -2,7 +2,7 @@ import "./Label.scss";
 import React, { ReactElement } from "react";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
 import useLabelType from "@/hooks/label/useLabelType.ts";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
 import useWarnIfEmptyText from "@/hooks/label/useWarnIfEmptyText.ts";
 import { EMPTY_STRING } from "@/globals/constants/Constants.ts";
 

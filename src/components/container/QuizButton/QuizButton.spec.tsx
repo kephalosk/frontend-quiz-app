@@ -11,7 +11,7 @@ import QuizButton, {
 } from "@/components/container/QuizButton/QuizButton.tsx";
 import useQuizButtonBehavior from "@/hooks/quizButton/useQuizButtonBehavior.ts";
 import useQuizButtonIcon from "@/hooks/quizButton/useQuizButtonIcon.ts";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
 import useQuizButtonClasses from "@/hooks/quizButton/useQuizButtonClasses.ts";
 import {
   QuizButtonBehaviorHook,
@@ -49,7 +49,7 @@ jest.mock(
 );
 
 jest.mock(
-  "@/hooks/redux/darkMode/useDarkMode.ts",
+  "@/hooks/redux/darkMode/selector/useDarkMode.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;

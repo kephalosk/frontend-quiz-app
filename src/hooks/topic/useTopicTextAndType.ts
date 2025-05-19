@@ -5,7 +5,7 @@ import {
   HTML_TEXT,
   JAVASCRIPT_TEXT,
 } from "@/globals/constants/Constants.ts";
-import useTopic from "@/hooks/redux/topic/useTopic.ts";
+import useTopic from "@/hooks/redux/topic/selector/useTopic.ts";
 import { TopicTextAndTypeHook } from "@/globals/models/types/TopicTypes.ts";
 import { ERROR_MESSAGE_UNKNOWN_TOPIC_PREFIX } from "@/globals/constants/ErrorMessages.ts";
 

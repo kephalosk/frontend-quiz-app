@@ -2,10 +2,10 @@ import Headline, {
   HeadlineProps,
 } from "@/components/atoms/Headline/Headline.tsx";
 import { render } from "@testing-library/react";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
 
 jest.mock(
-  "@/hooks/redux/darkMode/useDarkMode.ts",
+  "@/hooks/redux/darkMode/selector/useDarkMode.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;

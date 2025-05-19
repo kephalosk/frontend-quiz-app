@@ -1,7 +1,7 @@
 import "./App.scss";
 import React, { ReactElement } from "react";
 import Footer from "@/components/atoms/Footer/Footer.tsx";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
 import HeaderContainer from "@/components/container/HeaderContainer/HeaderContainer.tsx";
 import StartPage from "@/pages/StartPage/StartPage.tsx";
 import { Route, Routes } from "react-router-dom";

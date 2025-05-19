@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useDispatch } from "react-redux";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
-import useUpdateTopic from "@/hooks/redux/topic/useUpdateTopic.ts";
+import useUpdateTopic from "@/hooks/redux/topic/dispatcher/useUpdateTopic.ts";
 import { setTopic } from "@/redux/slices/topicSlice.ts";
 
 jest.mock(

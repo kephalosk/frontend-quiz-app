@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useDispatch } from "react-redux";
 import { resetTopic } from "@/redux/slices/topicSlice.ts";
-import useResetTopic from "@/hooks/redux/topic/useResetTopic.ts";
+import useResetTopic from "@/hooks/redux/topic/dispatcher/useResetTopic.ts";
 
 jest.mock(
   "react-redux",

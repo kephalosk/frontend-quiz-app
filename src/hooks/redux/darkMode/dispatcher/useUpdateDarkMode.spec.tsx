@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import useUpdateDarkMode from "@/hooks/redux/darkMode/useUpdateDarkMode.ts";
+import useUpdateDarkMode from "@/hooks/redux/darkMode/dispatcher/useUpdateDarkMode.ts";
 import { useDispatch } from "react-redux";
 import { setDarkModeValue } from "@/redux/slices/darkModeSlice.ts";
 

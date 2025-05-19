@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store.ts";
 import { stateMock } from "@/redux/fixtures/stateMock.ts";
-import useTopic from "@/hooks/redux/topic/useTopic.ts";
+import useTopic from "@/hooks/redux/topic/selector/useTopic.ts";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 
 jest.mock(

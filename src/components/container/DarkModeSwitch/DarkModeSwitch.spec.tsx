@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import useDarkMode from "@/hooks/redux/darkMode/useDarkMode.ts";
-import useUpdateDarkMode from "@/hooks/redux/darkMode/useUpdateDarkMode.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
+import useUpdateDarkMode from "@/hooks/redux/darkMode/dispatcher/useUpdateDarkMode.ts";
 import { ReactElement } from "react";
 import SwitchButton from "@/components/atoms/SwitchButton/SwitchButton.tsx";
 import DarkModeSwitch from "@/components/container/DarkModeSwitch/DarkModeSwitch.tsx";
@@ -25,7 +25,7 @@ jest.mock(
 );
 
 jest.mock(
-  "@/hooks/redux/darkMode/useDarkMode.ts",
+  "@/hooks/redux/darkMode/selector/useDarkMode.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;
@@ -36,7 +36,7 @@ jest.mock(
 );
 
 jest.mock(
-  "@/hooks/redux/darkMode/useUpdateDarkMode.ts",
+  "@/hooks/redux/darkMode/dispatcher/useUpdateDarkMode.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;
