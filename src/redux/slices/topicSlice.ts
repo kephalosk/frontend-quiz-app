@@ -34,7 +34,7 @@ const topicSlice = createSlice({
     setTopic: (state: TopicState, action: PayloadAction<TopicEnum>): void => {
       state.topic = action.payload;
     },
-    setStatus(state: TopicState, action: PayloadAction<LoadingStateEnum>) {
+    setQuizStatus(state: TopicState, action: PayloadAction<LoadingStateEnum>) {
       state.quizStatus = action.payload;
     },
     setQuestionsAndResetIndexAndScore: (
@@ -75,7 +75,7 @@ const topicSlice = createSlice({
         state.isQuizFinished = true;
       }
     },
-    setError(state: TopicState, action: PayloadAction<string | null>) {
+    setQuizError(state: TopicState, action: PayloadAction<string | null>) {
       state.quizError = action.payload;
     },
     resetTopic: (state: TopicState): void => {
@@ -90,10 +90,10 @@ const topicSlice = createSlice({
 
 export const {
   setTopic,
-  setStatus,
+  setQuizStatus,
   setQuestionsAndResetIndexAndScore,
   answerQuestion,
-  setError,
+  setQuizError,
   resetTopic,
 } = topicSlice.actions;
 

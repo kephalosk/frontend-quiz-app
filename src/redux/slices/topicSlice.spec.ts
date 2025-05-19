@@ -1,9 +1,9 @@
 import topicReducer, {
   answerQuestion,
   resetTopic,
-  setError,
+  setQuizError,
   setQuestionsAndResetIndexAndScore,
-  setStatus,
+  setQuizStatus,
   setTopic,
   TopicState,
 } from "@/redux/slices/topicSlice.ts";
@@ -47,8 +47,8 @@ describe("topicSlice", (): void => {
     const newValue: LoadingStateEnum = LoadingStateEnum.LOADING;
     const action: {
       payload: LoadingStateEnum;
-      type: "topic/setStatus";
-    } = setStatus(newValue);
+      type: "topic/setQuizStatus";
+    } = setQuizStatus(newValue);
     const nextState: TopicState = topicReducer(initialState, action);
 
     expect(nextState.quizStatus).toEqual(newValue);
@@ -182,8 +182,8 @@ describe("topicSlice", (): void => {
     const newValue: string = "test error";
     const action: {
       payload: string | null;
-      type: "topic/setError";
-    } = setError(newValue);
+      type: "topic/setQuizError";
+    } = setQuizError(newValue);
     const nextState: TopicState = topicReducer(initialState, action);
 
     expect(nextState.quizError).toEqual(newValue);
