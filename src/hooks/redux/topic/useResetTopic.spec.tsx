@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useDispatch } from "react-redux";
-import { resetTopicValue } from "@/redux/slices/topicSlice.ts";
+import { resetTopic } from "@/redux/slices/topicSlice.ts";
 import useResetTopic from "@/hooks/redux/topic/useResetTopic.ts";
 
 jest.mock(
@@ -18,7 +18,7 @@ jest.mock(
   (): {
     resetTopicValue: jest.Mock;
   } => ({
-    resetTopicValue: jest.fn(),
+    resetTopic: jest.fn(),
   }),
 );
 
@@ -52,6 +52,6 @@ describe("useResetTopic hook", (): void => {
 
     expect(element).toBeInTheDocument();
     expect(dispatchMock).toHaveBeenCalledTimes(1);
-    expect(dispatchMock).toHaveBeenCalledWith(resetTopicValue(undefined));
+    expect(dispatchMock).toHaveBeenCalledWith(resetTopic(undefined));
   });
 });

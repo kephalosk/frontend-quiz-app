@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { useDispatch } from "react-redux";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import useUpdateTopic from "@/hooks/redux/topic/useUpdateTopic.ts";
-import { setTopicValue } from "@/redux/slices/topicSlice.ts";
+import { setTopic } from "@/redux/slices/topicSlice.ts";
 
 jest.mock(
   "react-redux",
@@ -19,7 +19,7 @@ jest.mock(
   (): {
     setTopicValue: jest.Mock;
   } => ({
-    setTopicValue: jest.fn(),
+    setTopic: jest.fn(),
   }),
 );
 
@@ -54,6 +54,6 @@ describe("useUpdateTopic hook", (): void => {
 
     expect(element).toBeInTheDocument();
     expect(dispatchMock).toHaveBeenCalledTimes(1);
-    expect(dispatchMock).toHaveBeenCalledWith(setTopicValue(newValue));
+    expect(dispatchMock).toHaveBeenCalledWith(setTopic(newValue));
   });
 });
