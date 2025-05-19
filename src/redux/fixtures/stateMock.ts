@@ -13,8 +13,8 @@ export const topicStateMock: TopicState = {
   currentIndex: 0,
   currentScore: 0,
   isQuizFinished: false,
-  status: LoadingStateEnum.IDLE,
-  error: null,
+  quizStatus: LoadingStateEnum.IDLE,
+  quizError: null,
 };
 
 export const stateMock: RootState = {

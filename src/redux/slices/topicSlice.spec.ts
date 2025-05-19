@@ -24,8 +24,8 @@ describe("topicSlice", (): void => {
     currentIndex: 0,
     currentScore: 0,
     isQuizFinished: false,
-    status: LoadingStateEnum.IDLE,
-    error: null,
+    quizStatus: LoadingStateEnum.IDLE,
+    quizError: null,
   };
 
   it("returns the initial state", (): void => {
@@ -51,7 +51,7 @@ describe("topicSlice", (): void => {
     } = setStatus(newValue);
     const nextState: TopicState = topicReducer(initialState, action);
 
-    expect(nextState.status).toEqual(newValue);
+    expect(nextState.quizStatus).toEqual(newValue);
   });
 
   describe("setQuestionsAndResetIndexAndScore", (): void => {
@@ -66,8 +66,8 @@ describe("topicSlice", (): void => {
       expect(JSON.stringify(nextState.questions)).toEqual(
         JSON.stringify(newValue),
       );
-      expect(nextState.error).toEqual(QUESTIONS_ARE_MISSING_ERROR_MESSAGE);
-      expect(nextState.status).toEqual(LoadingStateEnum.FAILED);
+      expect(nextState.quizError).toEqual(QUESTIONS_ARE_MISSING_ERROR_MESSAGE);
+      expect(nextState.quizStatus).toEqual(LoadingStateEnum.FAILED);
     });
 
     it("sets questions, index, score, isQuizFinished, error and status", (): void => {
@@ -90,8 +90,8 @@ describe("topicSlice", (): void => {
       expect(nextState.currentIndex).toEqual(0);
       expect(nextState.currentScore).toEqual(0);
       expect(nextState.isQuizFinished).toEqual(false);
-      expect(nextState.error).toEqual(null);
-      expect(nextState.status).toEqual(LoadingStateEnum.SUCCEEDED);
+      expect(nextState.quizError).toEqual(null);
+      expect(nextState.quizStatus).toEqual(LoadingStateEnum.SUCCEEDED);
     });
   });
 
@@ -108,35 +108,9 @@ describe("topicSlice", (): void => {
       );
 
       expect(JSON.stringify(nextState.questions)).toEqual(JSON.stringify([]));
-      expect(nextState.error).toEqual(QUESTIONS_ARE_MISSING_ERROR_MESSAGE);
+      expect(nextState.quizError).toEqual(QUESTIONS_ARE_MISSING_ERROR_MESSAGE);
       expect(nextState.currentIndex).toEqual(0);
       expect(nextState.isQuizFinished).toEqual(true);
-    });
-
-    it("increases currentScore and index", (): void => {
-      const prevScore: number = 1;
-      const prevIndex: number = 1;
-      const newValue: { correct: boolean } = { correct: true };
-      const action: {
-        payload: { correct: boolean };
-        type: "topic/answerQuestion";
-      } = answerQuestion(newValue);
-      const nextState: TopicState = topicReducer(
-        {
-          ...initialState,
-          questions: mockedQuestions,
-          currentScore: prevScore,
-          currentIndex: prevIndex,
-        },
-        action,
-      );
-
-      expect(JSON.stringify(nextState.questions)).toEqual(
-        JSON.stringify(mockedQuestions),
-      );
-      expect(nextState.currentScore).toEqual(prevScore + 1);
-      expect(nextState.currentIndex).toEqual(prevIndex + 1);
-      expect(nextState.isQuizFinished).toEqual(false);
     });
 
     it("increases currentScore and index", (): void => {
@@ -181,7 +155,7 @@ describe("topicSlice", (): void => {
         action,
       );
 
-      expect(nextState.error).toEqual(MAX_SCORE_ERROR_MESSAGE);
+      expect(nextState.quizError).toEqual(MAX_SCORE_ERROR_MESSAGE);
     });
 
     it("sets isQuizFinished if index reached last question", (): void => {
@@ -212,7 +186,7 @@ describe("topicSlice", (): void => {
     } = setError(newValue);
     const nextState: TopicState = topicReducer(initialState, action);
 
-    expect(nextState.error).toEqual(newValue);
+    expect(nextState.quizError).toEqual(newValue);
   });
 
   it("handles resetting everything", (): void => {
@@ -228,8 +202,8 @@ describe("topicSlice", (): void => {
         currentIndex: mockedQuestions.length - 1,
         currentScore: mockedQuestions.length - 1,
         isQuizFinished: true,
-        status: LoadingStateEnum.SUCCEEDED,
-        error: UNKNOWN_ERROR_MESSAGE,
+        quizStatus: LoadingStateEnum.SUCCEEDED,
+        quizError: UNKNOWN_ERROR_MESSAGE,
       },
       action,
     );
@@ -239,8 +213,8 @@ describe("topicSlice", (): void => {
     expect(nextState.currentIndex).toEqual(0);
     expect(nextState.currentScore).toEqual(0);
     expect(nextState.isQuizFinished).toEqual(false);
-    expect(nextState.status).toEqual(LoadingStateEnum.IDLE);
-    expect(nextState.error).toEqual(null);
+    expect(nextState.quizStatus).toEqual(LoadingStateEnum.IDLE);
+    expect(nextState.quizError).toEqual(null);
   });
 
   it("handles updating the topic value multiple times", (): void => {

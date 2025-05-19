@@ -13,8 +13,8 @@ export interface TopicState {
   currentIndex: number;
   currentScore: number;
   isQuizFinished: boolean;
-  status: LoadingStateEnum;
-  error: string | null;
+  quizStatus: LoadingStateEnum;
+  quizError: string | null;
 }
 
 const initialState: TopicState = {
@@ -23,8 +23,8 @@ const initialState: TopicState = {
   currentIndex: 0,
   currentScore: 0,
   isQuizFinished: false,
-  status: LoadingStateEnum.IDLE,
-  error: null,
+  quizStatus: LoadingStateEnum.IDLE,
+  quizError: null,
 };
 
 const topicSlice = createSlice({
@@ -35,27 +35,27 @@ const topicSlice = createSlice({
       state.topic = action.payload;
     },
     setStatus(state: TopicState, action: PayloadAction<LoadingStateEnum>) {
-      state.status = action.payload;
+      state.quizStatus = action.payload;
     },
     setQuestionsAndResetIndexAndScore: (
       state: TopicState,
       action: PayloadAction<EPQuestion[]>,
     ): void => {
       if (!action.payload.length) {
-        state.error = QUESTIONS_ARE_MISSING_ERROR_MESSAGE;
-        state.status = LoadingStateEnum.FAILED;
+        state.quizError = QUESTIONS_ARE_MISSING_ERROR_MESSAGE;
+        state.quizStatus = LoadingStateEnum.FAILED;
         return;
       }
       state.questions = action.payload;
       state.currentIndex = 0;
       state.currentScore = 0;
       state.isQuizFinished = false;
-      state.error = null;
-      state.status = LoadingStateEnum.SUCCEEDED;
+      state.quizError = null;
+      state.quizStatus = LoadingStateEnum.SUCCEEDED;
     },
     answerQuestion: (state, action: PayloadAction<{ correct: boolean }>) => {
       if (!state.questions.length) {
-        state.error = QUESTIONS_ARE_MISSING_ERROR_MESSAGE;
+        state.quizError = QUESTIONS_ARE_MISSING_ERROR_MESSAGE;
         state.currentIndex = 0;
         state.isQuizFinished = true;
         return;
@@ -63,7 +63,7 @@ const topicSlice = createSlice({
 
       if (action.payload.correct) {
         if (state.currentScore > state.questions.length) {
-          state.error = MAX_SCORE_ERROR_MESSAGE;
+          state.quizError = MAX_SCORE_ERROR_MESSAGE;
         } else {
           state.currentScore++;
         }
@@ -76,7 +76,7 @@ const topicSlice = createSlice({
       }
     },
     setError(state: TopicState, action: PayloadAction<string | null>) {
-      state.error = action.payload;
+      state.quizError = action.payload;
     },
     resetTopic: (state: TopicState): void => {
       Object.assign(state, {
