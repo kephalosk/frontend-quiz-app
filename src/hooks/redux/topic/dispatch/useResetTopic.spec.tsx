@@ -16,7 +16,7 @@ jest.mock(
 jest.mock(
   "@/redux/slices/topicSlice.ts",
   (): {
-    resetTopicValue: jest.Mock;
+    resetTopic: jest.Mock;
   } => ({
     resetTopic: jest.fn(),
   }),
@@ -53,5 +53,6 @@ describe("useResetTopic hook", (): void => {
     expect(element).toBeInTheDocument();
     expect(dispatchMock).toHaveBeenCalledTimes(1);
     expect(dispatchMock).toHaveBeenCalledWith(resetTopic(undefined));
+    expect(dispatchMock).toHaveReturnedWith(undefined);
   });
 });
