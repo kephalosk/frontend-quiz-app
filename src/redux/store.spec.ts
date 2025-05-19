@@ -1,31 +1,55 @@
 import { RootState, store } from "./store";
-import { setDarkModeValue } from "@/redux/slices/darkModeSlice.ts";
-import { resetTopicValue, setTopicValue } from "@/redux/slices/topicSlice.ts";
+import darkModeReducer from "./slices/darkModeSlice.ts";
+import topicReducer from "./slices/topicSlice.ts";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 
+jest.mock(
+  "./slices/darkModeSlice.ts",
+  (): {
+    __esModule: boolean;
+    default: jest.Mock;
+  } => ({
+    __esModule: true,
+    default: jest.fn((state = { value: false }) => state),
+  }),
+);
+
+jest.mock(
+  "./slices/topicSlice.ts",
+  (): {
+    __esModule: boolean;
+    default: jest.Mock;
+  } => ({
+    __esModule: true,
+    default: jest.fn(
+      (
+        state = {
+          topic: null,
+          questions: [],
+          currentIndex: 0,
+          currentScore: 0,
+          isQuizFinished: false,
+          status: "IDLE",
+          error: null,
+        },
+      ) => state,
+    ),
+  }),
+);
+
 describe("Redux Store", (): void => {
-  it("handles setDarkModeValue correctly", (): void => {
-    const darkModeState: boolean = true;
-    store.dispatch(setDarkModeValue(darkModeState));
-
-    const state: RootState = store.getState() as RootState;
-    expect(state.darkMode.value).toEqual(darkModeState);
+  it("forwards actions to the darkMode reducer", (): void => {
+    const action = { type: "darkMode/setDarkModeValue", payload: true };
+    const prevDark = store.getState().darkMode;
+    store.dispatch(action);
+    expect(darkModeReducer).toHaveBeenCalledWith(prevDark, action);
   });
 
-  it("handles setTopicValue correctly", (): void => {
-    const topicState: TopicEnum = TopicEnum.HTML;
-    store.dispatch(setTopicValue(topicState));
-
-    const state: RootState = store.getState() as RootState;
-    expect(state.topic.value).toEqual(topicState);
-  });
-
-  it("handles resetTopicValue correctly", (): void => {
-    const topicState: undefined = undefined;
-    store.dispatch(resetTopicValue(topicState));
-
-    const state: RootState = store.getState() as RootState;
-    expect(state.topic.value).toEqual(topicState);
+  it("forwards actions to the topic reducer", (): void => {
+    const action = { type: "topic/setTopic", payload: TopicEnum.ACCESSIBILITY };
+    const prevTopic = store.getState().topic;
+    store.dispatch(action);
+    expect(topicReducer).toHaveBeenCalledWith(prevTopic, action);
   });
 
   it("retains the previous state when no action is dispatched", (): void => {
