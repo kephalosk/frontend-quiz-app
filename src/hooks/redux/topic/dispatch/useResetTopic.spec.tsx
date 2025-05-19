@@ -1,9 +1,8 @@
 import React, { ReactElement } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useDispatch } from "react-redux";
-import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
-import useUpdateTopic from "@/hooks/redux/topic/dispatcher/useUpdateTopic.ts";
-import { setTopic } from "@/redux/slices/topicSlice.ts";
+import { resetTopic } from "@/redux/slices/topicSlice.ts";
+import useResetTopic from "@/hooks/redux/topic/dispatch/useResetTopic.ts";
 
 jest.mock(
   "react-redux",
@@ -17,25 +16,24 @@ jest.mock(
 jest.mock(
   "@/redux/slices/topicSlice.ts",
   (): {
-    setTopicValue: jest.Mock;
+    resetTopicValue: jest.Mock;
   } => ({
-    setTopic: jest.fn(),
+    resetTopic: jest.fn(),
   }),
 );
 
-const newValue: TopicEnum = TopicEnum.ACCESSIBILITY;
 const testComponentDataTestId: string = "test-component";
 const TestComponent: React.FC = (): ReactElement => {
-  const handleValueChange = useUpdateTopic();
+  const handleValueChange = useResetTopic();
   return (
     <div
       data-testid={testComponentDataTestId}
-      onClick={() => handleValueChange(newValue)}
+      onClick={() => handleValueChange()}
     ></div>
   );
 };
 
-describe("useUpdateTopic hook", (): void => {
+describe("useResetTopic hook", (): void => {
   const setup = (): { container: HTMLElement } => {
     return render(<TestComponent />);
   };
@@ -46,7 +44,7 @@ describe("useUpdateTopic hook", (): void => {
     (useDispatch as unknown as jest.Mock).mockReturnValue(dispatchMock);
   });
 
-  it("calls setTopicValue with expected value", (): void => {
+  it("calls resetTopicValue with expected value", (): void => {
     setup();
 
     const element: HTMLElement = screen.getByTestId(testComponentDataTestId);
@@ -54,6 +52,6 @@ describe("useUpdateTopic hook", (): void => {
 
     expect(element).toBeInTheDocument();
     expect(dispatchMock).toHaveBeenCalledTimes(1);
-    expect(dispatchMock).toHaveBeenCalledWith(setTopic(newValue));
+    expect(dispatchMock).toHaveBeenCalledWith(resetTopic(undefined));
   });
 });

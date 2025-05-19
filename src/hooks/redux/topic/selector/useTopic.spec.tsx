@@ -17,12 +17,12 @@ jest.mock(
 
 const testComponentDataTestId: string = "test-component";
 const TestComponent: React.FC = (): ReactElement => {
-  const topic: TopicEnum | undefined = useTopic();
+  const topic: TopicEnum | null = useTopic();
   return <div data-testid={testComponentDataTestId}>{topic}</div>;
 };
 
 describe("useTopic hook", (): void => {
-  const expectedDarkModeState: TopicEnum = TopicEnum.HTML;
+  const expectedState: TopicEnum = TopicEnum.HTML;
 
   const setup = (): { container: HTMLElement } => {
     return render(<TestComponent />);
@@ -30,7 +30,7 @@ describe("useTopic hook", (): void => {
 
   const state: RootState = {
     ...stateMock,
-    topic: { value: expectedDarkModeState },
+    topic: { ...stateMock.topic, topic: expectedState },
   };
 
   beforeEach((): void => {
@@ -45,7 +45,9 @@ describe("useTopic hook", (): void => {
     const element: HTMLElement = screen.getByTestId(testComponentDataTestId);
 
     expect(element).toBeInTheDocument();
-    expect(element.innerHTML).toEqual(`${expectedDarkModeState}`);
+    expect(element.innerHTML).toEqual(`${expectedState}`);
     expect(useSelector).toHaveBeenCalledTimes(1);
+    expect(useSelector).toHaveBeenCalledWith(expect.any(Function));
+    expect(useSelector).toHaveReturnedWith(expectedState);
   });
 });
