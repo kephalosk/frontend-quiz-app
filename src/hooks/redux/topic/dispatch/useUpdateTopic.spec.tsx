@@ -17,7 +17,7 @@ jest.mock(
 jest.mock(
   "@/redux/slices/topicSlice.ts",
   (): {
-    setTopicValue: jest.Mock;
+    setTopic: jest.Mock;
   } => ({
     setTopic: jest.fn(),
   }),
@@ -55,5 +55,6 @@ describe("useUpdateTopic hook", (): void => {
     expect(element).toBeInTheDocument();
     expect(dispatchMock).toHaveBeenCalledTimes(1);
     expect(dispatchMock).toHaveBeenCalledWith(setTopic(newValue));
+    expect(dispatchMock).toHaveReturnedWith(undefined);
   });
 });
