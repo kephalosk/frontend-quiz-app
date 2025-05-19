@@ -1,7 +1,7 @@
 import "./DarkModeSwitch.scss";
 import React, { ReactElement } from "react";
 import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
-import useUpdateDarkMode from "@/hooks/redux/darkMode/dispatcher/useUpdateDarkMode.ts";
+import useUpdateDarkMode from "@/hooks/redux/darkMode/dispatch/useUpdateDarkMode.ts";
 import {
   MOON_ICON_D,
   MOON_ICON_SRC,

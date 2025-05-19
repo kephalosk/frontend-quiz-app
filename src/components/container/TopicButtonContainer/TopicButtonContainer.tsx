@@ -2,7 +2,7 @@ import "./TopicButtonContainer.scss";
 import React, { ReactElement } from "react";
 import { TopicItem, TopicItems } from "@/globals/constants/TopicItems.ts";
 import TopicButton from "@/components/container/TopicButton/TopicButton.tsx";
-import useUpdateTopic from "@/hooks/redux/topic/dispatcher/useUpdateTopic.ts";
+import useUpdateTopic from "@/hooks/redux/topic/dispatch/useUpdateTopic.ts";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 
 const TopicButtonContainer: React.FC = (): ReactElement => {

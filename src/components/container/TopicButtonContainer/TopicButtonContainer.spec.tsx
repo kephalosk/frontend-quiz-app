@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import { TopicItem, TopicItems } from "@/globals/constants/TopicItems.ts";
 import TopicButtonContainer from "@/components/container/TopicButtonContainer/TopicButtonContainer.tsx";
-import useUpdateTopic from "@/hooks/redux/topic/dispatcher/useUpdateTopic.ts";
+import useUpdateTopic from "@/hooks/redux/topic/dispatch/useUpdateTopic.ts";
 import TopicButton from "@/components/container/TopicButton/TopicButton.tsx";
 
 const topicMock: TopicEnum = TopicEnum.HTML;
@@ -24,7 +24,7 @@ jest.mock(
 );
 
 jest.mock(
-  "@/hooks/redux/topic/dispatcher/useUpdateTopic.ts",
+  "@/hooks/redux/topic/dispatch/useUpdateTopic.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;
