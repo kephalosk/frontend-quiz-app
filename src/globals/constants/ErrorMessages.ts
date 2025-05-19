@@ -3,8 +3,7 @@ export const QUESTIONS_ARE_MISSING_ERROR_MESSAGE: string =
   "Messages are missing!";
 export const MAX_SCORE_ERROR_MESSAGE: string =
   "Maximal Score is reached! Quiz is finished";
-export const MAX_INDEX_ERROR_MESSAGE: string =
-  "Maximal Index is reached! Quiz is finished";
+export const INDEX_ERROR_MESSAGE: string = "Index out of range!";
 
 export const getErrorMessageMaxValueLess0: (maxValue: number) => string = (
   maxValue: number,
