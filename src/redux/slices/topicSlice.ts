@@ -6,6 +6,7 @@ import {
   MAX_SCORE_ERROR_MESSAGE,
   QUESTIONS_ARE_MISSING_ERROR_MESSAGE,
 } from "@/globals/constants/ErrorMessages.ts";
+import { mockedQuestions } from "@/redux/fixtures/mockedQuestions.ts";
 
 export interface TopicState {
   topic: TopicEnum | null;
@@ -19,7 +20,7 @@ export interface TopicState {
 
 const initialState: TopicState = {
   topic: null,
-  questions: [],
+  questions: mockedQuestions,
   currentIndex: 0,
   currentScore: 0,
   isQuizFinished: false,
