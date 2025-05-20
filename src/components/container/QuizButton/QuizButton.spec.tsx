@@ -93,7 +93,7 @@ describe("QuizButton component", (): void => {
       text,
       position,
       status,
-      handleButtonClick: handleButtonClickMock,
+      propagateAnswer: handleButtonClickMock,
       isDisabled: isDisabled,
     };
 
@@ -296,7 +296,7 @@ describe("QuizButton component", (): void => {
   });
 
   it("calls hook useQuizButtonBehavior", (): void => {
-    setup({ handleButtonClick: handleButtonClickMock });
+    setup({ propagateAnswer: handleButtonClickMock });
 
     expect(useQuizButtonBehavior).toHaveBeenCalledTimes(1);
     expect(useQuizButtonBehavior).toHaveBeenCalledWith(
@@ -314,7 +314,7 @@ describe("QuizButton component", (): void => {
   });
 
   it("calls hook useDarkMode", (): void => {
-    setup({ handleButtonClick: handleButtonClickMock });
+    setup({ propagateAnswer: handleButtonClickMock });
 
     expect(useDarkMode).toHaveBeenCalledTimes(1);
     expect(useDarkMode).toHaveBeenCalledWith();

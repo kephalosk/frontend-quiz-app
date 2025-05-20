@@ -19,7 +19,10 @@ export interface QuizButtonProps {
   text: string;
   position: QuestionPositionEnum;
   status: QuestionStatusEnum;
-  handleButtonClick: () => void;
+  propagateAnswer: (
+    answer: string,
+    positionClicked: QuestionPositionEnum,
+  ) => void;
   isDisabled: boolean;
 }
 
@@ -28,9 +31,13 @@ const QuizButton: React.FC<QuizButtonProps> = React.memo(
     text,
     position,
     status,
-    handleButtonClick,
+    propagateAnswer,
     isDisabled,
   }: QuizButtonProps): ReactElement => {
+    const handleButtonClick = (): void => {
+      propagateAnswer(text, position);
+    };
+
     const { ref, isClickable, buttonEventProps }: QuizButtonBehaviorHook =
       useQuizButtonBehavior(handleButtonClick, status, isDisabled);
 

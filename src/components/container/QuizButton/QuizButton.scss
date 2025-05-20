@@ -22,7 +22,7 @@ $icon-width-tablet: functions.to-rem(40px);
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 500px;
+  width: 100%;
   transition: border $transition-duration ease,
   background-color $transition-duration ease;
   outline: none;
