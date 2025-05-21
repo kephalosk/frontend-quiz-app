@@ -96,7 +96,7 @@ describe("topicSlice", (): void => {
     });
   });
 
-  describe("increaseIndex", (): void => {
+  describe("useIncreaseIndex", (): void => {
     it("sets error, currentIndex and isQuizFinished and returns early for empty questions", (): void => {
       const action: {
         payload: undefined;
