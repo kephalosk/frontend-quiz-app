@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { answerQuestion } from "@/redux/slices/topicSlice.ts";
+import { increaseScore } from "@/redux/slices/topicSlice.ts";
 
 const useAnswerQuestion: () => (newValue: {
   correct: boolean;
@@ -8,7 +8,7 @@ const useAnswerQuestion: () => (newValue: {
   const dispatch: Dispatch = useDispatch();
 
   return (newValue: { correct: boolean }): void => {
-    dispatch(answerQuestion(newValue));
+    dispatch(increaseScore(newValue));
   };
 };
 

@@ -54,26 +54,24 @@ const topicSlice = createSlice({
       state.quizError = null;
       state.quizStatus = LoadingStateEnum.SUCCEEDED;
     },
-    answerQuestion: (state, action: PayloadAction<{ correct: boolean }>) => {
+    increaseIndex: (state: TopicState): void => {
       if (!state.questions.length) {
         state.quizError = QUESTIONS_ARE_MISSING_ERROR_MESSAGE;
         state.currentIndex = 0;
         state.isQuizFinished = true;
         return;
       }
-
-      if (action.payload.correct) {
-        if (state.currentScore > state.questions.length) {
-          state.quizError = MAX_SCORE_ERROR_MESSAGE;
-        } else {
-          state.currentScore++;
-        }
-      }
-
       if (state.currentIndex < state.questions.length - 1) {
         state.currentIndex++;
       } else {
         state.isQuizFinished = true;
+      }
+    },
+    increaseScore: (state) => {
+      if (state.currentScore > state.questions.length) {
+        state.quizError = MAX_SCORE_ERROR_MESSAGE;
+      } else {
+        state.currentScore++;
       }
     },
     setQuizError(state: TopicState, action: PayloadAction<string | null>) {
@@ -93,7 +91,8 @@ export const {
   setTopic,
   setQuizStatus,
   setQuestionsAndResetIndexAndScore,
-  answerQuestion,
+  increaseIndex,
+  increaseScore,
   setQuizError,
   resetTopic,
 } = topicSlice.actions;

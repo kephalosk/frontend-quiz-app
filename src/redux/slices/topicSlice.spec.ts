@@ -1,11 +1,12 @@
 import topicReducer, {
-  answerQuestion,
+  increaseScore,
   resetTopic,
   setQuizError,
   setQuestionsAndResetIndexAndScore,
   setQuizStatus,
   setTopic,
   TopicState,
+  increaseIndex,
 } from "@/redux/slices/topicSlice.ts";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import { LoadingStateEnum } from "@/globals/models/enums/LoadingStateEnum.ts";
@@ -95,13 +96,12 @@ describe("topicSlice", (): void => {
     });
   });
 
-  describe("answerQuestion", (): void => {
+  describe("increaseIndex", (): void => {
     it("sets error, currentIndex and isQuizFinished and returns early for empty questions", (): void => {
-      const newValue: { correct: boolean } = { correct: false };
       const action: {
-        payload: { correct: boolean };
-        type: "topic/answerQuestion";
-      } = answerQuestion(newValue);
+        payload: undefined;
+        type: "topic/increaseIndex";
+      } = increaseIndex();
       const nextState: TopicState = topicReducer(
         { ...initialState, questions: [] },
         action,
@@ -113,14 +113,51 @@ describe("topicSlice", (): void => {
       expect(nextState.isQuizFinished).toEqual(true);
     });
 
-    it("increases currentScore and index", (): void => {
+    it("increases index", (): void => {
+      const prevIndex: number = mockedQuestions.length - 2;
+      const action: {
+        payload: undefined;
+        type: "topic/increaseIndex";
+      } = increaseIndex();
+      const nextState: TopicState = topicReducer(
+        {
+          ...initialState,
+          questions: mockedQuestions,
+          currentIndex: prevIndex,
+        },
+        action,
+      );
+
+      expect(nextState.currentIndex).toEqual(prevIndex + 1);
+    });
+
+    it("sets isQuizFinished if index reached last question", (): void => {
+      const prevIndex: number = mockedQuestions.length - 1;
+      const action: {
+        payload: undefined;
+        type: "topic/increaseIndex";
+      } = increaseIndex();
+      const nextState: TopicState = topicReducer(
+        {
+          ...initialState,
+          questions: mockedQuestions,
+          currentIndex: prevIndex,
+        },
+        action,
+      );
+
+      expect(nextState.isQuizFinished).toEqual(true);
+    });
+  });
+
+  describe("increaseScore", (): void => {
+    it("increases currentScore", (): void => {
       const prevScore: number = 1;
       const prevIndex: number = 1;
-      const newValue: { correct: boolean } = { correct: true };
       const action: {
-        payload: { correct: boolean };
-        type: "topic/answerQuestion";
-      } = answerQuestion(newValue);
+        payload: undefined;
+        type: "topic/increaseScore";
+      } = increaseScore();
       const nextState: TopicState = topicReducer(
         {
           ...initialState,
@@ -135,17 +172,15 @@ describe("topicSlice", (): void => {
         JSON.stringify(mockedQuestions),
       );
       expect(nextState.currentScore).toEqual(prevScore + 1);
-      expect(nextState.currentIndex).toEqual(prevIndex + 1);
       expect(nextState.isQuizFinished).toEqual(false);
     });
 
     it("sets error if currentScore has exceeded question length", (): void => {
       const prevScore: number = mockedQuestions.length + 1;
-      const newValue: { correct: boolean } = { correct: true };
       const action: {
-        payload: { correct: boolean };
-        type: "topic/answerQuestion";
-      } = answerQuestion(newValue);
+        payload: undefined;
+        type: "topic/increaseScore";
+      } = increaseScore();
       const nextState: TopicState = topicReducer(
         {
           ...initialState,
@@ -156,25 +191,6 @@ describe("topicSlice", (): void => {
       );
 
       expect(nextState.quizError).toEqual(MAX_SCORE_ERROR_MESSAGE);
-    });
-
-    it("sets isQuizFinished if index reached last question", (): void => {
-      const prevIndex: number = mockedQuestions.length - 1;
-      const newValue: { correct: boolean } = { correct: true };
-      const action: {
-        payload: { correct: boolean };
-        type: "topic/answerQuestion";
-      } = answerQuestion(newValue);
-      const nextState: TopicState = topicReducer(
-        {
-          ...initialState,
-          questions: mockedQuestions,
-          currentIndex: prevIndex,
-        },
-        action,
-      );
-
-      expect(nextState.isQuizFinished).toEqual(true);
     });
   });
 
