@@ -1,0 +1,28 @@
+@use '../../../styles/colors';
+@use '../../../styles/fonts';
+@use '../../../styles/functions';
+@use '../../../styles/mixins';
+@use '../../../styles/screens';
+@use '../../../styles/spaces';
+
+$error-icon-height: functions.to-rem(40px);
+$error-icon-width: functions.to-rem(40px);
+
+.errorContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: spaces.$space-8px;
+  width: 100%;
+}
+
+.errorContainerIcon {
+  height: $error-icon-height;
+  width: $error-icon-width;
+  fill: none;
+}
+
+.errorContainerIconPath {
+  fill: colors.$red-500;
+}

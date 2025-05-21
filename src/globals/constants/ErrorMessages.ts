@@ -7,6 +7,9 @@ export const INDEX_ERROR_MESSAGE: string = "Index out of range!";
 export const QUESTION_POSITION_ERROR_MESSAGE: string =
   "Unknown question position!";
 
+export const MISSING_SELECTION_ERROR_MESSAGE: string =
+  "Please select an answer";
+
 export const getErrorMessageMaxValueLess0: (maxValue: number) => string = (
   maxValue: number,
 ): string => {
