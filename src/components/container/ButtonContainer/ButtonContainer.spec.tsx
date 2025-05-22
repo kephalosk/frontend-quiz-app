@@ -78,7 +78,6 @@ describe("ButtonContainer Component", (): void => {
   };
 
   const handleSubmitMock: jest.Mock = jest.fn();
-  const handleButtonClick: () => jest.Mock = (): jest.Mock => jest.fn();
   const updateSelectionResultMock: jest.Mock = jest.fn();
   const resetKeyMock: number = 0;
   const isQuestionAnsweredMock: boolean = true;
