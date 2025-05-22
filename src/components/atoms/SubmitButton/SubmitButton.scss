@@ -10,18 +10,18 @@ $transition-duration: 0.2s;
 $arrow-icon-height: functions.to-rem(12px);
 $arrow-icon-width: functions.to-rem(12px);
 
-.button {
+.submitButton {
   border-radius: spaces.$radius-12px;
-  padding: spaces.$space-8px spaces.$space-16px;
+  border: $border-thickness solid colors.$purple-600;
+  padding: spaces.$space-18px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   column-gap: spaces.$space-24px;
   width: 100%;
-  background-color: colors.$green-200;
-  text-transform: uppercase;
-  color: colors.$grey-800;
+  background-color: colors.$purple-600;
+  color: colors.$white;
   outline: none;
   box-shadow: none;
   cursor: pointer;
@@ -32,56 +32,29 @@ $arrow-icon-width: functions.to-rem(12px);
 
   @include screens.tablet-and-up {
     border-radius: spaces.$radius-24px;
+    padding: spaces.$space-31px;
   }
 
   @include fonts.text-preset-4;
 }
 
-.button:hover {
-  border: $border-thickness solid colors.$green-200;
-  background-color: colors.$grey-800;
-  color: colors.$green-200;
+.submitButton:hover {
+  border: $border-thickness solid colors.$purple-300;
+  background-color: colors.$purple-300;
   outline: none;
   box-shadow: none;
 }
 
-.button:focus {
-  border: $border-thickness solid colors.$green-200;
-  background-color: colors.$grey-800;
-  color: colors.$green-200;
+.submitButton:focus {
+  border: $border-thickness solid colors.$purple-300;
+  background-color: colors.$purple-300;
   outline: none;
   box-shadow: none;
 }
 
-.button:focus-visible {
-  border: $border-thickness solid colors.$green-200;
-  background-color: colors.$grey-800;
-  color: colors.$green-200;
+.submitButton:focus-visible {
+  border: $border-thickness solid colors.$purple-300;
+  background-color: colors.$purple-300;
   outline: none;
   box-shadow: none;
-}
-
-.button.disabled {
-  border: $border-thickness solid colors.$grey-600;
-  background-color: colors.$grey-600;
-  cursor: not-allowed;
-}
-
-.buttonIcon {
-  height: $arrow-icon-height;
-  width: $arrow-icon-width;
-  fill: colors.$grey-800;
-  transition: fill $transition-duration ease;
-}
-
-.button:hover .buttonIcon {
-  fill: colors.$green-200;
-}
-
-.button:focus .buttonIcon {
-  fill: colors.$green-200;
-}
-
-.button:focus-visible .buttonIcon {
-  fill: colors.$green-200;
 }
