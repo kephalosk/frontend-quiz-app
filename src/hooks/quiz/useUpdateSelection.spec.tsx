@@ -8,6 +8,7 @@ import { UpdateSelectionHook } from "@/globals/models/types/QuizTypes.ts";
 import { QuestionPositionEnum } from "@/globals/models/enums/QuestionPositionEnum.ts";
 import getIndexByQuestionPosition from "@/globals/helper/getIndexByQuestionPosition.ts";
 import getIndexOfCorrectPositionInCurrentQuestion from "@/globals/helper/getIndexOfCorrectPositionInCurrentQuestion.ts";
+import { DefaultQuestionStatusArray } from "@/globals/constants/DefaultQuestionStatusArray.ts";
 
 jest.mock(
   "@/globals/helper/getIndexByQuestionPosition.ts",
@@ -40,7 +41,8 @@ const testComponentDataTestIdAnswered: string = "test-component-answered";
 const TestComponent: React.FC<{
   answer: string;
   positionClicked: QuestionPositionEnum;
-}> = ({ answer, positionClicked }) => {
+  resetKey: number;
+}> = ({ answer, positionClicked, resetKey }) => {
   const {
     statusArraySelected,
     statusArrayAnswered,
@@ -48,6 +50,7 @@ const TestComponent: React.FC<{
   }: UpdateSelectionHook = useUpdateSelection(
     currentQuestionMock,
     propagateCorrectSelectionMock,
+    resetKey,
   );
 
   return (
@@ -68,23 +71,28 @@ const TestComponent: React.FC<{
 describe("useUpdateSelection Hook", (): void => {
   const answer: string = currentQuestionMock.answer;
   const positionClicked: QuestionPositionEnum = QuestionPositionEnum.A;
+  const resetKey: number = 0;
 
   const setup = (
     propsOverride?: Partial<{
       answer: string;
       positionClicked: QuestionPositionEnum;
+      resetKey: number;
     }>,
   ): void => {
     const defaultProps: {
       answer: string;
       positionClicked: QuestionPositionEnum;
+      resetKey: number;
     } = {
       answer,
       positionClicked,
+      resetKey,
     };
     const props: {
       answer: string;
       positionClicked: QuestionPositionEnum;
+      resetKey: number;
     } = { ...defaultProps, ...propsOverride };
     render(<TestComponent {...props} />);
   };
@@ -193,5 +201,48 @@ describe("useUpdateSelection Hook", (): void => {
     fireEvent.click(element);
 
     expect(getIndexOfCorrectPositionInCurrentQuestion).not.toHaveBeenCalled();
+  });
+
+  it("resets both status arrays when resetKey changes", (): void => {
+    const expectedDefault = JSON.stringify(DefaultQuestionStatusArray);
+    let resetKey = 0;
+
+    const { rerender } = render(
+      <TestComponent
+        answer={answer}
+        positionClicked={positionClicked}
+        resetKey={resetKey}
+      />,
+    );
+
+    fireEvent.click(screen.getByTestId(testComponentDataTestId));
+    const mutatedSelected = screen.getByTestId(
+      testComponentDataTestIdSelected,
+    ).innerHTML;
+    const mutatedAnswered = screen.getByTestId(
+      testComponentDataTestIdAnswered,
+    ).innerHTML;
+
+    expect(mutatedSelected).not.toEqual(expectedDefault);
+    expect(mutatedAnswered).not.toEqual(expectedDefault);
+
+    resetKey++;
+    rerender(
+      <TestComponent
+        answer={answer}
+        positionClicked={positionClicked}
+        resetKey={resetKey}
+      />,
+    );
+
+    const resetSelected = screen.getByTestId(
+      testComponentDataTestIdSelected,
+    ).innerHTML;
+    const resetAnswered = screen.getByTestId(
+      testComponentDataTestIdAnswered,
+    ).innerHTML;
+
+    expect(resetSelected).toEqual(expectedDefault);
+    expect(resetAnswered).toEqual(expectedDefault);
   });
 });

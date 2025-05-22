@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { QuestionStatusEnum } from "@/globals/models/enums/QuestionStatusEnum.ts";
 import { DefaultQuestionStatusArray } from "@/globals/constants/DefaultQuestionStatusArray.ts";
 import { QuestionPositionEnum } from "@/globals/models/enums/QuestionPositionEnum.ts";
@@ -10,6 +10,7 @@ import getIndexByQuestionPosition from "@/globals/helper/getIndexByQuestionPosit
 const useUpdateSelection = (
   currentQuestion: EPQuestion,
   propagateCorrectSelection: (value: boolean) => void,
+  resetKey: number,
 ): UpdateSelectionHook => {
   const [statusArraySelected, setStatusArraySelected] = useState<
     QuestionStatusEnum[]
@@ -62,6 +63,11 @@ const useUpdateSelection = (
     },
     [updateStatusArrayAnswered, updateStatusArraySelected],
   );
+
+  useEffect(() => {
+    setStatusArraySelected(DefaultQuestionStatusArray);
+    setStatusArrayAnswered(DefaultQuestionStatusArray);
+  }, [resetKey]);
 
   return { statusArraySelected, statusArrayAnswered, handleSelection };
 };
