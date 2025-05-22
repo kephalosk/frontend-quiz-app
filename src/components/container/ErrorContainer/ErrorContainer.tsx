@@ -2,7 +2,7 @@ import "./ErrorContainer.scss";
 import React, { ReactElement } from "react";
 import {
   ERROR_ICON_D,
-  ERROR_ICON_SRC,
+  ERROR_ICON_SRC_WEB,
 } from "@/globals/constants/Ressources.ts";
 import Label from "@/components/atoms/Label/Label.tsx";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
@@ -13,7 +13,7 @@ const ErrorContainer: React.FC = (): ReactElement => {
     <div className="errorContainer">
       <svg
         className="errorContainerIcon"
-        xmlns={ERROR_ICON_SRC}
+        xmlns={ERROR_ICON_SRC_WEB}
         viewBox="0 0 40 40"
       >
         <path className="errorContainerIconPath" d={ERROR_ICON_D} />

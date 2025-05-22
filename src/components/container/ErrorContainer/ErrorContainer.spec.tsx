@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import ErrorContainer from "@/components/container/ErrorContainer/ErrorContainer.tsx";
 import {
   ERROR_ICON_D,
-  ERROR_ICON_SRC,
+  ERROR_ICON_SRC_WEB,
 } from "@/globals/constants/Ressources.ts";
 import Label from "@/components/atoms/Label/Label.tsx";
 import { ReactElement } from "react";
@@ -40,7 +40,7 @@ describe("ErrorContainer", (): void => {
     );
 
     expect(element).toBeInTheDocument();
-    expect(element).toHaveAttribute("xmlns", ERROR_ICON_SRC);
+    expect(element).toHaveAttribute("xmlns", ERROR_ICON_SRC_WEB);
     expect(element).toHaveAttribute("viewBox", "0 0 40 40");
   });
 
