@@ -17,7 +17,7 @@ $icon-width-tablet: functions.to-rem(40px);
   border-radius: spaces.$radius-12px;
   border: $border-thickness solid colors.$white;
   background-color: colors.$white;
-  padding: spaces.$space-16px;
+  padding: spaces.$space-12px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -156,13 +156,14 @@ $icon-width-tablet: functions.to-rem(40px);
 .quizButtonPosition {
   border-radius: spaces.$radius-6px;
   background-color: colors.$grey-50;
-  padding: spaces.$space-12px;
+  padding: spaces.$space-12px spaces.$space-14px;
   color: colors.$grey-500;
   transition: background-color $transition-duration ease;
 
   @include fonts.text-preset-4;
 
   @include screens.tablet-and-up {
+    border-radius: spaces.$radius-12px;
     padding: spaces.$space-16px;
   }
 
