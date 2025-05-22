@@ -59,12 +59,14 @@ const topicSlice = createSlice({
         state.quizError = QUESTIONS_ARE_MISSING_ERROR_MESSAGE;
         state.currentIndex = 0;
         state.isQuizFinished = true;
+        console.log("isQuizFinished", state.isQuizFinished);
         return;
       }
       if (state.currentIndex < state.questions.length - 1) {
         state.currentIndex++;
       } else {
         state.isQuizFinished = true;
+        console.log("isQuizFinished", state.isQuizFinished);
       }
     },
     increaseScore: (state) => {
@@ -72,10 +74,14 @@ const topicSlice = createSlice({
         state.quizError = MAX_SCORE_ERROR_MESSAGE;
       } else {
         state.currentScore++;
+        console.log("currentScore", state.currentScore);
       }
     },
     setQuizError(state: TopicState, action: PayloadAction<string | null>) {
       state.quizError = action.payload;
+    },
+    setIsQuizFinished(state: TopicState, action: PayloadAction<boolean>) {
+      state.isQuizFinished = action.payload;
     },
     resetTopic: (state: TopicState): void => {
       Object.assign(state, {
@@ -94,6 +100,7 @@ export const {
   increaseIndex,
   increaseScore,
   setQuizError,
+  setIsQuizFinished,
   resetTopic,
 } = topicSlice.actions;
 

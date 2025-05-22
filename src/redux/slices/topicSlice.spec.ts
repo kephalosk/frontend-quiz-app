@@ -7,6 +7,7 @@ import topicReducer, {
   setTopic,
   TopicState,
   increaseIndex,
+  setIsQuizFinished,
 } from "@/redux/slices/topicSlice.ts";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import { LoadingStateEnum } from "@/globals/models/enums/LoadingStateEnum.ts";
@@ -204,6 +205,19 @@ describe("topicSlice", (): void => {
 
     expect(nextState.quizError).toEqual(newValue);
   });
+
+  it.each([[true], [false]])(
+    "sets isQuizFinished to %s",
+    (newValue: boolean): void => {
+      const action: {
+        payload: boolean;
+        type: "topic/setIsQuizFinished";
+      } = setIsQuizFinished(newValue);
+      const nextState: TopicState = topicReducer(initialState, action);
+
+      expect(nextState.isQuizFinished).toEqual(newValue);
+    },
+  );
 
   it("handles resetting everything", (): void => {
     const action: {
