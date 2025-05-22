@@ -15,12 +15,14 @@ const ErrorContainer: React.FC = (): ReactElement => {
         className="errorContainerIcon"
         xmlns={ERROR_ICON_SRC_WEB}
         viewBox="0 0 40 40"
+        aria-hidden={true}
       >
         <path className="errorContainerIconPath" d={ERROR_ICON_D} />
       </svg>
       <Label
         type={LabelTypeEnum.ERROR_LABEL}
         text={MISSING_SELECTION_ERROR_MESSAGE}
+        aria-live="assertive"
       />
     </div>
   );

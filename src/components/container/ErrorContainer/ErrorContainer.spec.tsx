@@ -42,6 +42,7 @@ describe("ErrorContainer", (): void => {
     expect(element).toBeInTheDocument();
     expect(element).toHaveAttribute("xmlns", ERROR_ICON_SRC_WEB);
     expect(element).toHaveAttribute("viewBox", "0 0 40 40");
+    expect(element).toHaveAttribute("aria-hidden", "true");
   });
 
   it("renders path errorContainerIconPath", (): void => {
@@ -66,6 +67,7 @@ describe("ErrorContainer", (): void => {
       {
         type: LabelTypeEnum.ERROR_LABEL,
         text: MISSING_SELECTION_ERROR_MESSAGE,
+        ["aria-live"]: "assertive",
       },
       undefined,
     );
