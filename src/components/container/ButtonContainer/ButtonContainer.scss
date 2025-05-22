@@ -1,0 +1,27 @@
+@use '../../../styles/colors';
+@use '../../../styles/functions';
+@use '../../../styles/mixins';
+@use '../../../styles/screens';
+@use '../../../styles/spaces';
+
+$container-height: functions.to-rem(40px);
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: spaces.$space-16px;
+  width: 100%;
+
+  @include screens.tablet-and-up {
+    row-gap: spaces.$space-32px;
+  }
+
+  @include screens.desktop-and-up {
+    width: spaces.$button-desktop-width;
+  }
+}
+
+.buttonContainerError {
+  height: $container-height;
+}
