@@ -6,7 +6,8 @@ import HeaderContainer from "@/components/container/HeaderContainer/HeaderContai
 import StartPage from "@/pages/StartPage/StartPage.tsx";
 import { Route, Routes } from "react-router-dom";
 import { STARTPAGE_PATH } from "@/globals/constants/Ressources.ts";
-import QuizButtonContainer from "@/components/container/QuizButtonContainer/QuizButtonContainer.tsx";
+import ResultPage from "@/pages/ResultPage/ResultPage.tsx";
+import ButtonContainer from "@/components/container/ButtonContainer/ButtonContainer.tsx";
 
 const App: React.FC = (): ReactElement => {
   const isDarkModeOn: boolean = useDarkMode();
@@ -15,26 +16,12 @@ const App: React.FC = (): ReactElement => {
     <div className={`app app--${isDarkModeOn ? "darkMode" : "lightMode"}`}>
       <HeaderContainer />
       <Routes>
-        <Route
-          path={STARTPAGE_PATH}
-          element={
-            <QuizButtonContainer
-              isQuestionAnswered={false}
-              propagateCorrectSelection={function (
-                IsSelectedAnswerCorrect: boolean,
-              ): void {
-                console.log(
-                  "Function not implemented." + IsSelectedAnswerCorrect,
-                );
-              }}
-            />
-          }
-        />
+        <Route path={STARTPAGE_PATH} element={<ButtonContainer />} />
         {/*TODO*/}
         {/*<Route path="/quiz" element={<QuizPage />} />*/}
-        {/*<Route path="/result" element={<ResultPage />} />*/}
+        <Route path={`${STARTPAGE_PATH}result`} element={<ResultPage />} />
         {/* Optional: für unbekannte Pfade */}
-        <Route path="*" element={<StartPage />} />
+        {/*<Route path="*" element={<StartPage />} />*/}
       </Routes>
       <Footer />
     </div>
