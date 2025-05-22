@@ -38,6 +38,9 @@ export const STARTPAGE_HEADLINE_TEXT: string = "Welcome to the";
 export const STARTPAGE_HEADLINE_BOLD_TEXT: string = "Frontend Quiz!";
 export const STARTPAGE_SUB_LINE_TEXT: string = "Pick a subject to get started.";
 
+export const SUBMIT_ANSWER_BUTTON_TEXT: string = "Submit Answer";
+export const NEXT_QUESTION_BUTTON_TEXT: string = "Next Question";
+export const SHOW_RESULTS_BUTTON_TEXT: string = "Show Results";
 //######Old constants
 
 export const PASSWORD_PLACEHOLDER_LABEL_TEXT: string = "P4$5W0rD!";
