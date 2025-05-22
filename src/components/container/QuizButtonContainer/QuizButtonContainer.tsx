@@ -13,11 +13,13 @@ import { QuestionStatusEnum } from "@/globals/models/enums/QuestionStatusEnum.ts
 export interface QuizButtonContainerProps {
   isQuestionAnswered: boolean;
   propagateCorrectSelection: (IsSelectedAnswerCorrect: boolean) => void;
+  resetKey: number;
 }
 
 const QuizButtonContainer: React.FC<QuizButtonContainerProps> = ({
   isQuestionAnswered,
   propagateCorrectSelection,
+  resetKey,
 }: QuizButtonContainerProps): ReactElement => {
   const questions: EPQuestion[] = useQuestions();
   const currentIndex: number = useCurrentIndex();
@@ -29,6 +31,7 @@ const QuizButtonContainer: React.FC<QuizButtonContainerProps> = ({
   }: UpdateSelectionHook = useUpdateSelection(
     currentQuestion,
     propagateCorrectSelection,
+    resetKey,
   );
   const currentStatusArray: QuestionStatusEnum[] = getCurrentStatusArray(
     isQuestionAnswered,

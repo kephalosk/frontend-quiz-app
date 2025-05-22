@@ -90,12 +90,14 @@ jest.mock(
 describe("QuizButtonContainer Component", (): void => {
   const isQuestionAnswered: boolean = false;
   const propagateCorrectSelectionMock: jest.Mock = jest.fn();
+  const resetKey: number = 0;
   const setup = (
     propsOverride?: Partial<QuizButtonContainerProps>,
   ): { container: HTMLElement } => {
     const defaultProps: QuizButtonContainerProps = {
       isQuestionAnswered,
       propagateCorrectSelection: propagateCorrectSelectionMock,
+      resetKey,
     };
     const props = { ...defaultProps, ...propsOverride };
     return render(<QuizButtonContainer {...props} />);
@@ -220,6 +222,7 @@ describe("QuizButtonContainer Component", (): void => {
     expect(useUpdateSelection).toHaveBeenCalledWith(
       questionsMock[currentIndexMock],
       propagateCorrectSelectionMock,
+      resetKey,
     );
     expect(useUpdateSelection).toHaveReturnedWith(useUpdateSelectionMock);
   });
