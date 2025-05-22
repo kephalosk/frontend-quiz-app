@@ -10,7 +10,7 @@ import { TopicTextAndTypeHook } from "@/globals/models/types/TopicTypes.ts";
 import { ERROR_MESSAGE_UNKNOWN_TOPIC_PREFIX } from "@/globals/constants/ErrorMessages.ts";
 
 export default function useTopicTextAndType(): TopicTextAndTypeHook {
-  const topic: TopicEnum | undefined = useTopic();
+  const topic: TopicEnum | null = useTopic();
   switch (topic) {
     case TopicEnum.HTML:
       return {
@@ -32,7 +32,7 @@ export default function useTopicTextAndType(): TopicTextAndTypeHook {
         text: ACCESSIBILITY_TEXT,
         type: TopicEnum.ACCESSIBILITY,
       };
-    case undefined:
+    case null:
       return {
         text: "",
         type: TopicEnum.HTML,

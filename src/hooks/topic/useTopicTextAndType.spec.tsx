@@ -50,10 +50,10 @@ describe("useTopicTextAndType hook", (): void => {
     [TopicEnum.CSS, CSS_TEXT, TopicEnum.CSS],
     [TopicEnum.JAVASCRIPT, JAVASCRIPT_TEXT, TopicEnum.JAVASCRIPT],
     [TopicEnum.ACCESSIBILITY, ACCESSIBILITY_TEXT, TopicEnum.ACCESSIBILITY],
-    ["undefined" as TopicEnum, "", undefined],
+    ["null" as TopicEnum, "", null],
   ])(
     "returns text and type for topic %s",
-    (_: TopicEnum, text: string, type: TopicEnum | undefined): void => {
+    (_: TopicEnum, text: string, type: TopicEnum | null): void => {
       (useTopic as jest.Mock).mockReturnValue(type);
       setup();
 
