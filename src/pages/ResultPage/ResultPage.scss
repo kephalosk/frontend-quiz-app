@@ -1,11 +1,8 @@
-@use '../../styles/colors';
-@use '../../styles/functions';
-@use '../../styles/mixins';
 @use '../../styles/screens';
 @use '../../styles/spaces';
 
-.startPage {
-  padding:  0 spaces.$space-7vw;
+.resultPage {
+  padding: 0 spaces.$space-7vw;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -20,5 +17,16 @@
     flex-direction: row;
     justify-content: space-between;
     column-gap: spaces.$space-7vw;
+  }
+}
+
+.resultPageResult {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: spaces.$space-16px;
+
+  @include screens.tablet-and-up{
+    row-gap: spaces.$space-32px;
   }
 }
