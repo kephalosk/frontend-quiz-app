@@ -40,3 +40,9 @@ export type QuestionAnsweredHook = {
     value: ((prevState: boolean) => boolean) | boolean,
   ) => void;
 };
+
+export type CurrentQuestionHook = {
+  currentQuestionText: string;
+  progressInfo: string;
+  progressPerCent: number;
+};
