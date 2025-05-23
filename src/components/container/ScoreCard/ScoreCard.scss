@@ -1,0 +1,43 @@
+@use '../../../styles/colors';
+@use '../../../styles/functions';
+@use '../../../styles/mixins';
+@use '../../../styles/screens';
+@use '../../../styles/spaces';
+
+.scoreCard {
+  border-radius: spaces.$radius-12px;
+  padding: spaces.$space-32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: spaces.$space-16px;
+  width: 100%;
+
+  @include mixins.box-shadow;
+
+  @include screens.tablet-and-up {
+    padding: spaces.$space-48px;
+    row-gap: spaces.$space-40px;
+  }
+
+  @include screens.desktop-and-up {
+    width: spaces.$button-desktop-width;
+  }
+
+  &--dark {
+    background-color: colors.$blue-850;
+  }
+
+  &--light {
+    background-color: colors.$white;
+  }
+}
+
+.scoreCardScore {
+  border-radius: spaces.$radius-12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: spaces.$space-16px;
+  width: 100%;
+}
