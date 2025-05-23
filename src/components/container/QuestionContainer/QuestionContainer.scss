@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: flex-start;
   row-gap: spaces.$space-24px;
+  width: 100%;
 
   @include screens.tablet-and-up {
     row-gap: spaces.$space-40px;
