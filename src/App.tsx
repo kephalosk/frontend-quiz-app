@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import { STARTPAGE_PATH } from "@/globals/constants/Ressources.ts";
 import ResultPage from "@/pages/ResultPage/ResultPage.tsx";
 import ButtonContainer from "@/components/container/ButtonContainer/ButtonContainer.tsx";
+import QuizPage from "@/pages/QuizPage/QuizPage.tsx";
 
 const App: React.FC = (): ReactElement => {
   const isDarkModeOn: boolean = useDarkMode();
@@ -16,7 +17,7 @@ const App: React.FC = (): ReactElement => {
     <div className={`app app--${isDarkModeOn ? "darkMode" : "lightMode"}`}>
       <HeaderContainer />
       <Routes>
-        <Route path={STARTPAGE_PATH} element={<ButtonContainer />} />
+        <Route path={STARTPAGE_PATH} element={<QuizPage />} />
         {/*TODO*/}
         {/*<Route path="/quiz" element={<QuizPage />} />*/}
         <Route path={`${STARTPAGE_PATH}result`} element={<ResultPage />} />
