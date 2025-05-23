@@ -26,3 +26,17 @@ export type ResetKeyHook = { resetKey: number; resetStatusArray: () => void };
 export type UpdateSelectionResultHook = {
   updateSelectionResult: (value: boolean) => void;
 };
+
+export type AnswerSelectionHook = {
+  isAnswerSelected: boolean;
+  setIsAnswerSelected: (
+    value: ((prevState: boolean) => boolean) | boolean,
+  ) => void;
+};
+
+export type QuestionAnsweredHook = {
+  isQuestionAnswered: boolean;
+  setIsQuestionAnswered: (
+    value: ((prevState: boolean) => boolean) | boolean,
+  ) => void;
+};
