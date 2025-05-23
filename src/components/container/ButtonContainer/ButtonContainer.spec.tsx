@@ -1,9 +1,7 @@
 import { ReactElement } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import QuizButtonContainer,  from "@/components/container/QuizButtonContainer/QuizButtonContainer.tsx";
-import {
-  QuizSubmitHook,
-} from "@/globals/models/types/QuizTypes.ts";
+import QuizButtonContainer from "@/components/container/QuizButtonContainer/QuizButtonContainer.tsx";
+import { QuizSubmitHook } from "@/globals/models/types/QuizTypes.ts";
 import useQuizSubmit from "@/hooks/quiz/useQuizSubmit.ts";
 import getSubmitButtonText from "@/globals/helper/getSubmitButtonText.ts";
 import ButtonContainer from "@/components/container/ButtonContainer/ButtonContainer.tsx";
@@ -174,7 +172,9 @@ describe("ButtonContainer Component", (): void => {
     });
     setup();
 
-    const element: HTMLElement | null = screen.queryByTestId(errorContainerDataTestId);
+    const element: HTMLElement | null = screen.queryByTestId(
+      errorContainerDataTestId,
+    );
 
     expect(element).not.toBeInTheDocument();
     expect(ErrorContainer).not.toHaveBeenCalled();
@@ -212,12 +212,12 @@ describe("ButtonContainer Component", (): void => {
     expect(useQuizSubmit).toHaveBeenCalledTimes(1);
     expect(useQuizSubmit).toHaveBeenCalledWith();
     expect(useQuizSubmit).toHaveReturnedWith({
-      handleSubmit:handleSubmitMock,
-      updateSelectionResult:updateSelectionResultMock,
-      resetKey:resetKeyMock,
-      isQuestionAnswered:isQuestionAnsweredMock,
-      isQuizFinished:isQuizFinishedMock,
-      hasError:hasErrorMock,
+      handleSubmit: handleSubmitMock,
+      updateSelectionResult: updateSelectionResultMock,
+      resetKey: resetKeyMock,
+      isQuestionAnswered: isQuestionAnsweredMock,
+      isQuizFinished: isQuizFinishedMock,
+      hasError: hasErrorMock,
     });
   });
 
@@ -225,7 +225,10 @@ describe("ButtonContainer Component", (): void => {
     setup();
 
     expect(getSubmitButtonText).toHaveBeenCalledTimes(1);
-    expect(getSubmitButtonText).toHaveBeenCalledWith(isQuizFinishedMock,isQuestionAnsweredMock);
+    expect(getSubmitButtonText).toHaveBeenCalledWith(
+      isQuizFinishedMock,
+      isQuestionAnsweredMock,
+    );
     expect(getSubmitButtonText).toHaveReturnedWith(submitButtonTextMock);
   });
 });
