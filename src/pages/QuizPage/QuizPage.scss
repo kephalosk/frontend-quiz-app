@@ -1,0 +1,24 @@
+@use '../../styles/colors';
+@use '../../styles/functions';
+@use '../../styles/mixins';
+@use '../../styles/screens';
+@use '../../styles/spaces';
+
+.quizPage {
+  padding:  0 spaces.$space-7vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: spaces.$space-40px;
+  width: 100%;
+
+  @include screens.tablet-and-up {
+    row-gap: spaces.$space-64px;
+  }
+
+  @include screens.desktop-and-up {
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: spaces.$space-7vw;
+  }
+}
