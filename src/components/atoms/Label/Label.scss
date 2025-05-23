@@ -17,6 +17,7 @@ $transition-duration: 0.2s;
   transition: color $transition-duration ease;
 
   &__errorLabel {
+    white-space: wrap;
     text-align: left;
     color: colors.$red-500;
 
@@ -63,6 +64,7 @@ $transition-duration: 0.2s;
   }
 
   &__quizButtonLabel {
+    white-space: wrap;
     text-align: left;
     color: colors.$blue-900;
 
