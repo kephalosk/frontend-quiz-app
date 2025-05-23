@@ -1,8 +1,5 @@
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
-import { QuestionStatusEnum } from "@/globals/models/enums/QuestionStatusEnum.ts";
-import getIndexByQuestionPosition from "@/globals/helper/getIndexByQuestionPosition.ts";
-import getIndexOfCorrectPositionInCurrentQuestion from "@/globals/helper/getIndexOfCorrectPositionInCurrentQuestion.ts";
+import { render, screen } from "@testing-library/react";
 import useScoreSubLine from "@/hooks/quiz/useScoreSubLine.ts";
 import useQuestions from "@/hooks/redux/topic/selector/useQuestions.ts";
 import { EPQuestion } from "@/globals/models/entrypoints/EPQuestion.ts";
