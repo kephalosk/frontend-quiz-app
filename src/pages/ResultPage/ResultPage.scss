@@ -25,8 +25,13 @@
   flex-direction: column;
   align-items: center;
   row-gap: spaces.$space-16px;
+  width: 100%;
 
   @include screens.tablet-and-up{
     row-gap: spaces.$space-32px;
+  }
+
+  @include screens.desktop-and-up {
+    width: spaces.$button-desktop-width;
   }
 }

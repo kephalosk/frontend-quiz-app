@@ -20,10 +20,6 @@
     row-gap: spaces.$space-40px;
   }
 
-  @include screens.desktop-and-up {
-    width: spaces.$button-desktop-width;
-  }
-
   &--dark {
     background-color: colors.$blue-850;
   }
