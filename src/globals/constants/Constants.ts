@@ -38,9 +38,13 @@ export const STARTPAGE_HEADLINE_TEXT: string = "Welcome to the";
 export const STARTPAGE_HEADLINE_BOLD_TEXT: string = "Frontend Quiz!";
 export const STARTPAGE_SUB_LINE_TEXT: string = "Pick a subject to get started.";
 
+export const RESULTPAGE_HEADLINE_TEXT: string = "Quiz completed";
+export const RESULTPAGE_HEADLINE_BOLD_TEXT: string = "You scored...";
+
 export const SUBMIT_ANSWER_BUTTON_TEXT: string = "Submit Answer";
 export const NEXT_QUESTION_BUTTON_TEXT: string = "Next Question";
 export const SHOW_RESULTS_BUTTON_TEXT: string = "Show Results";
+export const PLAY_AGAIN_BUTTON_TEXT: string = "Play Again";
 
 export const SCORE_SUB_LINE_LABEL_PREFIX: string = "Out of ";
 
