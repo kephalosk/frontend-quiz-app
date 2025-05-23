@@ -7,7 +7,7 @@ import useCurrentIndex from "@/hooks/redux/topic/selector/useCurrentIndex.ts";
 import getQuestionPositionByIndex from "@/globals/helper/getQuestionPositionByIndex.ts";
 import { UpdateSelectionHook } from "@/globals/models/types/QuizTypes.ts";
 import useUpdateSelection from "@/hooks/quiz/useUpdateSelection.ts";
-import getCurrentStatusArray from "@/hooks/quiz/getCurrentStatusArray.ts";
+import getCurrentStatusArray from "@/globals/helper/getCurrentStatusArray.ts";
 import { QuestionStatusEnum } from "@/globals/models/enums/QuestionStatusEnum.ts";
 
 export interface QuizButtonContainerProps {

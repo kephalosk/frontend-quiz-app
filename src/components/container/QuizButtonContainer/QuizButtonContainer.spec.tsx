@@ -13,7 +13,7 @@ import QuizButton from "@/components/container/QuizButton/QuizButton.tsx";
 import useQuestions from "@/hooks/redux/topic/selector/useQuestions.ts";
 import useCurrentIndex from "@/hooks/redux/topic/selector/useCurrentIndex.ts";
 import useUpdateSelection from "@/hooks/quiz/useUpdateSelection.ts";
-import getCurrentStatusArray from "@/hooks/quiz/getCurrentStatusArray.ts";
+import getCurrentStatusArray from "@/globals/helper/getCurrentStatusArray.ts";
 import getQuestionPositionByIndex from "@/globals/helper/getQuestionPositionByIndex.ts";
 
 jest.mock(
@@ -50,7 +50,7 @@ jest.mock(
 );
 
 jest.mock(
-  "@/hooks/quiz/getCurrentStatusArray.ts",
+  "@/globals/helper/getCurrentStatusArray.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;
