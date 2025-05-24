@@ -8,8 +8,8 @@ const useResetGame: () => ResetGameHook = (): ResetGameHook => {
   const navigate: NavigateFunction = useNavigate();
   const resetGame: () => void = useResetTopic();
   const handleReset: () => void = useCallback((): void => {
-    resetGame();
     navigate(STARTPAGE_PATH, { replace: true });
+    resetGame();
   }, [navigate, resetGame]);
 
   return { handleReset };

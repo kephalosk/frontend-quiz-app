@@ -5,9 +5,12 @@ import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
 import HeaderContainer from "@/components/container/HeaderContainer/HeaderContainer.tsx";
 import StartPage from "@/pages/StartPage/StartPage.tsx";
 import { Route, Routes } from "react-router-dom";
-import { STARTPAGE_PATH } from "@/globals/constants/Ressources.ts";
+import {
+  QUIZ_SUB_PATH,
+  RESULT_SUB_PATH,
+  STARTPAGE_PATH,
+} from "@/globals/constants/Ressources.ts";
 import ResultPage from "@/pages/ResultPage/ResultPage.tsx";
-import ButtonContainer from "@/components/container/ButtonContainer/ButtonContainer.tsx";
 import QuizPage from "@/pages/QuizPage/QuizPage.tsx";
 
 const App: React.FC = (): ReactElement => {
@@ -17,10 +20,15 @@ const App: React.FC = (): ReactElement => {
     <div className={`app app--${isDarkModeOn ? "darkMode" : "lightMode"}`}>
       <HeaderContainer />
       <Routes>
-        <Route path={STARTPAGE_PATH} element={<QuizPage />} />
-        {/*TODO*/}
-        {/*<Route path="/quiz" element={<QuizPage />} />*/}
-        <Route path={`${STARTPAGE_PATH}result`} element={<ResultPage />} />
+        <Route path={STARTPAGE_PATH} element={<StartPage />} />
+        <Route
+          path={`${STARTPAGE_PATH}${QUIZ_SUB_PATH}`}
+          element={<QuizPage />}
+        />
+        <Route
+          path={`${STARTPAGE_PATH}${RESULT_SUB_PATH}`}
+          element={<ResultPage />}
+        />
         {/* Optional: für unbekannte Pfade */}
         {/*<Route path="*" element={<StartPage />} />*/}
       </Routes>

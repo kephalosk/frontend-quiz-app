@@ -1,6 +1,6 @@
 export enum TopicEnum {
   HTML = "HTML",
   CSS = "CSS",
-  JAVASCRIPT = "Javascript",
+  JAVASCRIPT = "JavaScript",
   ACCESSIBILITY = "Accessibility",
 }

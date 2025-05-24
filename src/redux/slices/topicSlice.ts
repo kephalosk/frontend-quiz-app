@@ -19,7 +19,7 @@ export interface TopicState {
 }
 
 const initialState: TopicState = {
-  topic: null,
+  topic: TopicEnum.ACCESSIBILITY,
   questions: mockedQuestions,
   currentIndex: 0,
   currentScore: 0,

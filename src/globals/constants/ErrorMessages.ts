@@ -10,6 +10,12 @@ export const QUESTION_POSITION_ERROR_MESSAGE: string =
 export const MISSING_SELECTION_ERROR_MESSAGE: string =
   "Please select an answer";
 
+export const MISSING_TOPIC_DATA_ERROR_MESSAGE_PREFIX: string =
+  "Missing data for topic: ";
+
+export const FAILED_QUIZ_START_ERROR_MESSAGE_PREFIX: string =
+  "Failed to load quiz: ";
+
 export const getErrorMessageMaxValueLess0: (maxValue: number) => string = (
   maxValue: number,
 ): string => {
