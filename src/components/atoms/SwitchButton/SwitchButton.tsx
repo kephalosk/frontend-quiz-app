@@ -23,6 +23,7 @@ const SwitchButton: React.FC<SwitchButtonProps> = ({
   return (
     <button
       ref={buttonRef}
+      type="button"
       className={`switchButton ${isActive ? "switchButton--active" : "switchButton--inActive"}`}
       aria-label={`${SWITCH_BUTTON_ARIA_LABEL_PREFIX}${isActive}`}
       onClick={handleClick}

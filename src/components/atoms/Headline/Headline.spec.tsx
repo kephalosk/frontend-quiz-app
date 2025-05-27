@@ -40,7 +40,6 @@ describe("Headline Component", (): void => {
 
     expect(element).toBeInTheDocument();
     expect(element).toHaveTextContent(title);
-    expect(element).toHaveAttribute("aria-label", title);
     expect(element).not.toHaveClass("headline--darkMode");
   });
 

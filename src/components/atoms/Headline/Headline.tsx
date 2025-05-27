@@ -12,10 +12,7 @@ const Headline: React.FC<HeadlineProps> = ({
   const isDarkModeOn: boolean = useDarkMode();
 
   return (
-    <h1
-      className={`headline ${isDarkModeOn && "headline--darkMode"}`}
-      aria-label={title}
-    >
+    <h1 className={`headline ${isDarkModeOn && "headline--darkMode"}`}>
       {title}
     </h1>
   );

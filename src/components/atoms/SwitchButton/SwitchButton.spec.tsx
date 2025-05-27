@@ -83,6 +83,7 @@ describe("SwitchButton component", (): void => {
         "aria-label",
         `${SWITCH_BUTTON_ARIA_LABEL_PREFIX}${isActive}`,
       );
+      expect(element).toHaveAttribute("type", "button");
       expect(element).toHaveClass(expectedClass);
     },
   );
