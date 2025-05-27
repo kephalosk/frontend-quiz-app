@@ -6,7 +6,6 @@ import {
   MAX_SCORE_ERROR_MESSAGE,
   QUESTIONS_ARE_MISSING_ERROR_MESSAGE,
 } from "@/globals/constants/ErrorMessages.ts";
-import { mockedQuestions } from "@/redux/fixtures/mockedQuestions.ts";
 
 export interface TopicState {
   topic: TopicEnum | null;
@@ -20,7 +19,7 @@ export interface TopicState {
 
 const initialState: TopicState = {
   topic: null,
-  questions: mockedQuestions,
+  questions: [],
   currentIndex: 0,
   currentScore: 0,
   isQuizFinished: false,
@@ -59,14 +58,12 @@ const topicSlice = createSlice({
         state.quizError = QUESTIONS_ARE_MISSING_ERROR_MESSAGE;
         state.currentIndex = 0;
         state.isQuizFinished = true;
-        console.log("isQuizFinished", state.isQuizFinished);
         return;
       }
       if (state.currentIndex < state.questions.length - 1) {
         state.currentIndex++;
       } else {
         state.isQuizFinished = true;
-        console.log("isQuizFinished", state.isQuizFinished);
       }
     },
     increaseScore: (state) => {
@@ -74,7 +71,6 @@ const topicSlice = createSlice({
         state.quizError = MAX_SCORE_ERROR_MESSAGE;
       } else {
         state.currentScore++;
-        console.log("currentScore", state.currentScore);
       }
     },
     setQuizError(state: TopicState, action: PayloadAction<string | null>) {
