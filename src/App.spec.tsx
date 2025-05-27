@@ -5,7 +5,14 @@ import App from "@/App.tsx";
 import HeaderContainer from "@/components/container/HeaderContainer/HeaderContainer.tsx";
 import { Route, Routes } from "react-router-dom";
 import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
-import { STARTPAGE_PATH } from "@/globals/constants/Ressources.ts";
+import {
+  QUIZ_SUB_PATH,
+  RESULT_SUB_PATH,
+  STARTPAGE_PATH,
+} from "@/globals/constants/Ressources.ts";
+import StartPage from "@/pages/StartPage/StartPage.tsx";
+import ResultPage from "@/pages/ResultPage/ResultPage.tsx";
+import QuizPage from "@/pages/QuizPage/QuizPage.tsx";
 
 const headerContainerDataTestId: string = "header-container";
 jest.mock(
@@ -35,8 +42,6 @@ jest.mock(
   }),
 );
 
-jest.mock("@/pages/StartPage/StartPage.tsx", (): jest.Mock => jest.fn());
-
 const footerDataTestId: string = "footer";
 jest.mock(
   "@/components/atoms/Footer/Footer.tsx",
@@ -48,6 +53,39 @@ jest.mock(
 
 jest.mock(
   "@/hooks/redux/darkMode/selector/useDarkMode.ts",
+  (): {
+    __esModule: boolean;
+    default: jest.Mock;
+  } => ({
+    __esModule: true,
+    default: jest.fn(),
+  }),
+);
+
+jest.mock(
+  "@/pages/StartPage/StartPage.tsx",
+  (): {
+    __esModule: boolean;
+    default: jest.Mock;
+  } => ({
+    __esModule: true,
+    default: jest.fn(),
+  }),
+);
+
+jest.mock(
+  "@/pages/QuizPage/QuizPage.tsx",
+  (): {
+    __esModule: boolean;
+    default: jest.Mock;
+  } => ({
+    __esModule: true,
+    default: jest.fn(),
+  }),
+);
+
+jest.mock(
+  "@/pages/ResultPage/ResultPage.tsx",
   (): {
     __esModule: boolean;
     default: jest.Mock;
@@ -109,21 +147,45 @@ describe("App Component", (): void => {
 
     const elements: HTMLElement[] = screen.getAllByTestId(routeDataTestId);
 
-    expect(elements).toHaveLength(2);
-    expect(Route).toHaveBeenCalledTimes(2);
+    expect(elements).toHaveLength(4);
+    expect(Route).toHaveBeenCalledTimes(4);
     expect(Route).toHaveBeenNthCalledWith(
       1,
       expect.objectContaining({
         path: STARTPAGE_PATH,
-        element: expect.any(Object),
+        element: expect.objectContaining({
+          type: StartPage,
+        }),
       }),
       undefined,
     );
     expect(Route).toHaveBeenNthCalledWith(
       2,
       expect.objectContaining({
+        path: `${STARTPAGE_PATH}${QUIZ_SUB_PATH}`,
+        element: expect.objectContaining({
+          type: QuizPage,
+        }),
+      }),
+      undefined,
+    );
+    expect(Route).toHaveBeenNthCalledWith(
+      3,
+      expect.objectContaining({
+        path: `${STARTPAGE_PATH}${RESULT_SUB_PATH}`,
+        element: expect.objectContaining({
+          type: ResultPage,
+        }),
+      }),
+      undefined,
+    );
+    expect(Route).toHaveBeenNthCalledWith(
+      4,
+      expect.objectContaining({
         path: "*",
-        element: expect.any(Object),
+        element: expect.objectContaining({
+          type: StartPage,
+        }),
       }),
       undefined,
     );
