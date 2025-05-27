@@ -1,4 +1,4 @@
-import React from "react";
+import React, { act } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import useResetGame from "@/hooks/result/useResetGame.ts";
 import { ResetGameHook } from "@/globals/models/types/ResultTypes.ts";
@@ -30,10 +30,13 @@ jest.mock(
 
 const testComponentDataTestId: string = "test-component";
 const TestComponent: React.FC = () => {
-  const { handleReset }: ResetGameHook = useResetGame();
+  const { handleReset, isLoading }: ResetGameHook = useResetGame();
 
   return (
-    <div data-testid={testComponentDataTestId} onClick={handleReset}></div>
+    <div
+      data-testid={testComponentDataTestId}
+      onClick={handleReset}
+    >{`${isLoading}`}</div>
   );
 };
 
@@ -46,9 +49,17 @@ describe("useResetGame Hook", (): void => {
 
   const resetGameMock: jest.Mock = jest.fn();
 
+  beforeAll((): void => {
+    jest.useFakeTimers();
+  });
+
   beforeEach((): void => {
     (useNavigate as jest.Mock).mockReturnValue(navigateMock);
     (useResetTopic as jest.Mock).mockReturnValue(resetGameMock);
+  });
+
+  afterAll((): void => {
+    jest.useRealTimers();
   });
 
   it("calls resetGame and navigate when handleReset is called", (): void => {
@@ -56,6 +67,10 @@ describe("useResetGame Hook", (): void => {
 
     const element: HTMLElement = screen.getByTestId(testComponentDataTestId);
     fireEvent.click(element);
+
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
 
     expect(resetGameMock).toHaveBeenCalledTimes(1);
     expect(resetGameMock).toHaveBeenCalledWith();
@@ -66,6 +81,20 @@ describe("useResetGame Hook", (): void => {
       replace: true,
     });
     expect(navigateMock).toHaveReturnedWith(undefined);
+  });
+
+  it("returns isLoading", (): void => {
+    const expectedIsLoadingState: boolean = false;
+    setup();
+
+    const element: HTMLElement = screen.getByTestId(testComponentDataTestId);
+    fireEvent.click(element);
+
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
+
+    expect(element.textContent).toEqual(`${expectedIsLoadingState}`);
   });
 
   it("calls hook useNavigate", (): void => {

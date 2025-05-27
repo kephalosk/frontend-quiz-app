@@ -5,6 +5,7 @@ import useCurrentIndex from "@/hooks/redux/topic/selector/useCurrentIndex.ts";
 import useProgressInfo from "@/hooks/quiz/useProgressInfo.ts";
 import useProgressPerCent from "@/hooks/quiz/useProgressPerCent.ts";
 import { CurrentQuestionHook } from "@/globals/models/types/QuizTypes.ts";
+import { EMPTY_STRING } from "@/globals/constants/Constants.ts";
 
 const useCurrentQuestion: () => CurrentQuestionHook =
   (): CurrentQuestionHook => {
@@ -21,10 +22,14 @@ const useCurrentQuestion: () => CurrentQuestionHook =
       totalQuestions: questions.length,
     });
 
-    const currentQuestionText: string = useMemo(
-      () => questions[currentIndex].question,
-      [currentIndex, questions],
-    );
+    const currentQuestionText: string = useMemo(() => {
+      if (questions.length === 0) {
+        return EMPTY_STRING;
+      } else {
+        return questions[currentIndex].question;
+      }
+    }, [currentIndex, questions]);
+
     return { currentQuestionText, progressInfo, progressPerCent };
   };
 

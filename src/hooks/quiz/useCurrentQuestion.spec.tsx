@@ -8,6 +8,7 @@ import useProgressPerCent from "@/hooks/quiz/useProgressPerCent.ts";
 import useCurrentQuestion from "@/hooks/quiz/useCurrentQuestion.ts";
 import { EPQuestion } from "@/globals/models/entrypoints/EPQuestion.ts";
 import { mockedQuestions } from "@/redux/fixtures/mockedQuestions.ts";
+import { EMPTY_STRING } from "@/globals/constants/Constants.ts";
 
 jest.mock(
   "@/hooks/redux/topic/selector/useQuestions.ts",
@@ -111,6 +112,17 @@ describe("useCurrentQuestion Hook", (): void => {
     expect(element.textContent).toEqual(
       questionsMock[currentIndexMock].question,
     );
+  });
+
+  it("returns currentQuestionText if questions are undefined", (): void => {
+    (useQuestions as jest.Mock).mockReturnValue([]);
+    setup();
+
+    const element: HTMLElement = screen.getByTestId(
+      testComponentDataTestIdQuestion,
+    );
+
+    expect(element.textContent).toEqual(EMPTY_STRING);
   });
 
   it("returns progressInfo", (): void => {
