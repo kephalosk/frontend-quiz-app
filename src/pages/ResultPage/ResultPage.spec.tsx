@@ -13,9 +13,21 @@ import SubmitButton from "@/components/atoms/SubmitButton/SubmitButton.tsx";
 import ResultPage from "@/pages/ResultPage/ResultPage.tsx";
 import { ResetGameHook } from "@/globals/models/types/ResultTypes.ts";
 import { ReactNamesEnum } from "@/globals/models/enums/ReactNamesEnum.ts";
+import useRelocationForUndefinedTopic from "@/hooks/router/useRelocationForUndefinedTopic.ts";
 
 jest.mock(
   "@/hooks/result/useResetGame.ts",
+  (): {
+    __esModule: boolean;
+    default: jest.Mock;
+  } => ({
+    __esModule: true,
+    default: jest.fn(),
+  }),
+);
+
+jest.mock(
+  "@/hooks/router/useRelocationForUndefinedTopic.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;
@@ -63,8 +75,10 @@ describe("ResultPage Component", (): void => {
   };
 
   const handleResetMock: jest.Mock = jest.fn();
+  const isLoadingMock: boolean = false;
   const useResetGameMock: ResetGameHook = {
     handleReset: handleResetMock,
+    isLoading: isLoadingMock,
   };
 
   beforeEach((): void => {
@@ -103,6 +117,19 @@ describe("ResultPage Component", (): void => {
       container.querySelector(".resultPageResult");
 
     expect(element).toBeInTheDocument();
+  });
+
+  it(`does not render div resultPageResult if isLoading is true`, (): void => {
+    (useResetGame as jest.Mock).mockReturnValue({
+      ...useResetGameMock,
+      isLoading: true,
+    });
+    const { container } = setup();
+
+    const element: HTMLElement | null =
+      container.querySelector(".resultPageResult");
+
+    expect(element).not.toBeInTheDocument();
   });
 
   it("renders component ScoreCard", (): void => {
@@ -150,6 +177,17 @@ describe("ResultPage Component", (): void => {
 
     expect(useResetGame).toHaveBeenCalledTimes(1);
     expect(useResetGame).toHaveBeenCalledWith();
-    expect(useResetGame).toHaveReturnedWith({ handleReset: handleResetMock });
+    expect(useResetGame).toHaveReturnedWith({
+      handleReset: handleResetMock,
+      isLoading: isLoadingMock,
+    });
+  });
+
+  it("calls hook useRelocationForUndefinedTopic", (): void => {
+    setup();
+
+    expect(useRelocationForUndefinedTopic).toHaveBeenCalledTimes(1);
+    expect(useRelocationForUndefinedTopic).toHaveBeenCalledWith();
+    expect(useRelocationForUndefinedTopic).toHaveReturnedWith();
   });
 });

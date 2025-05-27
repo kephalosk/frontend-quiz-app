@@ -4,6 +4,7 @@ import QuestionContainer from "@/components/container/QuestionContainer/Question
 import ButtonContainer from "@/components/container/ButtonContainer/ButtonContainer.tsx";
 import useCurrentQuestion from "@/hooks/quiz/useCurrentQuestion.ts";
 import { CurrentQuestionHook } from "@/globals/models/types/QuizTypes.ts";
+import useRelocationForUndefinedTopic from "@/hooks/router/useRelocationForUndefinedTopic.ts";
 
 const QuizPage: React.FC = (): ReactElement => {
   const {
@@ -11,6 +12,7 @@ const QuizPage: React.FC = (): ReactElement => {
     progressInfo,
     progressPerCent,
   }: CurrentQuestionHook = useCurrentQuestion();
+  useRelocationForUndefinedTopic();
 
   return (
     <div className="quizPage">

@@ -5,9 +5,21 @@ import ButtonContainer from "@/components/container/ButtonContainer/ButtonContai
 import useCurrentQuestion from "@/hooks/quiz/useCurrentQuestion.ts";
 import { CurrentQuestionHook } from "@/globals/models/types/QuizTypes.ts";
 import { ReactElement } from "react";
+import useRelocationForUndefinedTopic from "@/hooks/router/useRelocationForUndefinedTopic.ts";
 
 jest.mock(
   "@/hooks/quiz/useCurrentQuestion.ts",
+  (): {
+    __esModule: boolean;
+    default: jest.Mock;
+  } => ({
+    __esModule: true,
+    default: jest.fn(),
+  }),
+);
+
+jest.mock(
+  "@/hooks/router/useRelocationForUndefinedTopic.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;
@@ -102,5 +114,13 @@ describe("QuizPage", (): void => {
       progressInfo: progressInfoMock,
       progressPerCent: progressPerCentMock,
     });
+  });
+
+  it("calls hook useRelocationForUndefinedTopic", (): void => {
+    setup();
+
+    expect(useRelocationForUndefinedTopic).toHaveBeenCalledTimes(1);
+    expect(useRelocationForUndefinedTopic).toHaveBeenCalledWith();
+    expect(useRelocationForUndefinedTopic).toHaveReturnedWith();
   });
 });

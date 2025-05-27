@@ -11,9 +11,11 @@ import ScoreCard from "@/components/container/ScoreCard/ScoreCard.tsx";
 import SubmitButton from "@/components/atoms/SubmitButton/SubmitButton.tsx";
 import useResetGame from "@/hooks/result/useResetGame.ts";
 import { ResetGameHook } from "@/globals/models/types/ResultTypes.ts";
+import useRelocationForUndefinedTopic from "@/hooks/router/useRelocationForUndefinedTopic.ts";
 
 const ResultPage: React.FC = (): ReactElement => {
-  const { handleReset }: ResetGameHook = useResetGame();
+  const { handleReset, isLoading }: ResetGameHook = useResetGame();
+  useRelocationForUndefinedTopic();
 
   return (
     <div className="resultPage">
@@ -22,13 +24,15 @@ const ResultPage: React.FC = (): ReactElement => {
         headline={RESULTPAGE_HEADLINE_BOLD_TEXT}
         subLine={EMPTY_STRING}
       />
-      <div className="resultPageResult">
-        <ScoreCard />
-        <SubmitButton
-          text={PLAY_AGAIN_BUTTON_TEXT}
-          handleButtonClick={handleReset}
-        />
-      </div>
+      {!isLoading && (
+        <div className="resultPageResult">
+          <ScoreCard />
+          <SubmitButton
+            text={PLAY_AGAIN_BUTTON_TEXT}
+            handleButtonClick={handleReset}
+          />
+        </div>
+      )}
     </div>
   );
 };
