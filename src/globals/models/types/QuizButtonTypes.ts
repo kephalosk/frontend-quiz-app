@@ -20,3 +20,7 @@ export type QuizButtonBehaviorHook = {
     onMouseDown?: MouseEventHandler;
   };
 };
+
+export type QuizButtonHandleButtonClickHook = {
+  handleButtonClick: () => void;
+};

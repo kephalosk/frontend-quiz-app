@@ -1,5 +1,6 @@
 import { QuestionStatusEnum } from "@/globals/models/enums/QuestionStatusEnum.ts";
 import { QuestionPositionEnum } from "@/globals/models/enums/QuestionPositionEnum.ts";
+import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 
 export type UpdateSelectionHook = {
   statusArraySelected: QuestionStatusEnum[];
@@ -45,4 +46,8 @@ export type CurrentQuestionHook = {
   currentQuestionText: string;
   progressInfo: string;
   progressPerCent: number;
+};
+
+export type QuizStartHook = {
+  handleQuizStart: (topic: TopicEnum) => Promise<void>;
 };

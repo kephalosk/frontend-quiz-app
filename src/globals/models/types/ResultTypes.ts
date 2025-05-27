@@ -1,1 +1,1 @@
-export type ResetGameHook = { handleReset: () => void };
+export type ResetGameHook = { handleReset: () => void; isLoading: boolean };
