@@ -1,8 +1,7 @@
-@use '../../../styles/screens';
 @use '../../../styles/spaces';
 
 .headerContainer {
-  padding: spaces.$space-16px spaces.$space-7vw;
+  padding: spaces.$space-4vw spaces.$space-7vw;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10,12 +9,4 @@
   width: 100%;
   flex-wrap: wrap;
   row-gap: spaces.$space-16px;
-
-  @include screens.tablet-and-up{
-    padding: spaces.$space-40px spaces.$space-64px;
-  }
-
-  @include screens.desktop-and-up{
-    padding: spaces.$space-84px 8vw;
-  }
 }
