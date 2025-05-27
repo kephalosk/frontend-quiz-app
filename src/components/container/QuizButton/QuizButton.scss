@@ -194,18 +194,3 @@ $icon-width-tablet: functions.to-rem(40px);
     column-gap: spaces.$space-32px;
   }
 }
-
-
-//.button.disabled {
-//  border: $border-thickness solid colors.$grey-600;
-//  background-color: colors.$grey-600;
-//  cursor: not-allowed;
-//}
-//
-//.button:focus .buttonIcon {
-//  fill: colors.$green-200;
-//}
-//
-//.button:focus-visible .buttonIcon {
-//  fill: colors.$green-200;
-//}
