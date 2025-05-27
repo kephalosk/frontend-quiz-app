@@ -17,6 +17,7 @@ export const JAVASCRIPT_ICON_SRC: string = "./images/icon-js.svg";
 export const ACCESSIBILITY_ICON_SRC: string = "./images/icon-accessibility.svg";
 
 export const STARTPAGE_PATH: string = "/frontend-quiz-app/";
+export const QUIZ_SUB_PATH: string = "quiz";
 export const RESULT_SUB_PATH: string = "result";
 //############ old
 
