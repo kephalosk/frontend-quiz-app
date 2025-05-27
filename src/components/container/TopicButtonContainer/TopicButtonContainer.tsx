@@ -2,11 +2,11 @@ import "./TopicButtonContainer.scss";
 import React, { ReactElement } from "react";
 import { TopicItem, TopicItems } from "@/globals/constants/TopicItems.ts";
 import TopicButton from "@/components/container/TopicButton/TopicButton.tsx";
-import useUpdateTopic from "@/hooks/redux/topic/dispatch/useUpdateTopic.ts";
-import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
+import { QuizStartHook } from "@/globals/models/types/QuizTypes.ts";
+import useQuizStart from "@/hooks/quiz/useQuizStart.ts";
 
 const TopicButtonContainer: React.FC = (): ReactElement => {
-  const handleTopicUpdate: (newValue: TopicEnum) => void = useUpdateTopic();
+  const { handleQuizStart }: QuizStartHook = useQuizStart();
 
   return (
     <div className="topicButtonContainer">
@@ -16,7 +16,7 @@ const TopicButtonContainer: React.FC = (): ReactElement => {
             key={index}
             text={topic.text}
             type={topic.topic}
-            handleButtonClick={() => handleTopicUpdate(topic.topic)}
+            handleButtonClick={() => handleQuizStart(topic.topic)}
           />
         ),
       )}

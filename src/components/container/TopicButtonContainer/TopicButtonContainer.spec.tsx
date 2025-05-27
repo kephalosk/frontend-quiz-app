@@ -3,8 +3,9 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { TopicEnum } from "@/globals/models/enums/TopicEnum.ts";
 import { TopicItem, TopicItems } from "@/globals/constants/TopicItems.ts";
 import TopicButtonContainer from "@/components/container/TopicButtonContainer/TopicButtonContainer.tsx";
-import useUpdateTopic from "@/hooks/redux/topic/dispatch/useUpdateTopic.ts";
 import TopicButton from "@/components/container/TopicButton/TopicButton.tsx";
+import { QuizStartHook } from "@/globals/models/types/QuizTypes.ts";
+import useQuizStart from "@/hooks/quiz/useQuizStart.ts";
 
 const topicMock: TopicEnum = TopicEnum.HTML;
 const topicButtonDataTestId: string = "topic-button";
@@ -24,7 +25,7 @@ jest.mock(
 );
 
 jest.mock(
-  "@/hooks/redux/topic/dispatch/useUpdateTopic.ts",
+  "@/hooks/quiz/useQuizStart.ts",
   (): {
     __esModule: boolean;
     default: jest.Mock;
@@ -39,10 +40,13 @@ describe("TopicButtonContainer Component", (): void => {
     return render(<TopicButtonContainer />);
   };
 
-  const useUpdateTopicMock: jest.Mock = jest.fn();
+  const handleQuizStartMock: jest.Mock = jest.fn();
+  const useQuizStartMock: QuizStartHook = {
+    handleQuizStart: handleQuizStartMock,
+  };
 
   beforeEach((): void => {
-    (useUpdateTopic as jest.Mock).mockReturnValue(useUpdateTopicMock);
+    (useQuizStart as jest.Mock).mockReturnValue(useQuizStartMock);
   });
 
   it(`renders div topicButtonContainer`, (): void => {
@@ -77,7 +81,7 @@ describe("TopicButtonContainer Component", (): void => {
     });
   });
 
-  it("calls handleTopicUpdate when TopicButton is clicked", (): void => {
+  it("calls handleQuizStart when TopicButton is clicked", (): void => {
     setup();
 
     const elements: HTMLElement[] = screen.getAllByTestId(
@@ -85,15 +89,15 @@ describe("TopicButtonContainer Component", (): void => {
     );
     fireEvent.click(elements.at(0)!);
 
-    expect(useUpdateTopicMock).toHaveBeenCalledTimes(1);
-    expect(useUpdateTopicMock).toHaveBeenCalledWith(topicMock);
+    expect(handleQuizStartMock).toHaveBeenCalledTimes(1);
+    expect(handleQuizStartMock).toHaveBeenCalledWith(topicMock);
   });
 
-  it("calls hook useUpdateTopic", (): void => {
+  it("calls hook useQuizStart", (): void => {
     setup();
 
-    expect(useUpdateTopic).toHaveBeenCalledTimes(1);
-    expect(useUpdateTopic).toHaveBeenCalledWith();
-    expect(useUpdateTopic).toHaveReturnedWith(useUpdateTopicMock);
+    expect(useQuizStart).toHaveBeenCalledTimes(1);
+    expect(useQuizStart).toHaveBeenCalledWith();
+    expect(useQuizStart).toHaveReturnedWith(useQuizStartMock);
   });
 });

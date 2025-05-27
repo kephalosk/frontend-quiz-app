@@ -16,6 +16,7 @@ import useQuizButtonClasses from "@/hooks/quizButton/useQuizButtonClasses.ts";
 import {
   QuizButtonBehaviorHook,
   QuizButtonClassesHook,
+  QuizButtonHandleButtonClickHook,
   QuizButtonIconHook,
 } from "@/globals/models/types/QuizButtonTypes.ts";
 import React, {
@@ -25,6 +26,18 @@ import React, {
 } from "react";
 import Label from "@/components/atoms/Label/Label.tsx";
 import { LabelTypeEnum } from "@/globals/models/enums/LabelTypeEnum.ts";
+import useQuizButtonHandleButtonClick from "@/hooks/quizButton/useQuizButtonHandleButtonClick.ts";
+
+jest.mock(
+  "@/hooks/quizButton/useQuizButtonHandleButtonClick.ts",
+  (): {
+    __esModule: boolean;
+    default: jest.Mock;
+  } => ({
+    __esModule: true,
+    default: jest.fn(),
+  }),
+);
 
 jest.mock(
   "@/hooks/quizButton/useQuizButtonBehavior.ts",
@@ -83,7 +96,7 @@ describe("QuizButton component", (): void => {
   const text: string = "reset";
   const position: QuestionPositionEnum = QuestionPositionEnum.A;
   const status: QuestionStatusEnum = QuestionStatusEnum.DEFAULT;
-  const handleButtonClickMock: jest.Mock = jest.fn();
+  const propagateAnswerMock: jest.Mock = jest.fn();
   const isDisabled: boolean = false;
 
   const setup = (
@@ -93,13 +106,18 @@ describe("QuizButton component", (): void => {
       text,
       position,
       status,
-      propagateAnswer: handleButtonClickMock,
+      propagateAnswer: propagateAnswerMock,
       isDisabled: isDisabled,
     };
 
     const props: QuizButtonProps = { ...defaultProps, ...propsOverride };
 
     return render(<QuizButton {...props} />);
+  };
+
+  const handleButtonClickMock: jest.Mock = jest.fn();
+  const useQuizButtonHandleButtonClickMock: QuizButtonHandleButtonClickHook = {
+    handleButtonClick: handleButtonClickMock,
   };
 
   const refMock: React.RefObject<HTMLButtonElement | null> = { current: null };
@@ -145,6 +163,9 @@ describe("QuizButton component", (): void => {
   });
 
   beforeEach((): void => {
+    (useQuizButtonHandleButtonClick as jest.Mock).mockReturnValue(
+      useQuizButtonHandleButtonClickMock,
+    );
     (useQuizButtonBehavior as jest.Mock).mockReturnValue(
       useQuizButtonBehaviorMock,
     );
@@ -293,6 +314,17 @@ describe("QuizButton component", (): void => {
 
     expect(element).toBeInTheDocument();
     expect(element).toHaveAttribute("aria-disabled", "true");
+  });
+
+  it("calls hook useQuizButtonHandleButtonClick", (): void => {
+    setup();
+
+    expect(useQuizButtonHandleButtonClick).toHaveBeenCalledTimes(1);
+    expect(useQuizButtonHandleButtonClick).toHaveBeenCalledWith(
+      propagateAnswerMock,
+      text,
+      position,
+    );
   });
 
   it("calls hook useQuizButtonBehavior", (): void => {

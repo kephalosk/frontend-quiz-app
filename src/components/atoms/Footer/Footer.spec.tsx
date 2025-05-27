@@ -10,11 +10,29 @@ import {
   FRONTEND_MENTOR_SRC,
   GITHUB_SRC,
 } from "@/globals/constants/Ressources.ts";
+import useDarkMode from "@/hooks/redux/darkMode/selector/useDarkMode.ts";
+
+jest.mock(
+  "@/hooks/redux/darkMode/selector/useDarkMode.ts",
+  (): {
+    __esModule: boolean;
+    default: jest.Mock;
+  } => ({
+    __esModule: true,
+    default: jest.fn(),
+  }),
+);
 
 describe("Footer Component", (): void => {
   const setup = (): { container: HTMLElement } => {
     return render(<Footer />);
   };
+
+  const useDarkModeMock: boolean = false;
+
+  beforeEach((): void => {
+    (useDarkMode as jest.Mock).mockReturnValue(useDarkModeMock);
+  });
 
   const attributionSelector: string = "attribution";
   const attributionPrefixSelector: string = "attributionPrefix";
@@ -32,6 +50,23 @@ describe("Footer Component", (): void => {
 
     expect(element).toBeInTheDocument();
   });
+
+  it.each([
+    ["darkMode", true],
+    ["lightMode", false],
+  ])(
+    `renders footer ${attributionSelector} with %s`,
+    (mode: string, isDarkModeOn: boolean): void => {
+      (useDarkMode as jest.Mock).mockReturnValue(isDarkModeOn);
+      const { container } = setup();
+
+      const element: HTMLElement | null = container.querySelector(
+        `.${attributionSelector}`,
+      );
+
+      expect(element).toHaveClass(`${attributionSelector}--${mode}`);
+    },
+  );
 
   it(`renders span ${attributionPrefixSelector}`, (): void => {
     const { container } = setup();
@@ -79,5 +114,13 @@ describe("Footer Component", (): void => {
     expect(element).toHaveAttribute("href", GITHUB_SRC);
     expect(element).toHaveAttribute("target", "_blank");
     expect(element!.innerHTML).toEqual(GITHUB_PROFILE_NAME);
+  });
+
+  it(`calls hook useDarkMode`, (): void => {
+    setup();
+
+    expect(useDarkMode).toHaveBeenCalledTimes(1);
+    expect(useDarkMode).toHaveBeenCalledWith();
+    expect(useDarkMode).toHaveReturnedWith(useDarkModeMock);
   });
 });

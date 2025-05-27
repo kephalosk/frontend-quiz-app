@@ -11,9 +11,11 @@ import useQuizButtonBehavior from "@/hooks/quizButton/useQuizButtonBehavior.ts";
 import {
   QuizButtonBehaviorHook,
   QuizButtonClassesHook,
+  QuizButtonHandleButtonClickHook,
   QuizButtonIconHook,
 } from "@/globals/models/types/QuizButtonTypes.ts";
 import useQuizButtonClasses from "@/hooks/quizButton/useQuizButtonClasses.ts";
+import useQuizButtonHandleButtonClick from "@/hooks/quizButton/useQuizButtonHandleButtonClick.ts";
 
 export interface QuizButtonProps {
   text: string;
@@ -34,9 +36,8 @@ const QuizButton: React.FC<QuizButtonProps> = React.memo(
     propagateAnswer,
     isDisabled,
   }: QuizButtonProps): ReactElement => {
-    const handleButtonClick = (): void => {
-      propagateAnswer(text, position);
-    };
+    const { handleButtonClick }: QuizButtonHandleButtonClickHook =
+      useQuizButtonHandleButtonClick(propagateAnswer, text, position);
 
     const { ref, isClickable, buttonEventProps }: QuizButtonBehaviorHook =
       useQuizButtonBehavior(handleButtonClick, status, isDisabled);
